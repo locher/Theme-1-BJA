@@ -14,6 +14,16 @@ button{
 	@include bt($primaire, #fff);
 } 
 
+.bt.btVide{
+    @include bt (transparent, $primaire);
+    border: 1px solid $primaire; 
+    
+    &:hover{
+        @include bt($primaire, #fff);
+        border: 1px solid transparent; 
+    }
+}
+
 label{
 	display: inline-block;
 	font-size: 1.8rem;
