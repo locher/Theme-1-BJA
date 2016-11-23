@@ -101,6 +101,10 @@ function html5blank_conditional_scripts()
     if (is_page_template('template_home.php')) {
                 wp_register_script('countdown', get_template_directory_uri() . '/js/lib/jquery.countdown.min.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('countdown'); // Enqueue it!
+                wp_register_script('googlemap', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAHNkk3MN_xJvWmEAPt7v4TCs2i4k-hJs8', '3.0.5', true); // Conditional script(s)
+        wp_enqueue_script('googlemap'); // Enqueue it! 
+                wp_register_script('script_gmap', get_template_directory_uri() . '/js/gmap.js', array('jquery'), '1.0.1', true); // Conditional script(s)
+        wp_enqueue_script('script_gmap'); // Enqueue it!
     }
     
     if(is_page_template('template_mariage.php')){
@@ -248,7 +252,6 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
 }
 
 // Remove 'text/css' from our enqueued stylesheet
