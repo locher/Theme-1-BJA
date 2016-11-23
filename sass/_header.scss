@@ -1,0 +1,126 @@
+.headerContent{
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+    position: relative;
+    
+    text-align: center;
+    color: #fff;
+    margin: auto;
+    width: 100%;
+    
+    // Mettre le contenu au dessus du ::before en overlay
+    & > *{ 
+        position: relative;
+        z-index: 2;
+    }
+    
+    &::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        display: block;
+        background-color: $primaire;
+        opacity: .4;
+    }
+}
+
+.logo{
+    font-family: 'Open sans';
+    text-align: center;
+    font-weight: 300;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 30px;
+    
+    a{
+        color: $noir;
+        text-decoration: none;
+        padding: .1em 1em;
+        display: inline-block;
+    }
+    
+    p{
+        font-size: .6em;
+        opacity: .5;
+        font-weight: 400;
+    }
+}
+
+.separateurLogo{
+    transition: all ease .3s;
+    color: $primaire;
+}
+
+.logoName1,
+.logoName2{
+    transition: all ease .3s;
+    position: relative;
+    right:0;
+}
+
+.logo a:hover .logoName1{
+    right: 5px;
+}
+
+.logo a:hover .logoName2{
+    right: -5px;
+}
+
+.arabesque-wrapper{
+    svg{
+        width: 300px;
+        height: auto;
+    }
+}
+
+// Text header
+
+.header{
+    .h1, h1{
+        line-height: 1em;
+    }
+}
+
+.date-header{
+    font-weight: 300;
+    font-size: 3rem;
+    text-transform: uppercase;
+    
+    span{
+        font-weight: 400;
+    }
+}
+
+.header-home .date-header span{
+    color: $primaire;
+}
+
+.ss-menu{
+    
+    margin-top: $padding;
+    
+    li{
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 2rem;
+    }
+    a{
+        transition: all ease .3s;
+        color: #fff;
+        text-decoration: none;
+        line-height: 1.5em;
+        border-bottom: 2px solid transparent;
+        
+        &:hover{
+            border-bottom-color: #fff;
+        }
+    }
+}

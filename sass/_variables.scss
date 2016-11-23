@@ -1,0 +1,30 @@
+$primaire: #a1578d;
+$primaire-hash: a1578d;
+
+$primaireSoft: lighten($primaire, 27%);
+
+$borderRadius: 0;
+$padding: 40px;
+
+$noir: #505050;
+$gris: #ececec;
+$gristypo: #9e9e9e;
+
+// Mixins
+
+@mixin bt($bg, $color){
+	transition: background-color ease .25s;
+	background-color: $bg;
+	border:0;
+	border-radius: 25px;
+	padding: 15px 45px;
+	color: $color;
+	cursor: pointer;
+	text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 300;
+
+	&:hover{
+		background-color: darken($bg, 10%);
+	}
+}

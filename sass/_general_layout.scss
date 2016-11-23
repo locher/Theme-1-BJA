@@ -1,0 +1,83 @@
+*{
+	box-sizing: border-box;
+}
+
+html{
+	font-size: 62.5%;
+	background-color: #fff;
+}
+
+body{
+    color: $noir;
+}
+
+.svg-wrapper{
+	display: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.wrapperPadding{
+    padding: $padding*1.25 $padding;
+}
+    
+
+// Généralités
+
+.wrapper{
+	max-width: 1300px;
+	margin: 0 auto;
+    padding: 0 $padding;
+}
+
+.wrapper-title{
+	text-align: center;
+	margin-bottom: $padding*1.5;
+    position: relative;
+    
+    &::after{
+        content:'';
+        display: block;
+        height: 1px; 
+        width: 300px;
+        background-color: darken($gris, 15%);
+        margin: 20px auto 0;
+    }
+    
+    svg{
+        fill: $primaire;
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        left: calc(50% - 25px);
+        bottom: -25px;
+    }
+}
+
+a.bt{
+	display: inline-block;
+}
+
+.bt-subtitle{
+	margin-top: 20px;
+}
+
+.bgsection{
+    background-color: $gris;
+    padding: $padding*1.25 $padding;
+    
+    .wrapper-title{
+        &::after{
+            background-color: darken($gris, 20%);
+        }
+        svg{
+            background-color: $gris;
+        }
+    }
+}

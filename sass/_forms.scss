@@ -1,0 +1,217 @@
+textarea,
+input,
+button{
+	-webkit-appearance: none;
+	font-size: 1em;
+    
+    @include width-below(500px){
+        width: 100%;
+    }
+}
+
+[type="submit"],
+.bt,{
+	@include bt($primaire, #fff);
+} 
+
+label{
+	display: inline-block;
+	font-size: 1.8rem;
+	margin-bottom: 10px;
+	
+	span{
+		color: #a4a4a4;
+		font-weight: 300;
+        display: block;
+	}
+}
+
+input[type="text"],
+input[type="email"],
+textarea{
+	border: 0;
+	width: 100%;
+	padding: 1em 1.25em;
+	margin-bottom: 25px;
+}
+
+textarea{
+	resize: vertical;
+}
+
+[type="file"]{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+    
+    &:focus + .file_label{
+        outline: 1px dotted #000;
+    }
+}
+
+.file_label{
+    transition: all ease .25s;
+    border: 1px solid $primaire;
+	padding: 15px 50px;
+	margin-bottom: 30px;
+    border-radius: 30px;
+
+    display: inline-block;
+    color: $primaire;
+    cursor: pointer;
+    font-size: 1em;
+    
+    @include width-below(500px){
+        width: 100%;
+        text-align: center;
+    }
+
+    
+    span{
+        color: $primaire;
+        font-weight: 500;
+    }
+}
+
+.wait-submit{
+    animation: rotate 1.5s infinite linear;
+    display: block;
+    margin: 0 auto;
+    height: 25px;
+    width: 25px;
+    
+    svg{
+        fill: #fff;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@keyframes rotate {
+   to { transform: rotate(360deg); }
+}
+
+.hide{
+    display: none;
+}
+
+.formHalf{
+    width: calc(50% - 10px);
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.formHalf + .formHalf{
+    margin-left: 20px;
+}
+
+.wrapper-radios,
+.wrapper-checkbox{
+    margin: 10px 0 20px;
+}
+
+form{
+    // Les radios
+
+//Checked et :not checked pour pas cibler les vieux navigateurs
+//Pour le reste, les "+" et ::before/after font le même job
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked){
+	display: none;
+}
+
+input[type="radio"] + label{
+	margin-right: 1.2em;
+
+	@include width-below(600px){
+		display: block;
+		margin-bottom: .3em;
+	}
+}
+
+
+input[type="radio"] + label::before{
+	transition: all ease .3s;
+	content:'';
+	display: inline-block;
+	height: .5em;
+	width: .5em;
+	border-radius: 100%;
+	cursor: pointer;
+	background-color: #fff;
+	border: .35em solid #fff;
+	margin-right: .4em;
+
+	position: relative;
+	top: 3px;
+}
+
+input[type="radio"]:checked + label::before{
+	background-color: $primaire;
+}
+
+// Les checkboxs
+
+//Checked et :not checked pour pas cibler les vieux navigateurs
+//Pour le reste, les "+" et ::before/after font le même job
+input[type="checkbox"]:checked, 
+input[type="checkbox"]:not(:checked){
+	display: none;
+}
+
+input[type="checkbox"] + label{
+	margin-right: 1.2em;
+	position: relative;
+	line-height: 1.3em;
+}
+
+
+input[type="checkbox"] + label::before{
+	transition: all ease .3s;
+	content: '';
+	display: inline-block;
+	height: .5em;
+	width: .5em;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: #fff;
+	border: .3em solid #fff;
+	margin-right: .6em;
+    position: relative;
+    top: 4px;
+}
+
+input[type="checkbox"] + label .tick{
+	transition: opacity ease .3s;
+    height: 2px;
+    width: 12px;
+    background-color: $primaire;
+	position: absolute;
+	left: 4px;
+	top: 13px;
+	cursor: pointer;
+    transform: rotate(45deg);
+    opacity: 0;
+    
+    &::after{
+        transition: opacity ease .3s;
+        content: '';
+        height: 2px;
+        width: 12px;
+        background-color: $primaire;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+}
+
+input[type="checkbox"]:checked + label .tick,
+input[type="checkbox"]:checked + label .tick::after{
+	opacity: 1;
+}
+}

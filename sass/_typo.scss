@@ -1,0 +1,77 @@
+body{
+	font-size: 1.6rem;
+	font-family: 'Open sans', sans-serif;
+	color: #494949;
+	
+	@include width-below(500px){
+		font-size: 1.4rem;
+	}
+}
+
+p{
+    line-height: 1.3em;
+}
+
+h1, .h1{
+    font-family: 'Open sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 9rem;
+}
+
+h2, .h2{
+	font-size: 4rem;
+	font-weight: 300;
+    font-family: 'Open sans', serif;
+	
+	@include width-below(500px){
+		font-size: 3rem;
+	}
+}
+
+h3, .h3{
+    font-family: 'Open sans', serif;
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $primaire;
+    line-height: 1.3em;
+}
+
+h4, .h4{
+    font-weight: 500;
+    font-size: 1.9rem;
+    line-height: 1.2em;
+}
+
+strong{
+    font-weight: 700;
+}
+
+.subtitle{
+	font-weight: 300;
+	font-size: 2rem;
+    margin-top: 5px;
+	display: block;
+    text-transform: uppercase;
+    color: $gristypo;
+	
+	@include width-below(500px){
+		font-size: 2rem;
+	}
+}
+
+.tcenter{
+	text-align: center;
+}
+
+.textContent{
+    p{
+        margin-bottom: .5em;
+    }
+}
+
+p{
+    font-family: 'Alegreya Sans', sans-serif;
+}

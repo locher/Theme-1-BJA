@@ -1,0 +1,72 @@
+.temoins{
+    margin: $padding 0;
+}
+
+.wrapperTemoins{
+    display: flex;
+    justify-content: center;
+
+    > div:first-child{
+        margin-right: 15px;
+    }
+    
+    > div:last-child{
+        margin-left: 15px;
+    }
+    
+}
+
+.singleTemoin{
+    
+    padding: 35px;
+    text-align: center;
+    max-width: 375px;
+   
+    
+    .imgTemoin{
+        margin-bottom: 10px;
+    }
+    
+    a{
+        display: inline-block;
+        color: $primaire;
+        font-size: 1.8rem;
+    }
+    
+    .bt{
+        color: #fff;
+    }
+    
+    .wrapperText{
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+.temoinMaster{
+    .imgTemoin{
+        margin-bottom: 10px;
+        
+        img{
+            width: 250px;
+            height: 250px;
+        }
+    }
+}
+
+.notMaster{
+    background-color: rgba(#000, .05);
+    
+    .imgTemoin{
+        margin-bottom: 10px;
+        
+        img{
+            width: 175px;
+            height: 175px;
+        }
+    }
+    
+    a{
+        font-size: 1.5rem;
+    }
+}
