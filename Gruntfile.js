@@ -4,7 +4,7 @@ module.exports = function(grunt){
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
 			'default': {
-				files: ['Gruntfile.js', 'sass/*.scss', 'sass/**/*.scss'],
+				files: ['Gruntfile.js', 'sass/*.scss', 'sass/**/*.scss', 'sass/*/*.scss'],
 				tasks: ['sass:dev', 'autoprefixer']
 			},
 			'svg': {

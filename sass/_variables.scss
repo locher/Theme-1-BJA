@@ -16,13 +16,14 @@ $gristypo: #9e9e9e;
 	transition: background-color ease .25s;
 	background-color: $bg;
 	border:0;
-	border-radius: 25px;
-	padding: 15px 45px;
+	border-radius: 30px;
+	padding: 18px 50px;
 	color: $color;
 	cursor: pointer;
 	text-decoration: none;
     text-transform: uppercase;
     font-weight: 300;
+    font-size: 1.8rem;
 
 	&:hover{
 		background-color: darken($bg, 10%);

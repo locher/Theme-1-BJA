@@ -31,6 +31,8 @@
 </header>
 <!-- /header -->
 
+<?php include('blocs/rappelRSVP.php'); ?>
+
 <script>
 
     

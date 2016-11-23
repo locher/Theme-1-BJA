@@ -1,0 +1,13 @@
+.rappelRsvp{
+    margin: $padding 0;
+    text-align: center;
+    
+    .wrapper-title{
+        margin-bottom: $padding/1.5;
+    }
+    
+    > p{
+        font-size: 2rem;
+        margin-bottom: $padding;
+    }
+}
