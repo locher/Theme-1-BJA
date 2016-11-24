@@ -359,38 +359,4 @@ if($_FILES && $name_correct == true){
 	
 	<?php endif;?>
 
-
-
-<script>
-
-    
-(function ($, root, undefined) {
-
-$(function () {
-
-    'use strict';
-
-    //Countdown
-    
-    var dateMariage = '<?php echo $dateMariage->format('Y/m/d');?> <?php echo $heureMariage->format('G:i:s'); ?>';
-    $('#clock').countdown(dateMariage, {elapse: true}).on('update.countdown', function(event) {
-        var $this = $(this);
-        if (event.elapsed) {
-            //Après la fin
-            $this.html(event.strftime('<div><span>%D</span> jour%!D</div><div><span>%H</span> heure%!H</div><div><span>%M</span> minute%!M</div><div><span>%S</span> seconde%!S</div>'));
-            $this.parent().find('.text-compteur').html('Heureux mariés depuis :')
-        } else {
-            //Avant la fin
-            $this.html(event.strftime('<div><span>%D</span> jour%!D</div><div><span>%H</span> heure%!H</div><div><span>%M</span> minute%!M</div><div><span>%S</span> seconde%!S</div>'));
-        }
-    });    
-
-});
-
-})(jQuery, this);	
-
-
-    
-</script>
-
 <?php get_footer(); ?>
