@@ -43,19 +43,21 @@
             $thumb = $imagePage['sizes'][ $size ];
             $width = $imagePage['sizes'][ $size . '-width' ];
             $height = $imagePage['sizes'][ $size . '-height' ];
+            
+        }elseif(has_post_thumbnail()){
+            $thumb_id = get_post_thumbnail_id();
+            $url = wp_get_attachment_image_src($thumb_id,'sL1500', true)[0];
+        }elseif( !empty($imageGenerale) ){ 
+            // vars
+            $url = $imageGenerale['url'];
+            $title = $imageGenerale['title'];
+            $alt = $imageGenerale['alt'];
+            $caption = $imageGenerale['caption'];
 
-        }else if( !empty($imageGenerale) ){ 
-
-                // vars
-                $url = $imageGenerale['url'];
-                $title = $imageGenerale['title'];
-                $alt = $imageGenerale['alt'];
-                $caption = $imageGenerale['caption'];
-
-                // thumbnail
-                $thumb = $imageGenerale['sizes'][ $size ];
-                $width = $imageGenerale['sizes'][ $size . '-width' ];
-                $height = $imageGenerale['sizes'][ $size . '-height' ];
+            // thumbnail
+            $thumb = $imageGenerale['sizes'][ $size ];
+            $width = $imageGenerale['sizes'][ $size . '-width' ];
+            $height = $imageGenerale['sizes'][ $size . '-height' ];
         }else{
              echo "Aucune image définie";
         }

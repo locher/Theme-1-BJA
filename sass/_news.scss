@@ -81,3 +81,149 @@
         order: 2;
     }
 }
+
+// Article
+
+.contentArticle{
+    
+    > *:not(div){
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    p{
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    
+    a{
+        transition: color ease .3s;
+        color: $primaire;
+        &:hover{
+           color: darken($primaire, 10%);
+        }
+    }
+    
+    em{
+        font-style: italic;
+    }
+    
+    blockquote{
+        border-left: 3px solid $primaire;
+        padding-left: 20px;
+        opacity: .8;
+    }
+    
+    h1{
+        font-size: 5rem;
+    }
+    
+    h2{
+        font-size: 4rem;
+        color: $primaire;
+        text-transform: uppercase;
+    }
+    
+    h5{
+        font-weight: bold;
+    }
+    
+    h2, h3, h4, h5{
+        margin: .5em auto;
+    }
+    
+    li::before{
+        content: "";
+        display: inline-block;
+        height: 7px;
+        width: 7px;
+        background-color: $primaire;
+        border-radius: 100%;
+        margin-right: 10px;
+        position: relative;
+        top: -2px;
+    }
+    
+    .wp-caption{
+        margin: 30px auto;
+        width: 100% !important;
+        
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .wp-caption-text{
+        background-color: $gris;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin-top: 5px;
+    }
+    
+    p img{
+        display: block;
+        margin: 30px auto;
+    }
+
+}
+
+.commentWrapper{
+    margin-bottom: $padding;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.comment-form{
+    text-align: left;
+    margin: 20px 0;
+    
+    .form-submit{
+        text-align: center;
+    }
+}
+
+.comment-notes{
+    margin-bottom: 20px;
+}
+
+.logged-in-as a{
+    color: $primaire;
+}
+
+// Les commentaires en soit
+
+.comment{
+    text-align: left;
+    margin-bottom: 20px;
+    
+    ul{
+        padding-left: 50px;
+    }
+
+}
+
+.wrapperCommentSingle{
+    background-color: #fff;
+    padding: 15px 25px;
+    margin-bottom: 2em;
+    margin-top: 5px;
+    
+    a{
+        font-weight: bold;
+        color: $primaire;
+    }
+}
+
+.bypostauthor .wrapperCommentSingle{
+    background-color: lighten($primaire, 35%);
+}
+
+.comment-author{
+    font-size: 2rem;
+    text-transform: uppercase;
+}

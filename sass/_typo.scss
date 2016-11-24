@@ -8,12 +8,11 @@ body{
 	}
 }
 
-p{
+p, li{
     line-height: 1.3em;
 }
 
 h1, .h1{
-    font-family: 'Open sans', sans-serif;
     font-style: normal;
     font-weight: 300;
     text-transform: uppercase;
@@ -23,7 +22,6 @@ h1, .h1{
 h2, .h2{
 	font-size: 4rem;
 	font-weight: 300;
-    font-family: 'Open sans', serif;
 	
 	@include width-below(500px){
 		font-size: 3rem;
@@ -31,7 +29,6 @@ h2, .h2{
 }
 
 h3, .h3{
-    font-family: 'Open sans', serif;
     font-size: 2.25rem;
     font-weight: 300;
     text-transform: uppercase;
@@ -72,6 +69,6 @@ strong{
     }
 }
 
-p{
+p, li{
     font-family: 'Alegreya Sans', sans-serif;
 }
