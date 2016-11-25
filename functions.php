@@ -367,6 +367,10 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 
 function create_post_type_html5()
 {
+    
+    //Partie Live pas pour les packs 1
+    if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"):
+    
     register_post_type('live', // Register Custom Post Type
         array(
         'labels' => array(
@@ -391,6 +395,8 @@ function create_post_type_html5()
         'can_export' => true, // Allows export in Tools > Export
 		'menu_icon' => 'dashicons-images-alt'
     ));
+    
+    endif;
     
     register_post_type('invite', // Register Custom Post Type
         array(
@@ -604,5 +610,19 @@ function bja_disable_comment_url($fields) {
     return $fields;
 }
 add_filter('comment_form_default_fields','bja_disable_comment_url');
+
+
+
+//Supprimer des parties de l'admin
+
+function custom_menu_page_removing() {
+    //Virer tout ce qui est Actus pour les Packs 1
+    if(get_field('pack_achete', 'option') == "pack1"):
+     remove_menu_page( 'edit.php' );
+     remove_menu_page( 'edit-comments.php' );
+    endif;
+
+}
+add_action( 'admin_menu', 'custom_menu_page_removing' );
 
 ?>
