@@ -26,10 +26,14 @@
    <label for="checkboxMenu"><span class="icon"></span>Menu</label>
 
    <div class="linkNav">
-       <?php html5blank_nav(); ?>
+   
+   <?php if(get_field('pack_achete', 'option') == "pack1") $menu = "Pack 1"; else $menu = "Pack 2"; ?>
+    
+        <?php wp_nav_menu(
+            array(
+            'menu' => $menu
+        )); ?>
    </div>
 
 </nav>
-
-
 </div>

@@ -36,6 +36,10 @@
 
 <?php
     // Les news
+
+    //News que pour pack 2 et 3
+    if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"):
+
     $argsPosts = array(
         'post_type'		=> 'post',
         'posts_per_page' => 3,
@@ -65,6 +69,7 @@
 <?php endwhile;?>
     
 </section>
+<?php endif;?>
 <?php endif;?>
 
 <section class="gmap bgsection">

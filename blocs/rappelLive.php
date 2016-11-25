@@ -1,4 +1,6 @@
-<div class="bgsection wrapperPadding rappelLive">
+<?php if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"): ?>  
+
+   <div class="bgsection wrapperPadding rappelLive">
     <div class="wrapper-title">
         <h2>Galerie Live!</h2>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
@@ -11,3 +13,5 @@
     
     <a href="<?php echo ods_getTemplatePermalink('template_galerieLive.php'); ?>" class="bt">Accéder à la galerie Live!</a>
 </div>
+
+<?php endif;?>
