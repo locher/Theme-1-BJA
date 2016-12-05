@@ -23,7 +23,7 @@
 
 			<!-- post details -->
 			<p>
-			    <span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
+			    <span class="date"><?php the_time('l j F Y');?> à <?php the_time('G\hi a'); ?></span>
 			</p>
 			<p>
 			    <span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'html5blank' ), __( '1 Comment', 'html5blank' ), __( '% Comments', 'html5blank' )); ?></span>
