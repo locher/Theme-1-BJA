@@ -114,7 +114,12 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
 <section class="bgsection wrapperPadding" id="addLive">
     <div class="wrapper-title">
         <h2><?php the_title();?></h2>
-        <p class="subtitle">Veuillez s'il vous plait confirmer votre présence avant le <?php the_field('reponse_souhaitee_avant', 'option');?></p>
+            <?php     
+        $dateformat = "j F";
+        $unixtimestamp = strtotime(get_field('reponse_souhaitee_avant', 'option', false));
+    ?>
+
+        <p class="subtitle">Veuillez s'il vous plait confirmer votre présence avant le <?php echo date_i18n($dateformat, $unixtimestamp); ?></p>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
     </div>	
 

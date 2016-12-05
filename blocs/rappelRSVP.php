@@ -22,7 +22,3 @@ if(strtotime($expire) > strtotime(now)):
 
 
 <?php endif;?>
-
-
-
-
