@@ -1,6 +1,5 @@
 <div class="headerTop">
     
-
 <!-- logo -->
 <div class="logo">      
     <?php $maries = get_field('maries', 'option'); ?>
@@ -15,7 +14,12 @@
         </span>
     </a>
     
-    <p>Le <span><?php the_field('date_du_mariage', 'option'); ?></span></p>
+    <?php     
+        $dateformat = "j F Y";
+        $unixtimestamp = strtotime(get_field('date_du_mariage', 'option', false));
+    ?>
+    
+    <p>Le <span><?php echo date_i18n($dateformat, $unixtimestamp); ?></span></p>
     
 </div>
 
