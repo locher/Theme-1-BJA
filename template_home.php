@@ -59,6 +59,7 @@
    <div class="singleArticle">
        <div class="contentSingle">
            <h3><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+           <p class="postDate"><?php the_time('l j F Y');?></p>
            <p><?php the_excerpt();?></p>
            <p><a href="<?php the_permalink();?>" class="bt btVide">Lire l'article</a></p>
        </div>

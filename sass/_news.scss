@@ -10,6 +10,12 @@
         width: 50%;
     }
     
+    .postDate{
+        text-transform: uppercase;
+        font-weight: 300;
+        margin-bottom: 1em;
+    }
+    
     .contentSingle{
         margin: $padding/2;
         
