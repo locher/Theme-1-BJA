@@ -90,6 +90,8 @@
             <?php $location = get_sub_field('adresse_du_lieu'); ?>
             <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
                 <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
+                
+                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
             </div>       
        <?php endwhile; ?>
            <?php endif;?>
@@ -101,6 +103,7 @@
             <?php $location = get_sub_field('adresse_du_lieu'); ?>
             <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
                 <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
+                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
             </div>       
        <?php endwhile; ?>
            <?php endif;?>
@@ -135,7 +138,7 @@ $(function () {
             //Avant la fin
             $this.html(event.strftime('<div><span>%D</span> jour%!D</div><div><span>%H</span> heure%!H</div><div><span>%M</span> minute%!M</div><div><span>%S</span> seconde%!S</div>'));
         }
-    });    
+    });   
 
 });
 

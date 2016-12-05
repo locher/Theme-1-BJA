@@ -69,12 +69,23 @@ function add_marker( $marker, map ) {
 
 	// var
 	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+    
+    //Custom marker
+    var iconmarker = {
+        path:'M15.22917,40.61111S30.45833,26.74648,30.45833,13.95993C30.45833,6.25032,23.63891,0,15.22917,0S0,6.25032,0,13.95993C0,26.74648,15.22917,40.61111,15.22917,40.61111Z',
+        anchor: new google.maps.Point(15,40),
+        fillColor: '000000',
+        fillOpacity: 0.6,
+        strokeWeight: 0,
+      };
+
 
 	// create marker
 	var marker = new google.maps.Marker({
-		position	: latlng,
-		map			: map,
-	});
+		position : latlng,
+		map : map,
+        icon: iconmarker
+    });
 
 	// add to array
 	map.markers.push( marker );

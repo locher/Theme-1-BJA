@@ -129,6 +129,8 @@
             <?php $location = get_sub_field('adresse_du_lieu'); ?>
             <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
                 <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
+                
+                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
             </div>       
        <?php endwhile; ?>
            <?php endif;?>
@@ -140,6 +142,7 @@
             <?php $location = get_sub_field('adresse_du_lieu'); ?>
             <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
                 <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
+                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
             </div>       
        <?php endwhile; ?>
            <?php endif;?>

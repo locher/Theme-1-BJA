@@ -10,8 +10,20 @@
 .title-map{
     display: block;
     color: $primaire;
-    font-size: 1.2em;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.linkMap{
+    text-align: center;
+    margin-top: 5px;
+    
+    a{
+        font-size: 1.5rem;
+        padding: 12px 30px;
+    }
 }
 
 .home gmap{
