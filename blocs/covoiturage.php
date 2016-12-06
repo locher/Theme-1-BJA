@@ -1,76 +1,3 @@
-<?php /* Template Name: Informations */ get_header(); ?>
-
-<!-- header -->
-<header class="header" role="banner">
-
-    <?php include('logo-nav.php');?>
-    
-    <div class="headerContent">    
-        <h1><?php the_title();?></h1>    
-    </div>
-
-</header>
-<!-- /header -->
-   
-<?php            
-    $argsHotel = array(
-        // Query des témoins du marié
-        'post_type'		=> 'hotels',
-    );  
-
-    $queryHotel = new WP_Query( $argsHotel );
-?>
-
-<?php if( $queryHotel->have_posts() ): ?>
-
-<section class="hotels">
-       
-    <div class="wrapper-title">
-        <h2><?php the_field('titre_hotel', 'option');?></h2>
-        <p class="subtitle"><?php the_field('sous-titre_hotel', 'option');?></p>
-       <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-    </div>
-
-    <?php while( $queryHotel->have_posts() ) : $queryHotel->the_post(); ?>
-
-    <div class="singleHalf">
-        <div class="halfPhoto" style="background-image:url('<?php echo get_field('photo')['sizes']['s400']; ?>');"></div>
-        <div class="contentHalf">
-            <h3><?php the_title();?></h3>
-            <p class="adresse"><?php the_field('adresse');?></p>
-            <div class="descriptionHalf"><?php the_field('description');?></div>
-            <ul>
-                <?php if(get_field('telephone')): ?>
-                <li>
-                    <svg viewBox="0 0 100 100" width="30" height="30">
-                        <use xlink:href="#icon-telephone"></use>
-                    </svg>
-                    <a href="tel:<?php echo(str_replace(' ','',get_field('telephone')));?>" class=""><?php the_field('telephone');?></a></li>
-               <?php endif;?>
-               <?php if(get_field('email')):?>
-                <li>
-                   <svg viewBox="0 0 100 100" width="30" height="30">
-                        <use xlink:href="#icon-mail"></use>
-                    </svg>
-                    <a href="mailto:<?php the_field('email');?>" class=""><?php the_field('email');?></a></li>
-                <?php endif;?>
-                <?php if(get_field('site_web')):?>
-                <li>
-                    <svg viewBox="0 0 100 100" width="30" height="30">
-                        <use xlink:href="#icon-lien"></use>
-                    </svg>
-                    <a href="<?php the_field('site_web');?>" class=""><?php the_field('site_web');?></a></li>
-                <?php endif;?>
-            </ul>
-
-        </div>
-    </div>
-
-    <?php endwhile;?>
-</section>
-
-<?php endif;?>
-
 <?php if(get_field('pack_achete', 'option') == "pack3"): ?>
 
 <?php
@@ -91,7 +18,7 @@ if(isset($_POST['name_covoit']) && $_POST['name_covoit'] != "" && isset($_POST['
 if($name_correct == true){
     
     $postArgs = array(
-        'post_title' => $name_covoit,
+        'post_title' => $name_author,
         'post_type' => 'covoiturage',
         'post_status' => 'publish',
     ); 
@@ -105,10 +32,7 @@ if($name_correct == true){
     update_field('ville_de_depart', $depart_covoit, $id);	
     update_field('arrêts_possible', $via_covoit, $id);	
     update_field('horaire_de_depart', $DateDepart_covoit, $id);	
-    update_field('horaire_de_retour', $DateRetour_covoit, $id);	
-    
-    // On redirige sur la même page pour effacer le formulaire correctement et pouvoir refresh après
-    header('Location: '.get_permalink());  
+    update_field('horaire_de_retour', $DateRetour_covoit, $id);	    
 }
 
 ?>
@@ -138,7 +62,7 @@ if($name_correct == true){
             <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
         </div>	
 
-        <form action="<?php echo ods_getTemplatePermalink('template_information.php'); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo ods_getTemplatePermalink('covoiturage.php'); ?>" method="post" enctype="multipart/form-data">
 
             <div class="form_text">
                 <p>
@@ -198,5 +122,3 @@ if($name_correct == true){
 </section>
 
 <?php endif;?>
-
-<?php get_footer(); ?>

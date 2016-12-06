@@ -398,6 +398,36 @@ function create_post_type_html5()
     
     endif;
     
+    //Covoiturage
+    if(get_field('pack_achete', 'option') == "pack3"):
+    
+    register_post_type('covoiturage', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Covoiturage', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Covoiturage', 'bjamour'),
+            'add_new' => __('Ajouter', 'bjamour'),
+            'add_new_item' => __('Ajouter un covoiturage', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un covoiturage', 'bjamour'),
+            'new_item' => __('Nouveau covoiturage', 'bjamour'),
+            'view_item' => __('Voir le covoiturage', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-location'
+    ));
+    
+    endif;
+    
     register_post_type('invite', // Register Custom Post Type
         array(
         'labels' => array(

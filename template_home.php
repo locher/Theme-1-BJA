@@ -33,7 +33,6 @@
 
 <?php include('blocs/rappelRSVP.php'); ?>
 
-
 <?php
     // Les news
 
