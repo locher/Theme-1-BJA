@@ -15,12 +15,13 @@ button{
 } 
 
 .bt.btVide{
-    @include bt (transparent, $primaire);
-    border: 1px solid $primaire; 
+    @include bt(transparent, $primaire);
+    border: 2px solid $primaire; 
     
     &:hover{
-        @include bt($primaire, #fff);
-        border: 1px solid transparent; 
+        background-color: $primaire;
+        color: #fff;
+        border: 2px solid transparent; 
     }
 }
 

@@ -13,19 +13,22 @@ $gristypo: #9e9e9e;
 
 @mixin bt($bg, $color){
     font-family: 'Open sans', sans-serif;
-	transition: background-color ease .25s;
+	transition: all ease .25s;
 	background-color: $bg;
 	border:0;
 	border-radius: 30px;
-	padding: 18px 50px;
+	padding: 17px 50px;
 	color: $color;
 	cursor: pointer;
 	text-decoration: none;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 1.8rem;
+     border: 2px solid transparent;
 
 	&:hover{
-		background-color: darken($bg, 10%);
+		background-color: transparent;
+        color: $bg;
+        border-color: $bg;
 	}
 }

@@ -107,7 +107,7 @@
         transition: color ease .3s;
         color: $primaire;
         &:hover{
-           color: darken($primaire, 10%);
+           color: #000;
         }
     }
     
@@ -226,7 +226,12 @@
 }
 
 .bypostauthor .wrapperCommentSingle{
-    background-color: lighten($primaire, 35%);
+    background-color: $primaire;
+    color: #fff;
+    
+    a{
+        color: #fff;
+    }
 }
 
 .comment-author{
