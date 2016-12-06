@@ -18,7 +18,7 @@ if(isset($_POST['name_covoit']) && $_POST['name_covoit'] != "" && isset($_POST['
 if($name_correct == true){
     
     $postArgs = array(
-        'post_title' => $name_author,
+        'post_title' => $name_covoit,
         'post_type' => 'covoiturage',
         'post_status' => 'publish',
     ); 
@@ -32,12 +32,12 @@ if($name_correct == true){
     update_field('ville_de_depart', $depart_covoit, $id);	
     update_field('arrêts_possible', $via_covoit, $id);	
     update_field('horaire_de_depart', $DateDepart_covoit, $id);	
-    update_field('horaire_de_retour', $DateRetour_covoit, $id);	    
+    update_field('horaire_de_retour', $DateRetour_covoit, $id);	
 }
 
 ?>
 
-<section class="wrapperPadding">
+<section class="wrapperPadding bgsection">
     
 		<div class="wrapper-title">
 			<h2>Covoiturage</h2>
@@ -55,14 +55,14 @@ if($name_correct == true){
 
 </section>
 
-<section class="upload_photos bgsection wrapperPadding" id="addLive">
+<section class="upload_photos wrapperPadding bgsection" id="addLive">
         <div class="wrapper-title">
             <h2>Proposer un covoiturage</h2>
             <p class="subtitle">Vous avez des places dans votre voiture ?</p>
             <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
         </div>	
 
-        <form action="<?php echo ods_getTemplatePermalink('covoiturage.php'); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo ods_getTemplatePermalink('template_information.php'); ?>" method="post" enctype="multipart/form-data">
 
             <div class="form_text">
                 <p>
