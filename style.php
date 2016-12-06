@@ -8,5 +8,6 @@
 
     $colorAdmin = get_field('couleur_principale', 'option', false);
 
-    echo str_replace("#ff0000", $colorAdmin, file_get_contents('style.css'));
+    echo str_replace(array("#ff0000"), $colorAdmin, file_get_contents('style.css'));
+
 ?>

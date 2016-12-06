@@ -35,19 +35,20 @@
         }
 
         a{
-            transition: color ease .2s;
+            transition: all ease .2s;
             color: #fff;
             text-decoration: none;
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 30px 5px;
+            border-bottom: 1px solid transparent;
 
             &:hover{
-                color: darken($primaire, 30%);
+               border-bottom: 1px solid #fff;
             }
         }
 
         .current_page_item a{
-            color: darken($primaire, 20%);
+            opacity: .5;
         }
         
     }
@@ -147,7 +148,8 @@
             content: '';
             display: block;
             position: fixed;
-            background-color: rgba($primaire, .85);
+            background-color: $primaire;
+            opacity: .95;
             -webkit-backdrop-filter:blur(20px);
             backdrop-filter:blur(20px);
             height: 100%;
