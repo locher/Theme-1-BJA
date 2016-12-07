@@ -1,0 +1,47 @@
+.covoit{
+    
+    margin-bottom: $padding;
+    
+    table{
+        width: 100%;
+    }
+    
+    thead{
+        background-color: $primaire;
+        
+        td{
+            color: #fff;
+        }
+    }
+    
+    tbody tr:nth-child(odd){
+        background-color: #fff;
+    }
+    
+    td{
+        padding: 20px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    td p:first-child{
+       font-family: 'Open sans', sans-serif;
+        font-weight: 100;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    
+    a{
+        color: $primaire;
+    }
+    
+    .bt{
+        display: block;
+        margin: $padding auto 0;
+        font-size: 1.5rem;
+    }
+}
+
+.covoitForm{
+    display: none;
+}

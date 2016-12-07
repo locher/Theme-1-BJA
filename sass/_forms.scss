@@ -34,17 +34,30 @@ label{
 		color: #a4a4a4;
 		font-weight: 300;
 	}
+    
+    .required{
+        color: $primaire;
+    }
 }
 
 input[type="text"],
 input[type="email"],
+input[type="number"],
 textarea{
-	border: 0;
+    transition: all ease .3s;
+	border: 1px solid transparent;
 	width: 100%;
 	padding: 1em 1.25em;
 	margin-bottom: 25px;
     font-family: 'Alegreya Sans', sans-serif;
+    
+    &:focus{
+        border: 1px solid $primaire;
+    }
+
 }
+
+
 
 textarea{
 	resize: vertical;
@@ -115,7 +128,7 @@ textarea{
     margin-right: -4px;
 }
 
-.formHalf + .formHalf{
+.halfRight{
     margin-left: 20px;
 }
 

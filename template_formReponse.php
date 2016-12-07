@@ -160,7 +160,7 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
                 <input type="text" id="name" name="name_dude" value="<?php echo $_COOKIE["name"]; ?>">
             </p>
 
-            <p class="formHalf">
+            <p class="formHalf halfRight">
                 <label for="email">Une adresse mail ?</label>
                 <input type="email" id="email" name="email">
             </p>
