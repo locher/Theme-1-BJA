@@ -1,10 +1,5 @@
 <?php /* Template Name: Live Galerie */ get_header(); ?>
 
-<?php
-    //Photos officielles
-    $imagesOfficielle = get_field('galerie_photo');
-?>
-
 <!-- header -->
 <header class="header" role="banner">
 
@@ -36,17 +31,20 @@
 	
 	<?php
         wp_reset_query();
-        if( $imagesOfficielle ):
+
+        if( have_rows('galerie') ):
+        while ( have_rows('galerie') ) : the_row();
 
     ?>
 	
 	<section class="gallery wrapperPadding" id="photosOfficielles">
         	    <div class="wrapper-title">
-	        <h2><?php the_field('titre_galerie');?></h2>
-	        <p class="subtitle"><?php the_field('sous-titre_galerie');?></p>
+	        <h2><?php the_sub_field('titre_galerie');?></h2>
+	        <p class="subtitle"><?php the_sub_field('sous_titre_galerie');?></p>
 	        <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
 	    </div>	
 	    	   <ul>
+	   <?php $imagesOfficielle = get_sub_field('photos');?>
         <?php foreach( $imagesOfficielle as $image ): ?>
             <li>
                 <a href="<?php echo $image['sizes']['sL1200']; ?>" class="lightbox">
@@ -57,7 +55,7 @@
         </ul>   
 	    
 	</section>
-	
+	<?php endwhile;?>
 	<?php endif;?>
 
 <?php get_footer(); ?>
