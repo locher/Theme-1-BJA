@@ -1,0 +1,10 @@
+.alert{
+    margin: $padding auto;
+    padding: $padding/2 $padding;
+    text-align: center;
+}
+
+.alertOk{
+    background-color: #83c46a;
+    color: darken(#83c46a, 40%);
+}
