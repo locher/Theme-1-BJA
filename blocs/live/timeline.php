@@ -7,8 +7,8 @@
 
     <div id="photosLive" class="wrapperPadding">
 		<div class="wrapper-title">
-			<h2>Le live !</h2>
-            <p class="subtitle">Retracez le mariage, minute par minute</p>
+			<h2><?php the_field('titre_live', 'option', false); ?></h2>
+            <p class="subtitle"><?php the_field('sous-titre_live', 'option', false); ?></p>
 			<svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
 		</div>		
 		

@@ -9,8 +9,8 @@ if(strtotime($dateMariage) <= strtotime(now)):
 
 <section class="upload_photos bgsection wrapperPadding" id="addLive">
     <div class="wrapper-title">
-        <h2>Ajoutez vos photos</h2>
-        <p class="subtitle">Laisser un souvenir aux mariés, votre plus beau cadeau !</p>
+        <h2><?php the_field('titre_formulaire_live', 'option', false); ?></h2>
+        <p class="subtitle"><?php the_field('sous-titre_formulaire_live', 'option', false); ?></p>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
     </div>	
 

@@ -658,6 +658,36 @@ acf_add_options_page(array(
 ));
 }
 
+// Sous page Live
+
+if(function_exists(acf_add_options_page))
+{
+acf_add_options_page(array(
+'page_title' 	=> 'Options Live',
+'menu_title' 	=> 'Options Live',
+'menu_slug' 	=> 'options_live',
+'capability' 	=> 'edit_posts', 
+'parent_slug'	=> 'edit.php?post_type=live',
+'position'	=> false,
+'redirect'	=> false,
+));
+}
+
+// Sous page Photos invités
+
+if(function_exists(acf_add_options_page))
+{
+acf_add_options_page(array(
+'page_title' 	=> 'Options photos invités',
+'menu_title' 	=> 'Options photos invités',
+'menu_slug' 	=> 'options_invites',
+'capability' 	=> 'edit_posts', 
+'parent_slug'	=> 'edit.php?post_type=photos-invites',
+'position'	=> false,
+'redirect'	=> false,
+));
+}
+
 // Comment form
 	
 function bja_disable_comment_url($fields) { 

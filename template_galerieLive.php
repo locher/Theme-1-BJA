@@ -21,18 +21,18 @@
                     $argsLive = array('post_type' => 'live'); 
                     $queryLive = new WP_Query($argsLive);
                     if( $queryLive->have_posts() ): ?>
-                <li><a href="#photosLive">Le live!</a></li>
+                <li><a href="#photosLive"><?php the_field('titre_live', 'option', false); ?></a></li>
                 <?php endif;?>                
                 <?php
                 
                     $argsPhotosInvites = array(
-        'post_type'		=> 'photos-invites',
-        'posts_per_page' => -1,
-    ); 
+                        'post_type'		=> 'photos-invites',
+                        'posts_per_page' => -1,
+                    ); 
 
-    $queryPhotosInvites = new WP_Query( $argsPhotosInvites );?>
-            <li><a href="#photosInvites">Vos photos</a></li>
-            <li><a href="#addLive">Invités, ajoutez vos photos !</a></li>
+                    $queryPhotosInvites = new WP_Query( $argsPhotosInvites );?>
+                <li><a href="#photosInvites"><?php the_field('titre_invites', 'option', false); ?></a></li>
+                <li><a href="#addLive"><?php the_field('titre_formulaire_live', 'option', false); ?></a></li>
             </ul>
         </div>  
         
@@ -91,8 +91,8 @@
 
 <section class="gallery wrapperPadding" id="photosInvites">
     <div class="wrapper-title">
-        <h2>Les photos des invités</h2>
-        <p class="subtitle">Le mariage vu par nos invités</p>
+        <h2><?php the_field('titre_invites', 'option', false); ?></h2>
+        <p class="subtitle"><?php the_field('sous-titre_invite', 'option', false); ?></p>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
     </div>	
         
