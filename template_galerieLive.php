@@ -1,3 +1,4 @@
+<?php include('blocs/live/Liveheader.php');?>
 <?php /* Template Name: Live Galerie */ get_header(); ?>
 
 <!-- header -->
@@ -27,13 +28,16 @@
 </header>
 <!-- /header -->
 
-<?php include('blocs/live.php'); ?>
+<?php include('blocs/live/timeline.php'); ?>
+
+<?php include('blocs/live/form.php'); ?>
+	
 	
 	<?php
         wp_reset_query();
 
-        if( have_rows('galerie') ):
-        while ( have_rows('galerie') ) : the_row();
+        if( have_rows('galerie_off') ):
+        while ( have_rows('galerie_off') ) : the_row();
 
     ?>
 	
