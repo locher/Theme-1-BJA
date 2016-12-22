@@ -1,5 +1,23 @@
 <?php
 
+$destination_photos = "live";
+$dateMariage = get_field('date_du_mariage', 'option', false);
+
+//Date à laquelle on arrête la timeline : lendemain à midi
+$lendemain8h = strtotime($dateMariage) + (24 + 12) * 3600;
+
+// Si on est avant le lendemain 8h, on met le résultat du formulaire dans la timeline
+if(strtotime(now) <= $lendemain8h){
+    $destination_photos = "live";
+}
+
+// Si on est après le lendemain 8h, on met le résultat du formulaire dans la galerie invité
+if(strtotime(now) > $lendemain8h){
+    $destination_photos = "photos-invites";
+}
+
+///
+
 if(isset($_POST['name_author']) && $_POST['name_author'] != ""){
     $name_correct = true;
     $name_author = $_POST['name_author'];
@@ -52,7 +70,7 @@ if($name_correct == true && $file_image == true){
     
     $postArgs = array(
         'post_title' => $name_author.' '.time(),
-        'post_type' => 'live',
+        'post_type' => $destination_photos,
         'post_status' => 'publish',
     ); 
     
