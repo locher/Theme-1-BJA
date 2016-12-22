@@ -396,6 +396,31 @@ function create_post_type_html5()
 		'menu_icon' => 'dashicons-images-alt'
     ));
     
+    register_post_type('photos-invites', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Photos invités', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Photo invité', 'bjamour'),
+            'add_new' => __('Ajouter', 'bjamour'),
+            'add_new_item' => __('Ajouter une photo', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer une photo', 'bjamour'),
+            'new_item' => __('Nouvelle photo', 'bjamour'),
+            'view_item' => __('Voir la photo', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-images-alt'
+    ));
+    
     endif;
     
     //Covoiturage
