@@ -76,6 +76,8 @@
 
 <?php include('blocs/live/timeline.php'); ?>
 
+<?php if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"): ?>
+
 <?php
     // Photos invités
 
@@ -143,5 +145,7 @@
 <?php endif;?>
 
 <?php include('blocs/live/form.php'); ?>
+
+<?php endif;?>
 
 <?php get_footer(); ?>

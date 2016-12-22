@@ -1,4 +1,5 @@
-<?php
+<?php if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"): ?>
+   <?php
     $argsLive = array('post_type' => 'live'); 
     $queryLive = new WP_Query($argsLive);
     if( $queryLive->have_posts() ):
@@ -113,5 +114,5 @@
 		</section>	
 </div>
 
-
+<?php endif;?>
 <?php endif;?>
