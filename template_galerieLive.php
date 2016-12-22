@@ -14,11 +14,25 @@
         
         <div class="ss-menu">
             <ul>
-                <li><a href="#photosLive">Vos photos live</a></li>
-                <li><a href="#addLive">Ajoutez vos photos live</a></li>
-                <?php if($imagesOfficielle): ?>
-                <li><a href="#photosOfficielles">Photos officielles</a></li>
+                <?php if(have_rows('galerie_off')): ?>
+                <li><a href="#photosOfficielles">Photos photographe</a></li>
                 <?php endif;?>
+                <?php
+                    $argsLive = array('post_type' => 'live'); 
+                    $queryLive = new WP_Query($argsLive);
+                    if( $queryLive->have_posts() ): ?>
+                <li><a href="#photosLive">Le live!</a></li>
+                <?php endif;?>                
+                <?php
+                
+                    $argsPhotosInvites = array(
+        'post_type'		=> 'photos-invites',
+        'posts_per_page' => -1,
+    ); 
+
+    $queryPhotosInvites = new WP_Query( $argsPhotosInvites );?>
+            <li><a href="#photosInvites">Vos photos</a></li>
+            <li><a href="#addLive">Invités, ajoutez vos photos !</a></li>
             </ul>
         </div>  
         
@@ -28,11 +42,8 @@
 </header>
 <!-- /header -->
 
-<?php include('blocs/live/timeline.php'); ?>
-
-<?php include('blocs/live/form.php'); ?>
 	
-	
+<div id="galerieOff">
 <?php
     wp_reset_query();
 
@@ -61,15 +72,16 @@
 </section>
 <?php endwhile;?>
 <?php endif;?>
+</div>
 
-
+<?php include('blocs/live/timeline.php'); ?>
 
 <?php
     // Photos invités
 
     $argsPhotosInvites = array(
         'post_type'		=> 'photos-invites',
-        'posts_per_page' => 3,
+        'posts_per_page' => -1,
     ); 
 
     $queryPhotosInvites = new WP_Query( $argsPhotosInvites );
@@ -77,7 +89,7 @@
     <?php if( $queryPhotosInvites->have_posts() ): ?>
     
 
-<section class="gallery wrapperPadding" id="photosOfficielles">
+<section class="gallery wrapperPadding" id="photosInvites">
     <div class="wrapper-title">
         <h2>Les photos des invités</h2>
         <p class="subtitle">Le mariage vu par nos invités</p>
@@ -129,5 +141,7 @@
 </section>
 
 <?php endif;?>
+
+<?php include('blocs/live/form.php'); ?>
 
 <?php get_footer(); ?>

@@ -1,6 +1,13 @@
-<div id="photosLive" class="wrapperPadding">
+<?php
+    $argsLive = array('post_type' => 'live'); 
+    $queryLive = new WP_Query($argsLive);
+    if( $queryLive->have_posts() ):
+?>
+    
+
+    <div id="photosLive" class="wrapperPadding">
 		<div class="wrapper-title">
-			<h2><?php the_title(); ?></h2>
+			<h2>Le live !</h2>
             <p class="subtitle">Retracez le mariage, minute par minute</p>
 			<svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
 		</div>		
@@ -103,6 +110,8 @@
 
 			</ul>
 
-		</section>
-		
+		</section>	
 </div>
+
+
+<?php endif;?>

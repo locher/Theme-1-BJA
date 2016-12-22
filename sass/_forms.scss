@@ -40,6 +40,10 @@ label{
     }
 }
 
+label[for="upload"]:first-child{
+    display: block;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="number"],

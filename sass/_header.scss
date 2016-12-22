@@ -107,20 +107,29 @@
     
     margin-top: $padding;
     
-    li{
-        text-transform: uppercase;
-        font-weight: 300;
-        font-size: 2rem;
+    ul{
+        display: inline-block;
     }
+    
+    li{
+        font-size: 1.7rem;
+    }
+    
+    li:not(:last-child) a{
+        border-bottom: 1px solid rgba(#fff, .5);
+    }
+    
     a{
         transition: all ease .3s;
         color: #fff;
         text-decoration: none;
-        line-height: 1.5em;
-        border-bottom: 2px solid transparent;
+        line-height: 1.6em;
+        display: block;
+        padding: 2px 8px;
         
         &:hover{
-            border-bottom-color: #fff;
+            background-color: rgba(#000, .25);
+            color: #fff;
         }
     }
 }
