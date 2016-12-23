@@ -245,8 +245,9 @@
                     <?php endif;?>
                 </div>
                 <?php endwhile;?>
-            </div>
+            
             <?php endif;?>
+            </div>
             
             <div class="temoinsLui">
                
@@ -333,8 +334,9 @@
                     <?php endif;?>
                 </div>
                 <?php endwhile;?>
-            </div>
+            
             <?php endif;?>
+            </div>
 		</div>
 </section>
 
