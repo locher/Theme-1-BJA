@@ -34,7 +34,7 @@
     <?php while( $queryHotel->have_posts() ) : $queryHotel->the_post(); ?>
 
     <div class="singleHalf">
-        <div class="halfPhoto" style="background-image:url('<?php echo get_field('photo')['sizes']['s400']; ?>');"></div>
+        <div class="halfPhoto" style="background-image:url('<?php echo get_field('photo')['sizes']['sL1200']; ?>');"></div>
         <div class="contentHalf">
             <h3><?php the_title();?></h3>
             <p class="adresse"><?php the_field('adresse');?></p>

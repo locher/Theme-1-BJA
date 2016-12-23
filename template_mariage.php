@@ -51,7 +51,7 @@
                     
                     <?php if( !empty($image) ): ?>
                    
-                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['s400']; ?>');"></div>
+                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['sL1200']; ?>');"></div>
                     
                     <?php endif; //empty $image ?>
                     
@@ -94,7 +94,7 @@
                     
                     <?php if( !empty($image) ): ?>
                    
-                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['s400']; ?>');"></div>
+                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['sL1200']; ?>');"></div>
                     
                     <?php endif; //empty $image ?>
                     
