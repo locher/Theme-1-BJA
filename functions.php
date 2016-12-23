@@ -796,6 +796,13 @@ if($name_correct == true){
 	die();
 }
 
+// Google map api
 
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyD8agkTf4EVznJ-nWwaUyvn3ia11C3IhP4');
+}
+
+add_action('acf/init', 'my_acf_init');
 
 ?>
