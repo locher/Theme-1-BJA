@@ -45,3 +45,11 @@
 .covoitForm{
     display: none;
 }
+
+.new_covoit{
+    border-left: 4px solid $primaire;
+    
+    td{
+        background-color: rgba($primaire, .05) !important;
+    }
+}

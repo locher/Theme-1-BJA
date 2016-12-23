@@ -133,10 +133,7 @@
         </li>
                 <?php endforeach; ?>
                 <?php endif;?>
-                
-                
-                
-                
+                  
         <?php endwhile;?>            
     </ul>   
 

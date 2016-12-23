@@ -79,17 +79,6 @@
         
      //$( '.lightbox' ).swipebox();   
         
-    //Affichage form covoiturage
-    
-    $('.covoit').find('.bt').click(function(){
-       $('.covoitForm').show();
-        
-        $('html, body').animate({
-            scrollTop: $(".covoitForm").offset().top
-    }, 500);
-        $(this).hide();
-    });
-        
         
     //End function jquery
 	});

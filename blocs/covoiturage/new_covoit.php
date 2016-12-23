@@ -1,5 +1,6 @@
 <?php
 
+
 if(isset($_POST['name_covoit']) && $_POST['name_covoit'] != "" && isset($_POST['phone_covoit']) && $_POST['phone_covoit'] != "" && isset($_POST['email_covoit']) && $_POST['email_covoit'] != "" && isset($_POST['place_covoit']) && $_POST['place_covoit'] != "" && isset($_POST['depart_covoit']) && $_POST['depart_covoit'] != "" && isset($_POST['DateDepart_covoit']) && $_POST['DateDepart_covoit'] != "" && isset($_POST['DateRetour_covoit']) && $_POST['DateRetour_covoit'] != ""){
     $name_correct = true;
     $name_covoit = $_POST['name_covoit'];
@@ -12,7 +13,7 @@ if(isset($_POST['name_covoit']) && $_POST['name_covoit'] != "" && isset($_POST['
     $DateRetour_covoit = $_POST['DateRetour_covoit'];
 }	
 
-// Si le nom du mec est valide et que y a au moins 1 images valide, on post le truc et on upload ensuite les images
+
 if($name_correct == true){
     
     $postArgs = array(
@@ -32,6 +33,20 @@ if($name_correct == true){
     update_field('horaire_de_depart', $DateDepart_covoit, $id);
     update_field('horaire_de_retour', $DateRetour_covoit, $id);
     
+    $reponse = 'success';
+    
+    echo json_encode(array(
+        'reponse' => $reponse,
+		'nom'=>$nom,
+		'telephone'=>$telephone,
+		'email'=>$email,
+		'nombre_de_places'=>$nombre_de_places,
+		'ville_de_depart' =>$ville_de_depart,
+		'arrêts_possible' =>$arrêts_possible,
+		'horaire_de_depart' =>$horaire_de_depart,
+		'horaire_de_retour' =>$horaire_de_retour
+        
+	));    
 }
 
 ?>

@@ -710,4 +710,92 @@ function custom_menu_page_removing() {
 }
 add_action( 'admin_menu', 'custom_menu_page_removing' );
 
+
+
+
+
+// Tests AJAX
+
+function add_js_scripts() {
+	wp_enqueue_script( 'covoiturage', get_template_directory_uri().'/js/covoiturage.js', array('jquery'), '1.0', true );
+
+	// pass Ajax Url to script.js
+	wp_localize_script('covoiturage', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+}
+
+add_action('wp_enqueue_scripts', 'add_js_scripts');
+
+
+
+add_action( 'wp_ajax_ajax_covoiturage', 'ajax_covoiturage' );
+add_action( 'wp_ajax_nopriv_ajax_covoiturage', 'ajax_covoiturage' );
+
+
+function ajax_covoiturage() {
+    
+	if(isset($_POST['nom']) && $_POST['nom'] != "" && isset($_POST['telephone']) && $_POST['telephone'] != "" && isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['nombreDePlaces']) && $_POST['nombreDePlaces'] != "" && isset($_POST['villeDeDepart']) && $_POST['villeDeDepart'] != "" && isset($_POST['horaireDeDepart']) && $_POST['horaireDeDepart'] != "" && isset($_POST['horaireDeRetour']) && $_POST['horaireDeRetour'] != ""){
+    $name_correct = true;
+    $name_covoit = $_POST['nom'];
+    $phone_covoit = $_POST['telephone'];
+    $email_covoit = $_POST['email'];
+    $place_covoit = $_POST['nombreDePlaces'];
+    $depart_covoit = $_POST['villeDeDepart'];
+    $via_covoit = $_POST['arretsPossible'];
+    $DateDepart_covoit = $_POST['horaireDeDepart'];
+    $DateRetour_covoit = $_POST['horaireDeRetour'];
+        
+    }else{
+        echo "if pas bon";
+    }
+
+
+if($name_correct == true){
+    
+    $postArgs = array(
+        'post_title' => $name_covoit,
+        'post_type' => 'covoiturage',
+        'post_status' => 'publish',
+    ); 
+    
+    $id = wp_insert_post($postArgs);    
+
+    update_field('nom', $name_covoit, $id);
+    update_field('telephone', $phone_covoit, $id);
+    update_field('email', $email_covoit, $id);
+    update_field('nombre_de_places', $place_covoit, $id);
+    update_field('ville_de_depart', $depart_covoit, $id);
+    update_field('arrêts_possible', $via_covoit, $id);
+    update_field('horaire_de_depart', $DateDepart_covoit, $id);
+    update_field('horaire_de_retour', $DateRetour_covoit, $id);
+    
+    $reponse = 'success';
+    
+    /*
+    echo json_encode(array(
+        'reponse' => $reponse,
+		'nom'=>$name_covoit,
+		'telephone'=>$phone_covoit,
+		'email'=>$email_covoit,
+		'nombre_de_places'=>$place_covoit,
+		'ville_de_depart' =>$depart_covoit,
+		'arrets_possible' =>$via_covoit,
+		'horaire_de_depart' =>$DateDepart_covoit,
+		'horaire_de_retour' =>$DateRetour_covoit
+        
+	));   
+    */
+    
+    echo('<tr class="new_covoit"><td><p>'.$depart_covoit.'</p><p>'.$via_covoit.'</p></td>
+                <td><p>'.$DateDepart_covoit.'</p><p>'.$dateRetour_covoit.'</p></td>
+                <td class="nbPlaces"><p>'.$place_covoit.'</p></td>
+                <td><p>'.$name_covoit.'</p><p><a href="tel:'.str_replace(" ","",$phone_covoit).'">'.$phone_covoit.'</a> / <a href="mailto:'.$email_covoit.'">'.$email_covoit.'</a></p></td>
+            </tr>');
+    
+}
+
+	die();
+}
+
+
+
 ?>

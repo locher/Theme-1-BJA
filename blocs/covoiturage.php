@@ -1,55 +1,5 @@
 <?php if(get_field('pack_achete', 'option') == "pack3"): ?>
 
-<?php
-
-if(isset($_POST['name_covoit']) && $_POST['name_covoit'] != "" && isset($_POST['phone_covoit']) && $_POST['phone_covoit'] != "" && isset($_POST['email_covoit']) && $_POST['email_covoit'] != "" && isset($_POST['place_covoit']) && $_POST['place_covoit'] != "" && isset($_POST['depart_covoit']) && $_POST['depart_covoit'] != "" && isset($_POST['DateDepart_covoit']) && $_POST['DateDepart_covoit'] != "" && isset($_POST['DateRetour_covoit']) && $_POST['DateRetour_covoit'] != ""){
-    $name_correct = true;
-    $name_covoit = $_POST['name_covoit'];
-    $phone_covoit = $_POST['phone_covoit'];
-    $email_covoit = $_POST['email_covoit'];
-    $place_covoit = $_POST['place_covoit'];
-    $depart_covoit = $_POST['depart_covoit'];
-    $via_covoit = $_POST['via_covoit'];
-    $DateDepart_covoit = $_POST['DateDepart_covoit'];
-    $DateRetour_covoit = $_POST['DateRetour_covoit'];
-}	
-
-// Si le nom du mec est valide et que y a au moins 1 images valide, on post le truc et on upload ensuite les images
-if($name_correct == true){
-    
-    $postArgs = array(
-        'post_title' => $name_covoit,
-        'post_type' => 'covoiturage',
-        'post_status' => 'publish',
-    ); 
-    
-    $id = wp_insert_post($postArgs);    
-
-    update_field('nom', $name_covoit, $id);
-    update_field('telephone', $phone_covoit, $id);
-    update_field('email', $email_covoit, $id);
-    update_field('nombre_de_places', $place_covoit, $id);
-    update_field('ville_de_depart', $depart_covoit, $id);
-    update_field('arrêts_possible', $via_covoit, $id);
-    update_field('horaire_de_depart', $DateDepart_covoit, $id);
-    update_field('horaire_de_retour', $DateRetour_covoit, $id);
-    
-    echo json_encode(array(
-        'reponse' => 'success',
-		'nom'=>$nom,
-		'telephone'=>$telephone,
-		'email'=>$email,
-		'nombre_de_places'=>$nombre_de_places,
-		'ville_de_depart' =>$ville_de_depart,
-		'arrêts_possible' =>$arrêts_possible,
-		'horaire_de_depart' =>$horaire_de_depart,
-		'horaire_de_retour' =>$horaire_de_retour
-        
-	));    
-}
-
-?>
-
 <section class="wrapperPadding bgsection covoit">
     
 		<div class="wrapper-title">
@@ -78,7 +28,7 @@ if($name_correct == true){
                 
             </thead>
             
-            <tbody>
+            <tbody id="listCovoit">
         
             <?php while( $queryPosts->have_posts() ) : $queryPosts->the_post(); ?>
             <tr>
@@ -106,7 +56,7 @@ if($name_correct == true){
             <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
         </div>	
 
-        <form action="<?php echo ods_getTemplatePermalink('template_information.php'); ?>" method="post" enctype="multipart/form-data" id="submitCovoit">
+        <form action="" method="post" enctype="multipart/form-data" id="submitCovoit">
 
             <div class="form_text">
                 <p>
@@ -162,64 +112,23 @@ if($name_correct == true){
                     </button>
                 </p>
                 
-                <div class="alert alertOk">
-                    <p>Votre proposition de covoiturage a bien été publiée !</p>
-                </div>
+
 
             </div>
 
         </form>
 </section>
 
-<script>
+                <div class="alert alertOk">
+                   <div class="wrapper_alert">
+                        <div>
+                                                    <svg viewBox="0 0 100 100" width="30" height="30">
+                            <use xlink:href="#icon-tick"></use>
+                        </svg>
+                        <p>Covoiturage ajouté !</p>
+                        </div>
+                    </div>
+                </div>
 
-jQuery('body').on('submit', '#submitCovoit', function(e){
-    
-    console.log('appuyé');
-    e.preventDefault();
-
-    var jQuerythis = jQuery(this);    
-
-    // Je récupère les valeurs
-    var nom = jQuery(this).find('input[name="nom"]').val();
-    var telephone = jQuery(this).find('input[name="telephone"]').val();
-    var email = jQuery(this).find('input[name="email"]').val();
-    var nombre_de_places = jQuery(this).find('input[name="nombre_de_places"]').val();
-    var ville_de_depart = jQuery(this).find('input[name="ville_de_depart"]').val();
-    var arrêts_possible = jQuery(this).find('input[name="arrêts_possible"]').val();
-    var horaire_de_depart = jQuery(this).find('input[name="horaire_de_depart"]').val();
-    var horaire_de_retour = jQuery(this).find('input[name="horaire_de_retour"]').val();
-
-    // Je vérifie une première fois pour ne pas lancer la requête HTTP
-    // si je sais que mon PHP renverra une erreur
-    if(nom === '') {
-        alert('Les champs doivent êtres remplis');
-    } else {
-        // Envoi de la requête HTTP en mode asynchrone
-        jQuery.ajax({
-            url: jQuerythis.attr('action'), 
-            type: jQuerythis.attr('method'),
-            data: jQuerythis.serialize(),
-            dataType: 'json', // JSON
-            success: function(json) {
-                if(json.reponse === 'success') {
-                    console.log('ajouté');
-//                	nom = json.nom;
-//                	telephone = json.telephone;
-//                	email = json.email;
-//                	nombre_de_places = json.nombre_de_places;
-//                	ville_de_depart = json.ville_de_depart;
-//                	arrêts_possible = json.arrêts_possible;
-//                	horaire_de_depart = json.horaire_de_depart;
-//                	horaire_de_retour = json.horaire_de_retour;
-
-                    
-                }                
-            }
-        });
-    }
-});
-
-</script>
 
 <?php endif;?>
