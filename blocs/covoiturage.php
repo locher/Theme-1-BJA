@@ -43,6 +43,24 @@
 		
 		</table>
 		
+		<?php else:?>
+		
+		<table class="noCovoit">
+            <thead>
+               <tr>
+                   <td><p>Ville de départ</p><p>Arrêts possibles</p></td><td><p>Dates</p></td><td><p>Places</p></td><td><p>Contact</p></td>
+               </tr>
+                
+            </thead>
+            
+            <tbody id="listCovoit">
+            
+            </tbody>
+		
+		</table>
+		
+		<p class="nopost">Aucun covoiturage proposé pour le moment.</p>
+		
 		<?php endif;?>
 		
 		<button class="bt">Proposer un covoiturage</button>		

@@ -45,6 +45,8 @@
                 'horaireDeRetour': horaireDeRetour
             },
             function(response){
+                $('.noCovoit').show();
+                $('.nopost').hide();
                 $('#listCovoit').append($(response).hide().fadeIn());
                 $('.alertOk').fadeIn().delay(2000).fadeOut(500);
                 $('html, body').animate({
@@ -52,6 +54,7 @@
                 }, 500);
                $('.covoitForm').slideUp();
                 $('.covoit .bt').fadeIn();
+                $('#submitCovoit').trigger('reset');
             }
         );
             
