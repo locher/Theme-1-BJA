@@ -21,6 +21,18 @@ h1, .h1{
     font-weight: 300;
     text-transform: uppercase;
     font-size: 9rem;
+    
+    @include width-below(1000px){
+        font-size: 7.5rem;
+    }
+    
+    @include width-below(700px){
+        font-size: 6rem;
+    }
+    
+    @include width-below(500px){
+        font-size: 5.5rem;
+    }
 }
 
 h2, .h2{
