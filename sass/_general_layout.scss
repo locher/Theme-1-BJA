@@ -47,6 +47,11 @@ img{
 	margin-bottom: $padding*1.5;
     position: relative;
     
+    h2{
+        position: relative;
+        z-index: 3;
+    }
+    
     &::after{
         content:'';
         display: block;
@@ -54,6 +59,10 @@ img{
         width: 300px;
         background-color: darken($gris, 15%);
         margin: 20px auto 0;
+        
+        @include width-below(550px){
+            width: 200px;
+        }
     }
     
     svg{

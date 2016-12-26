@@ -9,5 +9,9 @@
     > p{
         font-size: 2rem;
         margin-bottom: $padding;
+        
+        @include width-below(400px){
+            font-size: 1.75rem;
+        }
     }
 }

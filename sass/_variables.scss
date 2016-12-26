@@ -23,11 +23,16 @@ $gristypo: #9e9e9e;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 1.8rem;
-     border: 2px solid transparent;
+    border: 2px solid transparent;
+    line-height: 1.2em;
 
 	&:hover{
 		background-color: transparent;
         color: $bg;
         border-color: $bg;
 	}
+    
+    @include width-below(500px){
+        font-size: 1.65rem;
+    }
 }
