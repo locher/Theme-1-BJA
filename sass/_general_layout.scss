@@ -22,6 +22,10 @@ img{
 
 .wrapperPadding{
     padding: $padding*1.25 $padding;
+    
+    @include width-below(600px){
+        padding: $padding 0;
+    }
 }
 
 .wrapperBt{
@@ -46,6 +50,10 @@ img{
 	text-align: center;
 	margin-bottom: $padding*1.5;
     position: relative;
+    
+    @include width-below(800px){
+        margin-bottom: $padding;
+    }
     
     h2{
         position: relative;
