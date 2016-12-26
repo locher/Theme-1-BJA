@@ -14,8 +14,18 @@
         
         <div class="ss-menu">
             <ul>
-                <?php if(have_rows('galerie_off')): ?>
-                <li><a href="#photosOfficielles">Photos photographe</a></li>
+                <?php
+
+$args_photoOfficielles = array(
+    //Galerie officielle
+    'post_type'		=> 'photos_officielles'
+); 
+
+$query_photosOfficielles = new WP_Query( $args_photoOfficielles );
+
+?>
+                <?php if( $query_photosOfficielles->have_posts() ): ?>  
+                <li><a href="#photosOfficielles">Photos officielles</a></li>
                 <?php endif;?>
                 <?php
                     $argsLive = array('post_type' => 'live'); 
