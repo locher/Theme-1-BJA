@@ -17,6 +17,10 @@
         top: 50%;
         margin-top: -5px;
         z-index: 50;
+        
+        @include width-below(600px){
+            right: 0;
+        }
     }
     
     [id="checkboxMenu"]{
@@ -163,5 +167,11 @@
             right: 50%;
             z-index: 100;
         }
+    }
+}
+
+.text-menu{
+    @include width-below(600px){
+        display: none;
     }
 }

@@ -27,7 +27,7 @@
 <nav class="nav" role="navigation">
 
     <input type="checkbox" id="checkboxMenu">
-   <label for="checkboxMenu"><span class="icon"></span>Menu</label>
+   <label for="checkboxMenu"><span class="icon"></span><span class="text-menu">Menu</span></label>
 
    <div class="linkNav">
    

@@ -51,6 +51,19 @@
         opacity: .5;
         font-weight: 400;
     }
+    
+    @include width-below(1300px){
+        padding: 20px 30px;
+    }
+    
+    @include width-below(900px){
+        text-align: left;
+        font-size: 2.5rem;
+        
+        a{
+            padding-left: 0;
+        }
+    }
 }
 
 .separateurLogo{
