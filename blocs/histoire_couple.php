@@ -12,8 +12,8 @@ $query_histoire = new WP_Query( $args_histoire );
 <div class="timeline">
        
     <div class="wrapper-title">
-        <h2>Titre àfoutre</h2>
-        <p class="subtitle">SStitre à foutre</p>
+        <h2><?php the_field('titre_de_la_section', 'option', false);?></h2>
+        <p class="subtitle"><?php the_field('sous_titre_de_la_section', 'option', false);?></p>
         <svg viewBox="0 0 100 100" width="50" height="50">
           <use xlink:href="#icon-fleur"></use>
         </svg>
