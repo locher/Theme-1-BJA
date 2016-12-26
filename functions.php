@@ -453,6 +453,8 @@ function create_post_type_html5()
     
     endif;
     
+    //Liste invités
+    
     register_post_type('invite', // Register Custom Post Type
         array(
         'labels' => array(
@@ -474,6 +476,8 @@ function create_post_type_html5()
         'can_export' => true, // Allows export in Tools > Export
 		'menu_icon' => 'dashicons-groups'
     ));
+    
+    // Témoins
     
     register_post_type('temoins', // Register Custom Post Type
         array(
@@ -497,6 +501,8 @@ function create_post_type_html5()
 		'menu_icon' => 'dashicons-groups'
     ));
     
+    // Liste Hôtels
+    
     register_post_type('hotels', // Register Custom Post Type
         array(
         'labels' => array(
@@ -508,6 +514,30 @@ function create_post_type_html5()
             'edit_item' => __('Éditer un hôtel', 'bjamour'),
             'new_item' => __('Nouvel hôtel', 'bjamour'),
             'view_item' => __('Voir l\'hôtel', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-admin-multisite'
+    ));
+    
+    // Déroulement
+    
+    register_post_type('deroulement', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Déroulement', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Déroulement', 'bjamour'),
+            'add_new' => __('Ajouter', 'bjamour'),
+            'add_new_item' => __('Ajouter un déroulé', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un déroulé', 'bjamour'),
+            'new_item' => __('Nouveau déroulé', 'bjamour'),
+            'view_item' => __('Voir le déroulé', 'bjamour')
         ),
         'public' => true,
         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
@@ -569,17 +599,7 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_slug' 	=> 'vos-options',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
-	));
-    
-    acf_add_options_page(array(
-		'page_title' 	=> 'Déroulement',
-		'menu_title'	=> 'Déroulement',
-		'menu_slug' 	=> 'deroulement',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-
-	
+	));	
 }
 
 //Autoriser les svg à l'upload

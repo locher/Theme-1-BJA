@@ -29,127 +29,17 @@
     //Histoire couple
     include('blocs/histoire_couple.php');
 ?>
-
-<section class="bgsection">
-		
-		<?php if(have_rows('deroulement_general','option')): ?>
-		
-        <div class="wrapper-title">
-			<h2>Déroulement</h2>
-			<p class="subtitle">Toutes les étapes de notre journée</p>
-			<svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-		</div>
-		
-		<div>
-        
-            <?php while( have_rows('deroulement_general', 'option') ): the_row(); ?>
-            
-                <div class="singleHalf textContent">
-                   
-                   
-                    <?php $image = get_sub_field('photo_illustrative'); ?>
-                    
-                    <?php if( !empty($image) ): ?>
-                   
-                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['sL1200']; ?>');"></div>
-                    
-                    <?php endif; //empty $image ?>
-                    
-                    <div class="contentHalf">
-                        <h3><?php the_sub_field('titre');?></h3>
-
-                        <p class="h4 lieu"><?php the_sub_field('titre_du_lieu');?></p>
-                        <span class="date"><?php the_sub_field('date_et_heure');?></span>
-
-                        <?php the_sub_field('description');?>
-                    </div>
- 
-                </div>                
-            
-            <?php endwhile;?>
-		    
-		</div>
-		
-		<?php endif;?>
-             
-             
-        </section>
-             
-              
-        <?php if(have_rows('deroulement_repas','option')): ?>
-		<section class="wrapperPadding">
-        <div class="wrapper-title">
-			<h2>Vous êtes invité au repas ?</h2>
-            <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-		</div>
-		
-		<div class="wrapper-halfBlock">
-        
-            <?php while( have_rows('deroulement_repas', 'option') ): the_row(); ?>
-            
-                <div class="singleHalf textContent">
-                   
-                   
-                    <?php $image = get_sub_field('photo_illustrative'); ?>
-                    
-                    <?php if( !empty($image) ): ?>
-                   
-                    <div class="halfPhoto" style="background-image:url('<?php echo $image['sizes']['sL1200']; ?>');"></div>
-                    
-                    <?php endif; //empty $image ?>
-                    
-                    <div class="contentHalf">
-                        <h3><?php the_sub_field('titre');?></h3>
-
-                        <p class="h4 lieu"><?php the_sub_field('titre_du_lieu');?></p>
-                        <span class="date"><?php the_sub_field('date_et_heure');?></span>
-
-                        <?php the_sub_field('description');?>
-                    </div>
- 
-                </div>                
-            
-            <?php endwhile;?>
-		    
-		</div>
-		
-		<?php endif;?>
-      </section>
-   	
-
-
-<section class="gmap">
-                
-    <div class="acf-map">
       
-      <?php if(have_rows('deroulement_general','option')): ?>
-       
-       <?php while( have_rows('deroulement_general', 'option') ): the_row(); ?>
-           
-            <?php $location = get_sub_field('adresse_du_lieu'); ?>
-            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-                <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
-                
-                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
-            </div>       
-       <?php endwhile; ?>
-           <?php endif;?>
-           
-                 <?php if(have_rows('deroulement_repas','option')): ?>
-       
-       <?php while( have_rows('deroulement_repas', 'option') ): the_row(); ?>
-           
-            <?php $location = get_sub_field('adresse_du_lieu'); ?>
-            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-                <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
-                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
-            </div>       
-       <?php endwhile; ?>
-           <?php endif;?>
-
-    </div>
-
-</section>
+      
+<?php
+    //Déroulement
+    include('blocs/deroulement/deroulement.php');
+?>
+   
+<?php
+    //Déroulement map
+    include('blocs/deroulement/deroulementMap.php');
+?>
 
 <section class="temoins wrapperPadding bgsection">
         <div class="wrapper-title">

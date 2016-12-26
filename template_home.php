@@ -72,46 +72,10 @@
 <?php endif;?>
 <?php endif;?>
 
-<section class="gmap bgsection">
-               
-    <div class="wrapper-title">
-        <h2>Déroulement</h2>
-        <p class="subtitle">Quand ? Où ? Comment ?</p>
-        <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-    </div>
-                
-    <div class="acf-map">
-      
-      <?php if(have_rows('deroulement_general','option')): ?>
-       
-       <?php while( have_rows('deroulement_general', 'option') ): the_row(); ?>
-           
-            <?php $location = get_sub_field('adresse_du_lieu'); ?>
-            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-                <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
-                
-                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
-            </div>       
-       <?php endwhile; ?>
-           <?php endif;?>
-           
-                 <?php if(have_rows('deroulement_repas','option')): ?>
-       
-       <?php while( have_rows('deroulement_repas', 'option') ): the_row(); ?>
-           
-            <?php $location = get_sub_field('adresse_du_lieu'); ?>
-            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-                <p class="address"><span class="title-map"><?php the_sub_field('titre');?></span> <?php echo $location['address']; ?></p>
-                <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
-            </div>       
-       <?php endwhile; ?>
-           <?php endif;?>
-
-    </div>
-    
-    <p class="wrapperBt"><a href="<?php echo ods_getTemplatePermalink('template_mariage.php'); ?>" class="bt">Voir le déroulement</a></p>
-
-</section>
+<?php
+    //Déroulement map
+    include('blocs/deroulement/deroulementMap.php');
+?>
 
 <?php include('blocs/rappelLive.php');?>
 

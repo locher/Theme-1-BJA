@@ -5,6 +5,7 @@
 .singleHalf{
     display: flex;
     align-items: center;
+    width:100%;
     
     &:nth-child(odd){
         .halfPhoto{
@@ -38,6 +39,7 @@
 
 .contentHalf{
     padding: 50px;
+    width: 50%;
     
     .adresse{
         font-weight: 700;
