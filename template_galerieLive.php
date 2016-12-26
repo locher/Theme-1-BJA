@@ -42,24 +42,30 @@
 </header>
 <!-- /header -->
 
-	
-<div id="galerieOff">
 <?php
-    wp_reset_query();
 
-    if( have_rows('galerie_off') ):
-    while ( have_rows('galerie_off') ) : the_row();
+$args_photoOfficielles = array(
+    //Galerie officielle
+    'post_type'		=> 'photos_officielles'
+); 
+
+$query_photosOfficielles = new WP_Query( $args_photoOfficielles );
 
 ?>
+<?php if( $query_photosOfficielles->have_posts() ): ?>  
+	
+<div id="galerieOff">
+
+<?php while( $query_photosOfficielles->have_posts() ) : $query_photosOfficielles->the_post(); ?>	
 
 <section class="gallery wrapperPadding" id="photosOfficielles">
-            <div class="wrapper-title">
-        <h2><?php the_sub_field('titre_galerie');?></h2>
-        <p class="subtitle"><?php the_sub_field('sous_titre_galerie');?></p>
+    <div class="wrapper-title">
+        <h2><?php the_title();?></h2>
+        <p class="subtitle"><?php the_field('sous_titre_galerie');?></p>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
     </div>	
            <ul>
-   <?php $imagesOfficielle = get_sub_field('photos');?>
+   <?php $imagesOfficielle = get_field('photos');?>
     <?php foreach( $imagesOfficielle as $image ): ?>
         <li>
             <a href="<?php echo $image['sizes']['sL1200']; ?>" class="lightbox">
@@ -71,8 +77,10 @@
 
 </section>
 <?php endwhile;?>
-<?php endif;?>
+
 </div>
+<?php endif;?>
+
 
 <?php include('blocs/live/timeline.php'); ?>
 
