@@ -12,6 +12,11 @@
     color: #fff;
     margin: auto;
     width: 100%;
+    padding: $padding;
+    
+    @include width-below(600px){
+        padding: $padding $padding/2;
+    }
     
     // Mettre le contenu au dessus du ::before en overlay
     & > *{ 
