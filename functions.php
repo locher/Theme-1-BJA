@@ -549,7 +549,7 @@ function create_post_type_html5()
 		'menu_icon' => 'dashicons-admin-multisite'
     ));
     
-        // Déroulement
+    // Déroulement
     
     register_post_type('photos_officielles', // Register Custom Post Type
         array(
@@ -571,6 +571,30 @@ function create_post_type_html5()
         ), // Go to Dashboard Custom HTML5 Blank post for supports
         'can_export' => true, // Allows export in Tools > Export
 		'menu_icon' => 'dashicons-images-alt'
+    ));
+    
+    // Histoire couple
+    
+    register_post_type('histoire', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Histoire du couple', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Histoire du couple', 'bjamour'),
+            'add_new' => __('Ajouter', 'bjamour'),
+            'add_new_item' => __('Ajouter une étape', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer une étape', 'bjamour'),
+            'new_item' => __('Nouvelle étape', 'bjamour'),
+            'view_item' => __('Voir l\'étape', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-heart'
     ));
 }
 
