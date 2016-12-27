@@ -20,6 +20,11 @@
             ?>
         <?php if( $queryPosts->have_posts() ): ?>
         
+        <form action="" method="post" id="citySearchForm">
+            <input type="text" placeholder="Rechercher ma ville" id="searchCity">
+            <input type="submit" class="submit_citySearch">
+        </form>
+        
         <table>
             <thead>
                <tr>
@@ -31,7 +36,7 @@
             <tbody id="listCovoit">
         
             <?php while( $queryPosts->have_posts() ) : $queryPosts->the_post(); ?>
-            <tr>
+            <tr data_id="<?php echo get_the_ID();?>">
                 <td><p><?php the_field('ville_de_depart');?></p><p><?php the_field('arrêts_possible');?></p></td>
                 <td><p><?php the_field('horaire_de_depart');?></p><p><?php the_field('horaire_de_retour');?></p></td>
                 <td class="nbPlaces"><p><?php the_field('nombre_de_places');?></p></td>

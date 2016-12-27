@@ -797,7 +797,7 @@ add_action( 'admin_menu', 'custom_menu_page_removing' );
 
 
 
-// Tests AJAX
+// Add covoiturage AJAX
 
 function add_js_scripts() {
 	wp_enqueue_script( 'covoiturage', get_template_directory_uri().'/js/covoiturage.js', array('jquery'), '1.0', true );
@@ -882,6 +882,80 @@ if($name_correct == true){
 
 	die();
 }
+
+
+// Rechercher ville covoiturage AJAX
+
+function add_js2_scripts() {
+	wp_enqueue_script( 'covoiturage_search', get_template_directory_uri().'/js/covoiturage_search.js', array('jquery'), '1.0', true );
+
+	// pass Ajax Url to script.js
+	wp_localize_script('covoiturage_search', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+}
+
+add_action('wp_enqueue_scripts', 'add_js2_scripts');
+add_action( 'wp_ajax_ajax_covoiturage_search', 'ajax_covoiturage_search' );
+add_action( 'wp_ajax_nopriv_ajax_covoiturage_search', 'ajax_covoiturage_search' );
+
+
+function ajax_covoiturage_search() {
+    
+    if(isset($_POST['keyword'])){
+        
+        $keyword = $_POST['keyword']; 
+    
+        $argsPosts = array(
+            'post_type'		=> 'covoiturage',
+            'posts_per_page' => -1,
+            'meta_query' => array(
+                'relation' => 'AND',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => "ville_de_depart",
+                        'value' => $keyword,
+                        'compare' => 'LIKE'
+                    ),
+                    array(
+                        'key' => "arrêts_possible",
+                        'value' => $keyword,
+                        'compare' => 'LIKE'
+                    ),
+                )
+                
+            ),
+        ); 
+
+        $queryPosts = new WP_Query( $argsPosts );
+
+        if( $queryPosts->have_posts() ){
+        
+            $results = array();
+
+            while( $queryPosts->have_posts() ) : $queryPosts->the_post();
+
+                array_push($results, get_the_ID());
+
+            endwhile;
+
+            echo json_encode(array(
+                'results'=>$results,
+                'resultats'=> "oui"
+            )
+            );
+        }else{
+            echo json_encode(array(
+                'resultats'=> "non",
+                'message'=>'Aucun covoiturage pour '.$keyword)
+            );
+        }
+
+    }
+
+	die();
+    
+}
+
 
 // Google map api
 
