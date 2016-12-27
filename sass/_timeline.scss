@@ -1,7 +1,15 @@
 //Header
 
 .timeline{
-    padding: $padding;
+    padding: $padding 0;
+}
+
+.text-col2{
+    width: 100%;
+    
+    @include width-below(900px){
+        margin-top: 15px;
+    }
 }
 
 .timeline-live{
@@ -56,38 +64,49 @@
 	display: flex;
 	align-items: center;
 	position: relative;
-	
-	@include width-below(500px){
-		flex-direction: column;
-	}
+    
+    @include width-below(600px){
+        display: block;
+        padding-left: 60px;
+        padding-bottom: 60px;
+    }
 }
 
-.single_moment:nth-child(odd){
-	.col1{
-		text-align: right;
-	}
-	.col2{
-		text-align: left;
-		padding: 10px 0 10px 40px;
-	}
-}
+@include width-above(601px){
 
-.single_moment:nth-child(even){
-	.col1{
-		order: 3;
-		text-align: left;
-	}
-	.col2{
-		text-align: right;
-		order: 1;
-		padding: 10px 40px 10px 0;
-	}
-}
+    .single_moment:nth-child(odd){
+        .col1{
+            text-align: right;
+        }
+        .col2{
+            text-align: left;
+            padding: 10px 0 10px 40px;
+        }
+    }
 
+    .single_moment:nth-child(even){
+        .col1{
+            order: 3;
+            text-align: left;
+        }
+        .col2{
+            text-align: right;
+            order: 1;
+            padding: 10px 40px 10px 0;
+        }
+    }
+
+}
 
 .col1{
 	width: 50%;
 	padding: 10px 40px;
+    
+    @include width-below(600px){
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 10px;
+    }
 }
 
 	.meta_moment{
@@ -114,6 +133,10 @@
 	top:0;
 	bottom: 0;
 	left:50%;
+    
+    @include width-below(600px){
+        left: 20px;
+    }
 	
 	svg{
 		fill: $primaire;
@@ -124,51 +147,23 @@
 		left: calc(50% - 18px);
         padding: 5px;
         background-color: #fff;
+        
+        @include width-below(600px){
+            top: calc(50% - 30px);
+        }
 	}
 }
 
 .col2{
 	width: 50%;
+    
+    @include width-below(600px){
+        width: 100%;
+    }
 	
 	img{
 		width: 100%;
 		height: auto;
-	}
-}
-
-// Vue portable de single moment, sans notions de odd ou even
-
-@include width-below(500px){
-	.single_moment:nth-child(n){ //nth child pour ecraser les valeurs au dessus sans y caller un !important
-		
-		padding: 25px 0 25px 40px;
-		
-		.details_moment{
-			text-align: left;
-		}
-		.col2{
-			width: 100%;
-			text-align: left;
-			padding: 0;
-			order: 10;
-		}
-	}
-	
-	.details_moment{
-		width: 100%;
-		padding: 0;
-	}
-	
-	.milieu{
-		left: 5px;
-	}
-	
-	.meta_moment{
-		margin-bottom: 5px;
-	}
-	
-	.comment_moment{
-		margin-bottom: 15px;
 	}
 }
 
@@ -231,6 +226,14 @@
         align-items: center;
         position: relative;
         
+        @include width-below(900px){
+            flex-direction: column;
+        }
+        
+        @include width-below(600px){
+            align-items: flex-start;
+        }
+        
         &::before{
             content: '';
             height: 20px;
@@ -252,36 +255,55 @@
         }
     }
     
-    .single_moment:nth-child(odd) .wrapper-col2::before{
-        left: 0;
-        transform: translate(-50%, -50%) rotate(45deg);
+    @include width-above(601px){
+    
+        .single_moment:nth-child(odd) .wrapper-col2::before{
+            left: 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .single_moment:nth-child(even) .wrapper-col2::before{
+            right: 0;
+            transform: translate(50%, -50%) rotate(45deg);
+        }
     }
     
-    .single_moment:nth-child(even) .wrapper-col2::before{
-        right: 0;
-        transform: translate(50%, -50%) rotate(45deg);
+    @include width-below(600px){
+        .single_moment .wrapper-col2::before{
+            left: 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 10;
+        }
     }
     
     .col2{
         padding: 20px;
-    }
-
-    .single_moment:nth-child(even){
-        .text-col2{
-            order: 1;
-            text-align: right;
-            margin-right: 20px;
-        }
         
-        .wrapper-col2 > a{
-            order: 2;
+        @include width-below(600px){
+            padding: 0;
         }
     }
     
-    .single_moment:nth-child(odd){
-        .text-col2{
-            margin-left: 20px;
+    @include width-above(901px){
+
+        .single_moment:nth-child(even){
+            .text-col2{
+                order: 1;
+                text-align: right;
+                margin-right: 20px;
+            }
+
+            .wrapper-col2 > a{
+                order: 2;
+            }
         }
+
+        .single_moment:nth-child(odd){
+            .text-col2{
+                margin-left: 20px;
+            }
+        }
+        
     }
     
     .meta_moment{

@@ -64,6 +64,7 @@
     @include width-below(900px){
         text-align: left;
         font-size: 2.5rem;
+        padding-left: 0;
         
         a{
             padding-left: 0;
