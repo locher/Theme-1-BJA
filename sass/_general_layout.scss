@@ -98,6 +98,10 @@ a.bt{
     background-color: $gris;
     padding: $padding*1.25 $padding;
     
+    @include width-below(600px){
+        padding: $padding $padding/2;
+    }
+    
     .wrapper-title{
         &::after{
             background-color: darken($gris, 20%);

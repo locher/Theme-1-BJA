@@ -7,6 +7,10 @@
     align-items: center;
     width:100%;
     
+    @include width-below(600px){
+        display: block;
+    }
+    
     &:nth-child(odd){
         .halfPhoto{
             order: 3;
@@ -14,6 +18,10 @@
         
         .contentHalf{
             text-align: right;
+            
+            @include width-below(600px){
+                text-align: center;
+            }
         }
         
         svg{
@@ -40,6 +48,17 @@
 .contentHalf{
     padding: 50px;
     width: 50%;
+    
+    @include width-below(900px){
+        padding: 30px;
+    }
+    
+    @include width-below(600px){
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin-top: 20px;
+    }
     
     .adresse{
         font-weight: 700;
@@ -81,4 +100,9 @@
     width: 50%;
     min-height: 450px;
     flex-shrink: 0;
+    
+    @include width-below(600px){
+        width: 100%;
+        min-height: 300px;
+    }
 }
