@@ -5,6 +5,7 @@
 .wrapperTemoins{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
     > div:first-child{
         margin-right: 15px;
@@ -29,7 +30,6 @@
     
     a{
         display: inline-block;
-        font-size: 1.8rem;
     }
 
     
@@ -45,7 +45,7 @@
         
         img{
             width: 250px;
-            height: 250px;
+            height: auto;
         }
     }
 }
