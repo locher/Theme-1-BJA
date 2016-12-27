@@ -131,10 +131,10 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         <?php while ( have_rows('maries', 'option') ) : the_row(); ?>
         <?php $image = get_sub_field('photo'); ?>
         <div>
-            <div>
+            <div class="photoReponse">
                 <img src="<?php echo $image['sizes']['s150']; ?>" alt="" />
             </div>
-            <div>
+            <div class="textReponse">
                 <p class="h3"><?php the_sub_field('prenom'); ?></p>
                 <p><a href="tel:<?php echo(str_replace(' ','',get_sub_field('telephone')));?>"><?php the_sub_field('telephone'); ?></a></p>
                 <p><a href="mailto:<?php the_sub_field('email'); ?>"><?php the_sub_field('email'); ?></a></p>
@@ -154,7 +154,7 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
 
     <form action="<?php echo ods_getTemplatePermalink('template_formReponse.php'); ?>" method="post" enctype="multipart/form-data" class="" id="reponseInvit">
 
-        <div class="form_text">
+        <div>
             <p class="formHalf">
                 <label for="name">Votre nom ?</label>
                 <input type="text" id="name" name="name_dude" value="<?php echo $_COOKIE["name"]; ?>">
@@ -197,11 +197,6 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
             <p>
                 <label for="message">Votre message ? <span>(facultatif)</span></label>
                 <textarea name="message_fac" id="message" cols="30" rows="5"></textarea>
-            </p>
-
-            <p>
-                <input type="checkbox" id="okMailing" name="okMailing" value="true">
-                <label for="okMailing">J'accepte de recevoir les actualités des mariés par mail<span class="tick"></span></label>    
             </p>
 
             <p class="tcenter">

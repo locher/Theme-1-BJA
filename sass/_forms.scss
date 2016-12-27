@@ -27,7 +27,6 @@ button{
 
 form label{
 	display: inline-block;
-	font-size: 1.8rem;
 	margin-bottom: 10px;
 	
 	span{
@@ -130,10 +129,19 @@ textarea{
     width: calc(50% - 10px);
     display: inline-block;
     margin-right: -4px;
+    
+    @include width-below(800px){
+        width: 100%;
+        margin-right: 0;
+    }
 }
 
 .halfRight{
     margin-left: 20px;
+    
+     @include width-below(800px){
+        margin-left: 0;
+    }
 }
 
 .wrapper-radios,
@@ -206,7 +214,7 @@ input[type="checkbox"] + label::before{
 	border-radius: 4px;
 	cursor: pointer;
 	background-color: #fff;
-	border: .3em solid #fff;
+	border: 6px solid #fff;
 	margin-right: .6em;
     position: relative;
     top: 4px;

@@ -13,13 +13,26 @@
     justify-content: center;
     margin-bottom: $padding;
     
+    @include width-below(600px){
+        flex-direction: column;
+        text-align: center;
+    }
+    
     > div{
         display: flex;
         align-items: center;
         
+        @include width-below(600px){
+            margin: 10px 0;
+        }
+        
         &:first-child{
             text-align:right;
             order: 1;
+            
+            @include width-below(600px){
+                text-align: center;
+            }
             
             :first-child{
                 order:3;
@@ -43,9 +56,9 @@
     }
     
     img{
-        margin: 20px;
         height: 100px;
         width: 100px;
+        margin: 0 20px;
     }
 }
 
@@ -56,6 +69,11 @@
         fill: $primaire;
         height: 20px;
         width: 20px;
+        margin: auto;
+    }
+    
+    @include width-below(900px){
+        margin: 0 20px;
     }
 }
 
@@ -69,5 +87,17 @@
         path{
             stroke: $primaire;
         }
+    }
+}
+
+@include width-below(900px){
+    .photoReponse{
+        display: none;
+    }
+}
+
+@include width-below(600px){
+    .textReponse{
+        width: 100%;
     }
 }
