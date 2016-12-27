@@ -137,16 +137,27 @@
         </form>
 </section>
 
-                <div class="alert alertOk">
-                   <div class="wrapper_alert">
-                        <div>
-                                                    <svg viewBox="0 0 100 100" width="30" height="30">
-                            <use xlink:href="#icon-tick"></use>
-                        </svg>
-                        <p>Covoiturage ajouté !</p>
-                        </div>
-                    </div>
-                </div>
+<div class="alert alertOk">
+   <div class="wrapper_alert">
+        <div>
+        <svg viewBox="0 0 100 100" width="30" height="30">
+            <use xlink:href="#icon-tick"></use>
+        </svg>
+        <p>Covoiturage ajouté !</p>
+        </div>
+    </div>
+</div>
+
+<div class="alert alertError">
+   <div class="wrapper_alert">
+        <div>
+        <svg viewBox="0 0 100 100" width="30" height="30">
+            <use xlink:href="#icon-tick"></use>
+        </svg>
+        <p>Une erreur est survenue, merci de vérifier votre saisie.</p>
+        </div>
+    </div>
+</div>
 
 
 <?php endif;?>

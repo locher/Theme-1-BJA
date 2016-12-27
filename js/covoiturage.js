@@ -43,19 +43,29 @@
                 'arretsPossible': arretsPossible,
                 'horaireDeDepart': horaireDeDepart,
                 'horaireDeRetour': horaireDeRetour
-            },
+            },            
+            
             function(response){
-                $('.noCovoit').show();
-                $('.nopost').hide();
-                $('#listCovoit').append($(response).hide().fadeIn());
-                $('.alertOk').fadeIn().delay(2000).fadeOut(500);
-                $('html, body').animate({
-                    scrollTop: $(".new_covoit").offset().top
-                }, 500);
-               $('.covoitForm').slideUp();
-                $('.covoit .bt').fadeIn();
-                $('#submitCovoit').trigger('reset');
-            }
+            
+                if(response.reponse === 'success'){
+                    $('.noCovoit').show();
+                    $('.nopost').hide();
+                    $('#listCovoit').append($(response.inser_table).hide().fadeIn());
+                    $('.alertOk').fadeIn().delay(2000).fadeOut(500);
+                    $('html, body').animate({
+                        scrollTop: $(".new_covoit").offset().top
+                    }, 500);
+                    $('.covoitForm').slideUp();
+                    $('.covoit .bt').fadeIn();
+                    $('#submitCovoit').trigger('reset');
+                    
+                }
+                
+                else if(response.reponse === 'error'){
+                    $('.alertError').fadeIn().delay(2000).fadeOut(500);
+                }
+                
+            }, "json"
         );
             
         });

@@ -827,8 +827,6 @@ function ajax_covoiturage() {
     $DateDepart_covoit = $_POST['horaireDeDepart'];
     $DateRetour_covoit = $_POST['horaireDeRetour'];
         
-    }else{
-        echo "if pas bon";
     }
 
 
@@ -853,27 +851,33 @@ if($name_correct == true){
     
     $reponse = 'success';
     
-    /*
+    $ligne = '<tr class="new_covoit"><td><p>'.$depart_covoit.'</p><p>'.$via_covoit.'</p></td>
+                <td><p>'.$DateDepart_covoit.'</p><p>'.$dateRetour_covoit.'</p></td>
+                <td class="nbPlaces"><p>'.$place_covoit.'</p></td>
+                <td><p>'.$name_covoit.'</p><p><a href="tel:'.str_replace(" ","",$phone_covoit).'">'.$phone_covoit.'</a> / <a href="mailto:'.$email_covoit.'">'.$email_covoit.'</a></p></td>
+            </tr>';
+    
     echo json_encode(array(
-        'reponse' => $reponse,
+        'reponse'=>$reponse,
 		'nom'=>$name_covoit,
 		'telephone'=>$phone_covoit,
 		'email'=>$email_covoit,
 		'nombre_de_places'=>$place_covoit,
-		'ville_de_depart' =>$depart_covoit,
-		'arrets_possible' =>$via_covoit,
-		'horaire_de_depart' =>$DateDepart_covoit,
-		'horaire_de_retour' =>$DateRetour_covoit
-        
+		'ville_de_depart'=>$depart_covoit,
+		'arrets_possible'=>$via_covoit,
+		'horaire_de_depart'=>$DateDepart_covoit,
+		'horaire_de_retour'=>$DateRetour_covoit,
+		'inser_table'=>$ligne
 	));   
-    */
     
-    echo('<tr class="new_covoit"><td><p>'.$depart_covoit.'</p><p>'.$via_covoit.'</p></td>
-                <td><p>'.$DateDepart_covoit.'</p><p>'.$dateRetour_covoit.'</p></td>
-                <td class="nbPlaces"><p>'.$place_covoit.'</p></td>
-                <td><p>'.$name_covoit.'</p><p><a href="tel:'.str_replace(" ","",$phone_covoit).'">'.$phone_covoit.'</a> / <a href="mailto:'.$email_covoit.'">'.$email_covoit.'</a></p></td>
-            </tr>');
+
     
+}else{
+    $reponse = "error";
+    
+    echo json_encode(array(
+        'reponse' => $reponse
+    ));
 }
 
 	die();

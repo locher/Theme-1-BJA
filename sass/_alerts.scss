@@ -37,5 +37,20 @@
         }
     }
 
+}
+
+.alertError{
+    
+    .wrapper_alert{
+        background-color: rgba(#c92652, .9);
+        color: darken(#c92652, 50%);
+    
+        svg{
+            fill: darken(#c92652, 50%);
+            width: 75px;
+            height: 75px;
+            margin-bottom: 15px;
+        }
+    }
 
 }
