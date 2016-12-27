@@ -28,6 +28,10 @@
         font-weight: 100;
         text-transform: uppercase;
         margin-bottom: 5px;
+        
+        @include width-below(600px){
+            font-size: 1.4rem;
+        }
     }
     
     a{
@@ -38,6 +42,42 @@
         display: block;
         margin: $padding auto 0;
         font-size: 1.5rem;
+    }
+    
+    @include width-below(600px){
+        
+        tr{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        thead tr{
+            align-items: center;
+        }
+        
+        td{
+            padding: 20px 10px;
+        }
+        
+        td:first-child,
+        td:nth-child(2){
+            width: calc(50% - 30px);
+        }
+        
+        .nbPlaces{
+            width: 60px;
+        }
+        
+        
+        td:last-child{
+            width: 100%;
+            text-align: center;
+            padding-top: 0;
+        }
+        
+        thead tr td:last-child{
+            display: none;
+        }
     }
 }
 
@@ -56,3 +96,4 @@
 .noCovoit{
     display: none;
 }
+

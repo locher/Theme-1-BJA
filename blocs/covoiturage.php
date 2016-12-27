@@ -23,7 +23,7 @@
         <table>
             <thead>
                <tr>
-                   <td><p>Ville de départ</p><p>Arrêts possibles</p></td><td><p>Dates</p></td><td><p>Places</p></td><td><p>Contact</p></td>
+                   <td><p>Ville de départ</p><p>Arrêts possibles</p></td><td><p>Date allé</p><p>Date retour</p></td><td class="nbPlaces"><p>Places</p></td><td><p>Contact</p></td>
                </tr>
                 
             </thead>
@@ -115,8 +115,8 @@
                 </p>
                 
                <p class="formHalf halfRight">
-                    <label for="date_retour">Horaire de retour <span class="required">*</span></label>
-                    <input type="text" id="date_retour" name="DateRetour_covoit" required>
+                    <label for="date_retour">Horaire de retour</label>
+                    <input type="text" id="date_retour" name="DateRetour_covoit">
                 </p>
 
                 <p class="tcenter">

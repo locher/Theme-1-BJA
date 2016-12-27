@@ -24,13 +24,17 @@
             }
         }
         
-        svg{
-            order: 3;
-            margin-left: 10px;
-        }
+        @include width-above(601px){
         
-        li{
-            justify-content: flex-end;
+            svg{
+                order: 3;
+                margin-left: 10px;
+            }
+        
+        
+            li{
+                justify-content: flex-end;
+            }
         }
     }
     
@@ -42,6 +46,12 @@
     
     &:not(:last-child){
         margin-bottom: $padding;
+    }
+    
+    @include width-below(600px){
+        li{
+            justify-content: center;
+        }
     }
 }
 

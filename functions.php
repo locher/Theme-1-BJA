@@ -816,7 +816,7 @@ add_action( 'wp_ajax_nopriv_ajax_covoiturage', 'ajax_covoiturage' );
 
 function ajax_covoiturage() {
     
-	if(isset($_POST['nom']) && $_POST['nom'] != "" && isset($_POST['telephone']) && $_POST['telephone'] != "" && isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['nombreDePlaces']) && $_POST['nombreDePlaces'] != "" && isset($_POST['villeDeDepart']) && $_POST['villeDeDepart'] != "" && isset($_POST['horaireDeDepart']) && $_POST['horaireDeDepart'] != "" && isset($_POST['horaireDeRetour']) && $_POST['horaireDeRetour'] != ""){
+	if(isset($_POST['nom']) && $_POST['nom'] != "" && isset($_POST['telephone']) && $_POST['telephone'] != "" && isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['nombreDePlaces']) && $_POST['nombreDePlaces'] != "" && isset($_POST['villeDeDepart']) && $_POST['villeDeDepart'] != "" && isset($_POST['horaireDeDepart']) && $_POST['horaireDeDepart'] != ""){
     $name_correct = true;
     $name_covoit = $_POST['nom'];
     $phone_covoit = $_POST['telephone'];
