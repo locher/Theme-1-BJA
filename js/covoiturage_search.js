@@ -4,6 +4,7 @@
 		
         'use strict';
         
+        // La fonction pour le delay au type sur l'input
         var delay = (function(){
           var timer = 0;
           return function(callback, ms){
@@ -18,6 +19,7 @@
             e.preventDefault();
         });
         
+        //Quand je tape dans l'input
         jQuery('#searchCity').keyup(function(){
             
             delay(function(){
@@ -28,7 +30,7 @@
                 jQuery.post(
                     ajaxurl,
                     {
-                        'action': 'ajax_covoiturage_search',
+                        'action': 'ajax_covoiturage_search', //L'action dans function.php
                         'keyword': keyword
                     },            
 
