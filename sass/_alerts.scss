@@ -54,3 +54,40 @@
     }
 
 }
+
+.validation{
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    
+    > div{
+        margin: auto;
+    }
+    
+    h2{
+        margin-bottom: 30px;
+    }
+    
+    p{
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .bt{
+        margin: 10px 0;
+    }
+    
+    @include width-below(500px){
+        a{
+            min-width: 100%;
+            order: 3;
+        }
+        
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+}

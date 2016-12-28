@@ -868,7 +868,22 @@ if($name_correct == true){
 		'horaire_de_depart'=>$DateDepart_covoit,
 		'horaire_de_retour'=>$DateRetour_covoit,
 		'inser_table'=>$ligne
-	));   
+	));
+   
+    //Envoi de l'email
+    
+    //Récup le nom des mariés
+    $maries = get_field('maries', 'option'); 
+    
+    // Cryptage rigolo
+    $id = base64_encode($id.'c1402');
+    $id = str_replace('M','xmo12locher', $id);
+    $id = base64_encode($id);
+    
+    $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
+    $email_html = "<a href=\"".site_url().'/validation/?id='.$id."\">Supprimer</a>";
+    
+    wp_mail( $email_covoit, $email_title, $email_html, "From: Bonjour Amour <hello@bonjouramour.fr>");
     
 
     
@@ -949,7 +964,6 @@ function ajax_covoiturage_search() {
                 'message'=>'Aucun covoiturage pour '.$keyword)
             );
         }
-
     }
 
 	die();

@@ -1,6 +1,6 @@
 <?php if(get_field('pack_achete', 'option') == "pack3"): ?>
 
-<section class="wrapperPadding bgsection covoit">
+<section class="wrapperPadding bgsection covoit" id="covoiturage">
     
 		<div class="wrapper-title">
 			<h2>Covoiturage</h2>
