@@ -4,46 +4,58 @@
 		
         'use strict';
         
+        var delay = (function(){
+          var timer = 0;
+          return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+          };
+        })();
+        
         //Post covoiturage en AJAX
         
         jQuery('body').on('submit', '#citySearchForm', function(e){
             e.preventDefault();
         });
         
-        jQuery('body').on('change', '#searchCity', function(e){
+        jQuery('#searchCity').keyup(function(){
             
-        // Je récupère les valeurs
-        var keyword = jQuery(this).val();
-        
-        jQuery.post(
-            ajaxurl,
-            {
-                'action': 'ajax_covoiturage_search',
-                'keyword': keyword
-            },            
-            
-            function(response){
+            delay(function(){
                 
-                if(response.resultats === "oui"){                
-                    $("#listCovoit").find('tr').hide();
-                    $(".noCovoitResults").hide();
+                // Je récupère les valeurs
+                var keyword = jQuery('#searchCity').val();
 
-                    var nbReponse = response.results.length;
+                jQuery.post(
+                    ajaxurl,
+                    {
+                        'action': 'ajax_covoiturage_search',
+                        'keyword': keyword
+                    },            
 
-                    console.log(nbReponse);
+                    function(response){
 
-                    for (var i = 0; i < nbReponse; i++){
-                        $("#listCovoit").find('[data_id="'+response.results[i]+'"]').fadeIn();
-                    }
-                }
-                if(response.resultats === "non"){ 
-                    $("#listCovoit").find('tr').hide();
-                    $('#citySearchForm').append('<p class="noCovoitResults">'+response.message+'</p>');
-                    console.log(response.message);
-                }
+                        if(response.resultats === "oui"){                
+                            $("#listCovoit").find('tr').hide();
+                            $(".noCovoitResults").hide();
+
+                            var nbReponse = response.results.length;
+
+                            console.log(nbReponse);
+
+                            for (var i = 0; i < nbReponse; i++){
+                                $("#listCovoit").find('[data_id="'+response.results[i]+'"]').show();
+                            }
+                        }
+                        if(response.resultats === "non"){ 
+                            $("#listCovoit").find('tr').hide();
+                            $('#citySearchForm').append('<p class="noCovoitResults">'+response.message+'</p>');
+                            console.log(response.message);
+                        }
+
+                    }, "json"
+                );
                 
-            }, "json"
-        );
+            }, 400);
             
         });
         

@@ -22,6 +22,9 @@
         
         <form action="" method="post" id="citySearchForm">
             <input type="text" placeholder="Rechercher ma ville" id="searchCity">
+            <span class="ico-search">
+                <svg viewBox="0 0 100 100" width="30" height="30"><use xlink:href="#icon-search"></use></svg>
+            </span>
             <input type="submit" class="submit_citySearch">
         </form>
         

@@ -105,3 +105,23 @@
     text-align: center;
     margin-bottom: 20px;
 }
+
+[id="citySearchForm"]{
+    position: relative;
+    
+    .ico-search{
+        position: absolute;
+        left: 20px;
+        top: 15px;
+    }
+    
+    [type="text"]{
+        padding-left: 60px;;
+    }
+    
+    svg{
+        height: 25px;
+        width: 25px;
+        fill: rgba(#000, .4);
+    }
+}
