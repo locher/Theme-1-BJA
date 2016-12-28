@@ -49,6 +49,7 @@
                             }
                         }
                         if(response.resultats === "non"){ 
+                            $('.noCovoitResults').hide();
                             $("#listCovoit").find('tr').hide();
                             $('#citySearchForm').append('<p class="noCovoitResults">'+response.message+'</p>');
                             console.log(response.message);
