@@ -875,17 +875,26 @@ if($name_correct == true){
     //Récup le nom des mariés
     $maries = get_field('maries', 'option'); 
     
-    // Cryptage rigolo
-    $id = base64_encode($id.'c1402');
-    $id = str_replace('M','xmo12locher', $id);
-    $id = base64_encode($id);
+    include('inc/covoiturage_key.php');
+    
+    function encrypt( $string ) {
+      $algorithm = 'rijndael-128'; // You can use any of the available
+      $key = md5($covoiturageKey, true );
+      $iv_length = mcrypt_get_iv_size( $algorithm, MCRYPT_MODE_CBC );
+      $iv = mcrypt_create_iv( $iv_length, MCRYPT_RAND );
+      $encrypted = mcrypt_encrypt( $algorithm, $key, $string, MCRYPT_MODE_CBC, $iv );
+      $result = base64_encode( $iv . $encrypted );
+      return $result;
+    }
+    
+    $id = encrypt($id);
+    $id = urlencode($id);
     
     $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
     $email_html = "<a href=\"".site_url().'/validation/?id='.$id."\">Supprimer</a>";
     
     wp_mail( $email_covoit, $email_title, $email_html, "From: Bonjour Amour <hello@bonjouramour.fr>");
     
-
     
 }else{
     $reponse = "error";

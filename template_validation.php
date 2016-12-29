@@ -6,12 +6,21 @@
     if(isset($_POST['hidden_id']) && $_POST['hidden_id'] != ""){
         $hidden_id = $_POST['hidden_id'];
         
-        //On vire la clé
-        $hidden_id = base64_decode($hidden_id);
-        $hidden_id = str_replace('xmo12locher','M', $hidden_id);
-        $hidden_id = base64_decode($hidden_id);
-        $hidden_id = str_replace('c1402','',$hidden_id);
+        include('inc/covoiturage_key.php');
         
+        function decrypt( $string ) {
+          $algorithm =  'rijndael-128';
+          $key = md5($covoiturageKey, true );
+          $iv_length = mcrypt_get_iv_size( $algorithm, MCRYPT_MODE_CBC );
+          $string = base64_decode( $string );
+          $iv = substr( $string, 0, $iv_length );
+          $encrypted = substr( $string, $iv_length );
+          $result = mcrypt_decrypt( $algorithm, $key, $encrypted, MCRYPT_MODE_CBC, $iv );
+            
+          return $result;
+        }
+        
+        $hidden_id = decrypt($hidden_id);
         
         wp_delete_post( $hidden_id);
         
