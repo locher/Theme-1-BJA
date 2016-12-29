@@ -890,10 +890,18 @@ if($name_correct == true){
     $id = encrypt($id);
     $id = urlencode($id);
     
-    $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
-    $email_html = "<a href=\"".site_url().'/validation/?id='.$id."\">Supprimer</a>";
+    // Design de l'email
     
-    wp_mail( $email_covoit, $email_title, $email_html, "From: Bonjour Amour <hello@bonjouramour.fr>");
+    include('emails/template_email.php');
+    
+    $message_confirmation = '<p>Votre covoiturage a bien été posté. Voici un récapitulatif des éléments que vous avez saisi. Ces informations ne sont pas conservés par Bonjour Amour.</p><p><strong>Votre nom</strong> : '.$name_covoit.'</p><p><strong>Numéro de téléphone</strong> : '.$phone_covoit.'</p><p><strong>Email</strong> : '.$email_covoit.'</p><p><strong>Nombre de places</strong> : '.$place_covoit.'</p><p><strong>Ville de départ</strong> : '.$depart_covoit.'</p><p><strong>Arrêts possible</strong> : '.$via_covoit.'</p><p><strong>Date de départ</strong> : '.$DateDepart_covoit.'</p>
+    <p><strong>Date de retour</strong> : '.$DateRetour_covoit.'</p><p><strong>Une fois votre voiture remplie ou si vous changez d\'avis, vous pouvez supprimer cette annonce en cliquant sur ce lien :</p><p><a href="'.site_url().'/validation/?id='.$id.'">Supprimer mon covoiturage</a></p>';
+    
+    $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
+    $email_html = bja_email($message_confirmation);
+    $headers = array('Content-Type: text/html; charset=UTF-8; From: Bonjour Amour <hello@bonjouramour.fr>');
+    
+    wp_mail( $email_covoit, $email_title, $email_html, $headers);
     
     
 }else{
