@@ -128,6 +128,4 @@ table {border-collapse: collapse;}
 ');
 }
 
-echo bja_email('kikoo');
-
 ?>
