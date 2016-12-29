@@ -899,7 +899,7 @@ if($name_correct == true){
     
     $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
     $email_html = bja_email($message_confirmation);
-    $headers = array('Content-Type: text/html; charset=UTF-8; From: Bonjour Amour <noreply@bonjouramour.fr>');
+    $headers = array('Content-Type: text/html; charset=UTF-8;');
     
     wp_mail( $email_covoit, $email_title, $email_html, $headers);
     
