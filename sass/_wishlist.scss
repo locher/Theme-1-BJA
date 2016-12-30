@@ -3,6 +3,15 @@
         padding: 18px $padding;
         display: flex;
         align-items: center;
+        
+        @include width-below(800px){
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        @include width-below(500px){
+            padding: 15px $padding/2;
+        }
     }
     
     li:nth-child(odd){
@@ -41,6 +50,10 @@
 .resaWishlist{
     min-width: 260px;
     text-align: center;
+    
+    @include width-below(800px){
+        margin-top: 15px;
+    }
 }
 
 .giftReserve *{
