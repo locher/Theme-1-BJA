@@ -453,6 +453,36 @@ function create_post_type_html5()
     
     endif;
     
+    //Wishlist
+    if(get_field('pack_achete', 'option') == "pack3"):
+    
+    register_post_type('wishlist', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Liste cadeaux', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Liste cadeaux', 'bjamour'),
+            'add_new' => __('Ajouter', 'bjamour'),
+            'add_new_item' => __('Ajouter un cadeau', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un cadeau', 'bjamour'),
+            'new_item' => __('Nouveau cadeau', 'bjamour'),
+            'view_item' => __('Voir le cadeau', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-cart'
+    ));
+    
+    endif;
+    
     //Liste invités
     
     register_post_type('invite', // Register Custom Post Type

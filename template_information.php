@@ -73,4 +73,6 @@
 
 <?php include('blocs/covoiturage.php');?>
 
+<?php include('blocs/wishlist.php'); ?>
+
 <?php get_footer(); ?>
