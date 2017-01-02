@@ -925,7 +925,7 @@ if($name_correct == true){
     include('emails/template_email.php');
     
     $message_confirmation = '<p>Votre covoiturage a bien été posté. Voici un récapitulatif des éléments que vous avez saisi. Ces informations ne sont pas conservés par Bonjour Amour.</p><p><strong>Votre nom</strong> : '.$name_covoit.'</p><p><strong>Numéro de téléphone</strong> : '.$phone_covoit.'</p><p><strong>Email</strong> : '.$email_covoit.'</p><p><strong>Nombre de places</strong> : '.$place_covoit.'</p><p><strong>Ville de départ</strong> : '.$depart_covoit.'</p><p><strong>Arrêts possible</strong> : '.$via_covoit.'</p><p><strong>Date de départ</strong> : '.$DateDepart_covoit.'</p>
-    <p><strong>Date de retour</strong> : '.$DateRetour_covoit.'</p><p><strong>Une fois votre voiture remplie ou si vous changez d\'avis, vous pouvez supprimer cette annonce en cliquant sur ce lien :</p><p><a href="'.site_url().'/validation/?id='.$id.'">Supprimer mon covoiturage</a></p>';
+    <p><strong>Date de retour</strong> : '.$DateRetour_covoit.'</p><p><strong>Une fois votre voiture remplie ou si vous changez d\'avis, vous pouvez supprimer cette annonce en cliquant sur ce lien :</p><p><a href="'.site_url().'/validation/?type=covoiturage&id='.$id.'">Supprimer mon covoiturage</a></p>';
     
     $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre covoiturage";
     $email_html = bja_email($message_confirmation);
@@ -1015,6 +1015,97 @@ function ajax_covoiturage_search() {
 
 	die();
     
+}
+
+
+//
+// AJAX réservation cadeau 
+ //
+
+
+function add_js3_scripts() {
+	wp_enqueue_script( 'wishlist', get_template_directory_uri().'/js/resa_wishlist.js', array('jquery'), '1.0', true );
+
+	// pass Ajax Url to script.js
+	wp_localize_script('wishlist', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+}
+
+add_action('wp_enqueue_scripts', 'add_js3_scripts');
+
+add_action( 'wp_ajax_ajax_wishlist', 'ajax_wishlist' );
+add_action( 'wp_ajax_nopriv_ajax_wishlist', 'ajax_wishlist' );
+
+
+function ajax_wishlist() {
+    
+	if(isset($_POST['id_gift']) && $_POST['id_gift'] != "" && isset($_POST['email']) && $_POST['email'] != ""){
+        $id_gift = $_POST['id_gift'];
+        $name_gift = $_POST['name_gift'];
+        $email = $_POST['email'];
+        $good = true;
+    }
+
+
+if($good == true){
+    
+    update_field('etat_reservation', '1', $id_gift);
+    
+    $reponse = 'success';
+    
+    $ligne = 'truc à insérer';
+    
+    echo json_encode(array(
+        'reponse'=>$reponse,
+        'ligne' => $ligne,
+		'id_gift'=>$id_gift,
+		'name_gift'=>$name_gift,
+		'email'=>$email        
+	));
+   
+    //Envoi de l'email
+    
+    //Récup le nom des mariés
+    $maries = get_field('maries', 'option'); 
+    
+    include('inc/covoiturage_key.php');
+    
+    function encrypt( $string ) {
+      $algorithm = 'rijndael-128';
+      $key = md5($covoiturageKey, true );
+      $iv_length = mcrypt_get_iv_size( $algorithm, MCRYPT_MODE_CBC );
+      $iv = mcrypt_create_iv( $iv_length, MCRYPT_RAND );
+      $encrypted = mcrypt_encrypt( $algorithm, $key, $string, MCRYPT_MODE_CBC, $iv );
+      $result = base64_encode( $iv . $encrypted );
+      return $result;
+    }
+    
+    $id_gift = encrypt($id_gift);
+    $id_gift = urlencode($id_gift);
+    
+    // Design de l'email
+    
+    include('emails/template_email.php');
+    
+    $message_confirmation = '<p>Votre réservation pour le cadeau '.$name_gift.' a bien été pris en compte.</p>
+    <p> Si vous sous souhaitez annuler la réservation, merci de suivre ce lien :</p>
+    <p><a href="'.site_url().'/validation/?type=gift&id='.$id_gift.'">Annuler ma réservation</a></p>';
+    
+    $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre réservation de ".$name_gift;
+    $email_html = bja_email($message_confirmation);
+    $headers = array('Content-Type: text/html; charset=UTF-8;');
+    
+    wp_mail( $email, $email_title, $email_html, $headers);
+    
+    
+}else{
+    $reponse = "error";
+    
+    echo json_encode(array(
+        'reponse' => $reponse
+    ));
+}
+
+	die();
 }
 
 

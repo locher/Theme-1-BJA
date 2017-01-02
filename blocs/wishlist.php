@@ -37,9 +37,11 @@
                 </div>
                 <div class="resaWishlist">
                     <?php if(get_field('reservation') == false AND get_field('etat_reservation') == false): ?>
-                    <form action="" method="post">
+                    <form action="" method="post" id="resaGift">
                         <input type="hidden" value="<?php echo get_the_ID();?>" name="id_cadeau">
-                        <input type="submit" value="Réserver ce cadeau" class="bt btVide">
+                        <input type="hidden" value="<?php the_title();?>" name="name_cadeau">
+                        <input type="email" name="email">
+                        <input type="submit" value="Valider ma réservation" class="bt btVide">
                     </form>
                     <?php endif;?>
                     <?php if(get_field('etat_reservation') == true): ?>
