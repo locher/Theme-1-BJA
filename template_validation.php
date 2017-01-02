@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+    $id = '';
+    $type = '';
+
     if(isset($_GET['id']) && $_GET['id'] != "" && isset($_GET['type']) && $_GET['type'] != ""){
         $id = $_GET['id'];
         $type = $_GET['type'];
@@ -50,19 +54,20 @@
           return $result;
         }
         
-        $hidden_id = decrypt($hidden_id);
+        $hidden_id_decrypt = decrypt($hidden_id);    
+        $hidden_id_decrypt = (int)$hidden_id_decrypt;    
         
-        update_field('etat_reservation', '0', $hidden_id);
+        update_field('etat_reservation', '0', $hidden_id_decrypt);
         
         header('Location: '.ods_getTemplatePermalink('template_information.php').'/#wishlist');
     }
 
     // Annulation réservation cadeau
 ?>
+
 <?php /* Template Name: Validation */ get_header(); ?>
 
 <section class="validation">
-    
     
     <?php 
         //Cas suppression covoiturage
@@ -98,8 +103,6 @@
             <input type="hidden" value="<?php echo $id;?>" name="hidden_id"/>
             <a class="bt btVide" href="<?php echo ods_getTemplatePermalink('template_information.php'); ?>/#covoiturage">Non, quitter</a>
             <input type="submit" name="validate_delete" value="Oui, annuler" />
-            
-            <?php echo($id.' '.$type);?>
             
         </form>
     </div>

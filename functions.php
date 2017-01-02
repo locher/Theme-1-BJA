@@ -728,7 +728,7 @@ add_filter( 'wp_mail_from', function() {
 
 // Sous page témoins
 
-if(function_exists(acf_add_options_page))
+if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options page témoins',
@@ -743,7 +743,7 @@ acf_add_options_page(array(
 
 // Sous page hôtels
 
-if(function_exists(acf_add_options_page))
+if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options page hôtel',
@@ -758,7 +758,7 @@ acf_add_options_page(array(
 
 // Sous page Live
 
-if(function_exists(acf_add_options_page))
+if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options Live',
@@ -773,7 +773,7 @@ acf_add_options_page(array(
 
 // Sous page Photos invités
 
-if(function_exists(acf_add_options_page))
+if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options photos invités',
@@ -788,7 +788,7 @@ acf_add_options_page(array(
 
 // Sous page Histoire du couple
 
-if(function_exists(acf_add_options_page))
+if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options histoire du couple',
@@ -1079,8 +1079,8 @@ if($good == true){
       return $result;
     }
     
-    $id_gift = encrypt($id_gift);
-    $id_gift = urlencode($id_gift);
+    $id_gift_encrypt = encrypt($id_gift);
+    $id_gift_url= urlencode($id_gift_encrypt);
     
     // Design de l'email
     
@@ -1088,7 +1088,7 @@ if($good == true){
     
     $message_confirmation = '<p>Votre réservation pour le cadeau '.$name_gift.' a bien été pris en compte.</p>
     <p> Si vous sous souhaitez annuler la réservation, merci de suivre ce lien :</p>
-    <p><a href="'.site_url().'/validation/?type=gift&id='.$id_gift.'">Annuler ma réservation</a></p>';
+    <p><a href="'.site_url().'/validation/?type=gift&id='.$id_gift_url.'">Annuler ma réservation</a></p>';
     
     $email_title = "Mariage de ".$maries[0]['prenom']." et ".$maries[1]['prenom']." : votre réservation de ".$name_gift;
     $email_html = bja_email($message_confirmation);
