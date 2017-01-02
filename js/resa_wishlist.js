@@ -4,6 +4,15 @@
 		
         'use strict';
         
+        //Apparition du modal pour réserver
+        $('#bt_reserver').click(function(){
+            $('#resaGift').toggleClass('actif');
+        });
+        
+        $('.closeModal').click(function(){
+            $('#resaGift').toggleClass('actif');
+        });
+        
         //Post covoiturage en AJAX
         
         jQuery('body').on('submit', '#resaGift', function(e){
@@ -27,10 +36,14 @@
             function(response){
             
                 if(response.reponse === 'success'){
-                    
+                    $('#resaGift').toggleClass('actif')
+                    $('#wishlist .alertOk').fadeIn().delay(3000).fadeOut(500);
+                    $('#wishlist').find('.'+id_gift).addClass('giftReserve');
+                    $('#wishlist').find('.'+id_gift+' #bt_reserver').hide();
                 }
                 
                 else if(response.reponse === 'error'){
+                    $('#wishlist .alertError').fadeIn().delay(3000).fadeOut(500);
                 }
                 
             }, "json"

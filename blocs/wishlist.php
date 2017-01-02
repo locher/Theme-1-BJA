@@ -24,7 +24,7 @@
         
             <?php while( $queryPosts->have_posts() ) : $queryPosts->the_post(); ?>
             
-            <li <?php if(get_field('etat_reservation') == true){echo('class="giftReserve"');}?> >
+            <li class="<?php the_ID();?> <?php if(get_field('etat_reservation') == true){echo('giftReserve');}?>">
                 <div class="textWishlist">
                     <h3><?php the_title();?></h3>
                     <?php the_field('description'); ?>
@@ -38,11 +38,16 @@
                 <div class="resaWishlist">
                     <?php if(get_field('reservation') == false AND get_field('etat_reservation') == false): ?>
                     <form action="" method="post" id="resaGift">
+                        <div class="wrapper_resa">
+                        <h3>Valider ma réservation</h3>
                         <input type="hidden" value="<?php echo get_the_ID();?>" name="id_cadeau">
                         <input type="hidden" value="<?php the_title();?>" name="name_cadeau">
-                        <input type="email" name="email">
+                        <input type="email" name="email" placeholder="Votre email">
                         <input type="submit" value="Valider ma réservation" class="bt btVide">
+                        </div>
+                        <a class="closeModal icoClose" title="Fermer cette fenêtre"><span></span></a>
                     </form>
+                    <button class="bt btVide" id="bt_reserver">Réserver ce cadeau</button>
                     <?php endif;?>
                     <?php if(get_field('etat_reservation') == true): ?>
                     <p class="etatReservation">Cadeau réservé</p>
@@ -52,31 +57,35 @@
             
             
             <?php endwhile;?>
-        </ul>					
+            
+        </ul>		
+        
+    <div class="alert alertOk">
+       <div class="wrapper_alert">
+            <div>
+            <svg viewBox="0 0 100 100" width="30" height="30">
+                <use xlink:href="#icon-tick"></use>
+            </svg>
+            <p>Réservation effectuée !</p>  
+            <p>Un mail vous a été envoyé, il vous permettra d'annuler cette réservation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alertError">
+       <div class="wrapper_alert">
+            <div>
+            <svg viewBox="0 0 100 100" width="30" height="30">
+                <use xlink:href="#icon-tick"></use>
+            </svg>
+            <p>Une erreur est survenue, merci de vérifier votre saisie.</p>
+            </div>
+        </div>
+    </div>			
 
 </section>
 
-<div class="alert alertOk">
-   <div class="wrapper_alert">
-        <div>
-        <svg viewBox="0 0 100 100" width="30" height="30">
-            <use xlink:href="#icon-tick"></use>
-        </svg>
-        <p>Covoiturage ajouté !</p>
-        </div>
-    </div>
-</div>
 
-<div class="alert alertError">
-   <div class="wrapper_alert">
-        <div>
-        <svg viewBox="0 0 100 100" width="30" height="30">
-            <use xlink:href="#icon-tick"></use>
-        </svg>
-        <p>Une erreur est survenue, merci de vérifier votre saisie.</p>
-        </div>
-    </div>
-</div>
 
 <?php endif;?>
 

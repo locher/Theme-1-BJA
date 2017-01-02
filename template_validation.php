@@ -94,14 +94,14 @@
         if($type === "gift"):
     ?>
     
-       <div>
+    <div>
         <h2>Annulation de la réservation</h2>
         <p>Êtes vous-sûr ?</p>
 
         <form action="<?php echo ods_getTemplatePermalink('template_validation.php'); ?>" method="POST">
             <input type="hidden" value="wishlist" name="actionType"/>
             <input type="hidden" value="<?php echo $id;?>" name="hidden_id"/>
-            <a class="bt btVide" href="<?php echo ods_getTemplatePermalink('template_information.php'); ?>/#covoiturage">Non, quitter</a>
+            <a class="bt btVide" href="<?php echo ods_getTemplatePermalink('template_information.php'); ?>/#wishlist">Non, quitter</a>
             <input type="submit" name="validate_delete" value="Oui, annuler" />
             
         </form>
