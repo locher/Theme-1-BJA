@@ -14,11 +14,11 @@
 
 <section class="wrapperPadding wishlist" id="wishlist">
     
-		<div class="wrapper-title">
-			<h2>Liste de mariage</h2>
-            <p class="subtitle">Lorem ipsum</p>
-			<svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-		</div>		
+        <div class="wrapper-title">
+            <h2><?php the_field('titre_wishlist', 'option');?></h2>
+            <p class="subtitle"><?php the_field('sous-titre_wishlist', 'option');?></p>
+           <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
+        </div>	
 		
         <ul>
         

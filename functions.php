@@ -801,6 +801,36 @@ acf_add_options_page(array(
 ));
 }
 
+// Sous page Covoiturage
+
+if(function_exists('acf_add_options_page'))
+{
+acf_add_options_page(array(
+'page_title' 	=> 'Options covoiturage',
+'menu_title' 	=> 'Options covoiturage',
+'menu_slug' 	=> 'options_covoiturage',
+'capability' 	=> 'edit_posts', 
+'parent_slug'	=> 'edit.php?post_type=covoiturage',
+'position'	=> false,
+'redirect'	=> false,
+));
+}
+
+// Sous page Covoiturage
+
+if(function_exists('acf_add_options_page'))
+{
+acf_add_options_page(array(
+'page_title' 	=> 'Options wishlist',
+'menu_title' 	=> 'Options wishlist',
+'menu_slug' 	=> 'options_wishlist',
+'capability' 	=> 'edit_posts', 
+'parent_slug'	=> 'edit.php?post_type=wishlist',
+'position'	=> false,
+'redirect'	=> false,
+));
+}
+
 // Comment form
 	
 function bja_disable_comment_url($fields) { 

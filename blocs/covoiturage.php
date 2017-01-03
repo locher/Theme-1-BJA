@@ -2,11 +2,11 @@
 
 <section class="wrapperPadding bgsection covoit" id="covoiturage">
     
-		<div class="wrapper-title">
-			<h2>Covoiturage</h2>
-            <p class="subtitle">Lorem ipsum</p>
-			<svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
-		</div>		
+        <div class="wrapper-title">
+            <h2><?php the_field('titre_covoiturage', 'option');?></h2>
+            <p class="subtitle"><?php the_field('sous-titre_covoiturage', 'option');?></p>
+           <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
+        </div>	
 		
 		<?php    
     
