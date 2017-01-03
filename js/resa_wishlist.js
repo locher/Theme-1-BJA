@@ -4,14 +4,28 @@
 		
         'use strict';
         
+        function closeOverlay_echap(){
+			if($('#resaGift').hasClass('actif')){
+				$('html').keypress(function(e){
+					if(e.keyCode == 27){
+						$('#resaGift').removeClass('actif');
+				   	}
+				});
+			}
+		}
+        
         //Apparition du modal pour réserver
         $('#bt_reserver').click(function(){
             $('#resaGift').toggleClass('actif');
+            $('#resaGift').find('[name="email"]').focus();
+            closeOverlay_echap();
         });
         
         $('.closeModal').click(function(){
             $('#resaGift').toggleClass('actif');
         });
+        
+        
         
         //Post covoiturage en AJAX
         
