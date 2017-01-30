@@ -75,9 +75,7 @@
     $('body').on('submit', '#addPhotos', function(e){
         $('#addPhotos .hide').toggleClass('hide');
         $('#addPhotos .show').toggleClass('hide');
-    });
-        
-     //$( '.lightbox' ).swipebox();   
+    });  
         
         
     //End function jquery

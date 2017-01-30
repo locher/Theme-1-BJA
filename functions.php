@@ -71,6 +71,8 @@ function html5blank_conditional_scripts()
     if (is_page_template('template_galerieLive.php')) {
                 wp_register_script('lightbox', get_template_directory_uri() . '/js/lib/jquery.swipebox.min.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('lightbox'); // Enqueue it!
+                        wp_register_script('scriptlightbox', get_template_directory_uri() . '/js/scriptLightbox.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('scriptlightbox'); // Enqueue it!
     }
     
     if (is_page_template('template_home.php')) {
@@ -816,7 +818,7 @@ acf_add_options_page(array(
 ));
 }
 
-// Sous page Covoiturage
+// Sous page Wishlist
 
 if(function_exists('acf_add_options_page'))
 {
