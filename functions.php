@@ -370,6 +370,9 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 function create_post_type_html5()
 {
     
+    
+    if(function_exists('acf_add_options_page')){
+        
     //Partie Live pas pour les packs 1
     if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"):
     
@@ -424,6 +427,8 @@ function create_post_type_html5()
     ));
     
     endif;
+        
+    
     
     //Covoiturage
     if(get_field('pack_achete', 'option') == "pack3"):
@@ -484,6 +489,8 @@ function create_post_type_html5()
     ));
     
     endif;
+        
+    }
     
     //Liste invités
     
@@ -847,10 +854,13 @@ add_filter('comment_form_default_fields','bja_disable_comment_url');
 
 function custom_menu_page_removing() {
     //Virer tout ce qui est Actus pour les Packs 1
+    if(function_exists('acf_add_options_page'))
+    {
     if(get_field('pack_achete', 'option') == "pack1"):
      remove_menu_page( 'edit.php' );
      remove_menu_page( 'edit-comments.php' );
     endif;
+    }
 
 }
 add_action( 'admin_menu', 'custom_menu_page_removing' );
