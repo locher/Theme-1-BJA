@@ -18,7 +18,9 @@
 
 $args_photoOfficielles = array(
     //Galerie officielle
-    'post_type'		=> 'photos_officielles'
+    'post_type'		=> 'photos_officielles',
+        'orderby' => 'menu_order',
+    'order' => 'ASC',
 ); 
 
 $query_photosOfficielles = new WP_Query( $args_photoOfficielles );
