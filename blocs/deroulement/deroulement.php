@@ -3,6 +3,8 @@
 $args_tous = array(
     //Déroulement NON REPAS
     'post_type'		=> 'deroulement',
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
     'meta_key'		=> 'categorie',
     'meta_value'	=> '0',
 ); 
