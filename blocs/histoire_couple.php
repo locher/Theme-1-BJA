@@ -1,7 +1,9 @@
 <?php
 
 $args_histoire = array(
-    'post_type'		=> 'histoire'
+    'post_type'		=> 'histoire',
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
 ); 
 
 $query_histoire = new WP_Query( $args_histoire );
