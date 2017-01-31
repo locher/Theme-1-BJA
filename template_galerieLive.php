@@ -39,10 +39,12 @@ $query_photosOfficielles = new WP_Query( $args_photoOfficielles );
                         'post_type'		=> 'photos-invites',
                         'posts_per_page' => -1,
                     ); 
+                
+                    $now = time();
 
                     $queryPhotosInvites = new WP_Query( $argsPhotosInvites );?>
                 <li><a href="#photosInvites"><?php the_field('titre_invites', 'option', false); ?></a></li>
-                <?php if(strtotime($dateMariage) <= strtotime(now)):?>
+                <?php if(strtotime($dateMariage) <= $now):?>
                 <li><a href="#addLive"><?php the_field('titre_formulaire_live', 'option', false); ?></a></li>
                 <?php endif;?>
             </ul>

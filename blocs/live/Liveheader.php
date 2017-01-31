@@ -2,17 +2,18 @@
 
 $destination_photos = "live";
 $dateMariage = get_field('date_du_mariage', 'option', false);
+$now = time();
 
 //Date à laquelle on arrête la timeline : lendemain à midi
 $lendemain8h = strtotime($dateMariage) + (24 + 12) * 3600;
 
 // Si on est avant le lendemain 8h, on met le résultat du formulaire dans la timeline
-if(strtotime(now) <= $lendemain8h){
+if($now <= $lendemain8h){
     $destination_photos = "live";
 }
 
 // Si on est après le lendemain 8h, on met le résultat du formulaire dans la galerie invité
-if(strtotime(now) > $lendemain8h){
+if($now > $lendemain8h){
     $destination_photos = "photos-invites";
 }
 
@@ -66,7 +67,7 @@ if($_FILES && $name_correct == true){
 }
 
 // Si le nom du mec est valide et que y a au moins 1 images valide, on post le truc et on upload ensuite les images
-if($name_correct == true && $file_image == true){
+if(isset($name_correct) && $name_correct == true && $file_image == true){
     
     $postArgs = array(
         'post_title' => $name_author.' '.time(),

@@ -1,8 +1,9 @@
 <?php 
 
 $expire = get_field('date_suppression_formulaire_inscription', 'option', false);
+$now = time();
 
-if(strtotime($expire) > strtotime(now)):
+if($expire == '' or strtotime($expire) > $now):
 
 ?>
 
@@ -19,6 +20,5 @@ if(strtotime($expire) > strtotime(now)):
     <p>Veuillez s'il vous plait confirmer votre présence avant le <strong><?php echo date_i18n($dateformat, $unixtimestamp); ?></strong></p>
     <a href="<?php echo ods_getTemplatePermalink('template_formReponse.php'); ?>" class="bt">Votre réponse</a>
 </div>
-
 
 <?php endif;?>

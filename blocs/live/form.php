@@ -1,9 +1,10 @@
 <?php
 
 $dateMariage = get_field('date_du_mariage', 'option', false);
+$now = time();
 
 //Le formulaire de photo est affiché qu'à partir du jour du mariage
-if(strtotime($dateMariage) <= strtotime(now)):
+if(strtotime($dateMariage) <= $now):
 
 ?>   
 
@@ -19,7 +20,7 @@ if(strtotime($dateMariage) <= strtotime(now)):
         <div class="form_text">
             <p>
                 <label for="name">Votre nom ?</label>
-                <input type="text" id="name" name="name_author" value="<?php echo $_COOKIE["name"]; ?>">
+                <input type="text" id="name" name="name_author" value="<?php if(isset($_COOKIE["name"])){echo $_COOKIE["name"];} ?>">
             </p>
 
             <p>

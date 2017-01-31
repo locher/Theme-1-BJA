@@ -157,7 +157,7 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         <div>
             <p class="formHalf">
                 <label for="name">Votre nom ?</label>
-                <input type="text" id="name" name="name_dude" value="<?php echo $_COOKIE["name"]; ?>">
+                <input type="text" id="name" name="name_dude" value="<?php if(isset($_COOKIE["name"])){echo $_COOKIE["name"];} ?>">
             </p>
 
             <p class="formHalf halfRight">
