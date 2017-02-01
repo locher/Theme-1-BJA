@@ -3,7 +3,7 @@
 $expire = get_field('date_suppression_formulaire_inscription', 'option', false);
 $now = time();
 
-if($expire == '' or strtotime($expire) > $now):
+if($expire == '' or strtotime($expire) > $now or get_field('mode_demo', 'option', false)):
 
 ?>
 

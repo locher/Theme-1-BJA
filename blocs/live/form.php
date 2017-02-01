@@ -4,7 +4,7 @@ $dateMariage = get_field('date_du_mariage', 'option', false);
 $now = time();
 
 //Le formulaire de photo est affiché qu'à partir du jour du mariage
-if(strtotime($dateMariage) <= $now):
+if(strtotime($dateMariage) <= $now or get_field('mode_demo', 'option', false)):
 
 ?>   
 

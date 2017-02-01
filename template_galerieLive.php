@@ -46,7 +46,7 @@ $query_photosOfficielles = new WP_Query( $args_photoOfficielles );
 
                     $queryPhotosInvites = new WP_Query( $argsPhotosInvites );?>
                 <li><a href="#photosInvites"><?php the_field('titre_invites', 'option', false); ?></a></li>
-                <?php if(strtotime($dateMariage) <= $now):?>
+                <?php if(strtotime($dateMariage) <= $now or get_field('mode_demo', 'option', false)):?>
                 <li><a href="#addLive"><?php the_field('titre_formulaire_live', 'option', false); ?></a></li>
                 <?php endif;?>
             </ul>

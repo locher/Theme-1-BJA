@@ -370,7 +370,6 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 function create_post_type_html5()
 {
     
-    
     if(function_exists('acf_add_options_page')){
         
     //Partie Live pas pour les packs 1
@@ -884,7 +883,6 @@ function add_js_scripts() {
 add_action('wp_enqueue_scripts', 'add_js_scripts');
 
 
-
 add_action( 'wp_ajax_ajax_covoiturage', 'ajax_covoiturage' );
 add_action( 'wp_ajax_nopriv_ajax_covoiturage', 'ajax_covoiturage' );
 
@@ -950,7 +948,7 @@ if($name_correct == true){
     //Récup le nom des mariés
     $maries = get_field('maries', 'option'); 
     
-    include('inc/covoiturage_key.php');
+    require('inc/covoiturage_key.php');
     
     function encrypt( $string ) {
       $algorithm = 'rijndael-128'; // You can use any of the available
@@ -967,7 +965,7 @@ if($name_correct == true){
     
     // Design de l'email
     
-    include('emails/template_email.php');
+    require('emails/template_email.php');
     
     $message_confirmation = '<p>Votre covoiturage a bien été posté. Voici un récapitulatif des éléments que vous avez saisi. Ces informations ne sont pas conservés par Bonjour Amour.</p><p><strong>Votre nom</strong> : '.$name_covoit.'</p><p><strong>Numéro de téléphone</strong> : '.$phone_covoit.'</p><p><strong>Email</strong> : '.$email_covoit.'</p><p><strong>Nombre de places</strong> : '.$place_covoit.'</p><p><strong>Ville de départ</strong> : '.$depart_covoit.'</p><p><strong>Arrêts possible</strong> : '.$via_covoit.'</p><p><strong>Date de départ</strong> : '.$DateDepart_covoit.'</p>
     <p><strong>Date de retour</strong> : '.$DateRetour_covoit.'</p><p><strong>Une fois votre voiture remplie ou si vous changez d\'avis, vous pouvez supprimer cette annonce en cliquant sur ce lien :</p><p><a href="'.site_url().'/validation/?type=covoiturage&id='.$id.'">Supprimer mon covoiturage</a></p>';
