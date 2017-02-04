@@ -496,8 +496,8 @@ function create_post_type_html5()
     register_post_type('invite', // Register Custom Post Type
         array(
         'labels' => array(
-            'name' => __('Invités', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Invité', 'bjamour'),
+            'name' => __('Réponses invités', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Réponses invités', 'bjamour'),
             'add_new' => __('Ajouter', 'bjamour'),
             'add_new_item' => __('Ajouter un invité', 'bjamour'),
             'edit' => __('Éditer', 'bjamour'),
@@ -618,8 +618,8 @@ function create_post_type_html5()
     register_post_type('histoire', // Register Custom Post Type
         array(
         'labels' => array(
-            'name' => __('Histoire du couple', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Histoire du couple', 'bjamour'),
+            'name' => __('Notre histoire', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Notre histoire', 'bjamour'),
             'add_new' => __('Ajouter', 'bjamour'),
             'add_new_item' => __('Ajouter une étape', 'bjamour'),
             'edit' => __('Éditer', 'bjamour'),

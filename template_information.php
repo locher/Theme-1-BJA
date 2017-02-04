@@ -11,6 +11,10 @@
 
 </header>
 <!-- /header -->
+  
+<?php include('blocs/wishlist.php'); ?>
+  
+<?php include('blocs/covoiturage.php');?>
    
 <?php            
     $argsHotel = array(
@@ -70,9 +74,5 @@
 </section>
 
 <?php endif;?>
-
-<?php include('blocs/covoiturage.php');?>
-
-<?php include('blocs/wishlist.php'); ?>
 
 <?php get_footer(); ?>
