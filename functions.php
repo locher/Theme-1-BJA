@@ -96,6 +96,9 @@ function html5blank_conditional_scripts()
         
         wp_register_script('tagsinput', get_template_directory_uri() .'/js/lib/jquery.tagsinput.min.js', '3.0.5', true); // Conditional script(s)
         wp_enqueue_script('tagsinput'); // Enqueue it!
+        
+        wp_register_script('scriptForm', get_template_directory_uri() .'/js/formReponse.js', '3.0.5', true); // Conditional script(s)
+        wp_enqueue_script('scriptForm'); // Enqueue it!
     }
 }
 

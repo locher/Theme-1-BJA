@@ -77,15 +77,6 @@
         $('#addPhotos .show').toggleClass('hide');
     });  
         
-    // Input accompagnants
-        
-    $('#nomInvites').tagsInput({
-        'defaultText': '',
-        'width' : '100%',
-        'height' : '50px'
-
-    });
-        
         
     //End function jquery
 	});
