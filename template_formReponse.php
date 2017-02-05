@@ -119,7 +119,14 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         }
     }
     
-}//end isset
+    echo('<div class="alertRsvp alert_ok">Votre réponse a bien été prise en compte !</div>');
+    
+}else{
+    if(isset($_POST['hiddenForm']) && $_POST['hiddenForm'] == 'true'){
+        print('<div class="alertRsvp alert_nok">Le formulaire est incomplet, merci de remplir tous les champs obligatoires.</div>');
+    }  
+}
+//end isset
 
 ?>
 
@@ -181,23 +188,23 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         <div>
             <p class="formHalf">
                 <label for="name">Votre nom ?</label>
-                <input type="text" id="name" name="name_dude" value="<?php if(isset($_COOKIE["name"])){echo $_COOKIE["name"];} ?>">
+                <input type="text" id="name" name="name_dude" value="<?php if(isset($_COOKIE["name"])){echo $_COOKIE["name"];} ?>" required>
             </p>
 
             <p class="formHalf halfRight">
                 <label for="email">Une adresse mail ?</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required>
             </p>
 
             <div class="wrapper-radios">
 
                 <p>
-                    <input type="radio" id="participeOk" name="participe_question" value="true">
+                    <input type="radio" id="participeOk" name="participe_question" value="true" required>
                     <label for="participeOk">Je participerai aux festivités</label>
                 </p>
 
                 <p>
-                    <input type="radio" id="participeNok" name="participe_question" value="false">
+                    <input type="radio" id="participeNok" name="participe_question" value="false" required>
                     <label for="participeNok">Je ne suis malheureusement pas disponible</label>
                 </p>
 
@@ -222,6 +229,8 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
                 <label for="message">Votre message ? <span>(facultatif)</span></label>
                 <textarea name="message_fac" id="message" cols="30" rows="5"></textarea>
             </p>
+            
+            <input type="hidden" value="true" name="hiddenForm">
 
             <p class="tcenter">
                 <button type="submit">

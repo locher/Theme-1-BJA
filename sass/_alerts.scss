@@ -89,5 +89,20 @@
             flex-direction: column;
         }
     }
+}
+
+.alertRsvp{
+    text-align: center;
+    border-left: 4px solid transparent;
+    background-color: $gris;
+    padding: $padding;
+    margin-top: $padding;
     
+    &.alert_ok{
+        border-left-color: rgba(#83c46a, .9);
+    }
+    
+    &.alert_nok{
+        border-left-color: rgba(#c92652, .9);
+    }
 }
