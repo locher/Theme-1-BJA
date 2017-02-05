@@ -286,36 +286,31 @@ function html5blankcomments($comment, $args, $depth)
 	}
 ?>
     <!-- heads up: starting < for the html tag (li or div) in the next line: -->
-    <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
-	<?php if ( 'div' != $args['style'] ) : ?>
-	<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
-	<?php endif; ?>
-	<div class="comment-author vcard">
-	<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
-	</div>
-<?php if ($comment->comment_approved == '0') : ?>
-	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
-	<br />
-<?php endif; ?>
-
-	<div class="comment-meta commentmetadata">
-		<?php
+    <<?php echo $tag ?>
+        <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-
+            <?php comment_ID() ?>">
+                <?php if ( 'div' != $args['style'] ) : ?>
+                    <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+                        <?php endif; ?>
+                            <div class="comment-author vcard">
+                                <?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?> </div>
+                            <?php if ($comment->comment_approved == '0') : ?> <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+                                <br />
+                                <?php endif; ?>
+                                    <div class="comment-meta commentmetadata">
+                                        <?php
 			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?>
-	</div>
-	
-	<div class="wrapperCommentSingle">
-	   	<?php comment_text() ?>
-
-	<div class="reply">
-	<?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-	</div> 
-	</div>
-
-
-	<?php if ( 'div' != $args['style'] ) : ?>
-	</div>
-	<?php endif; ?>
-<?php }
+                                    </div>
+                                    <div class="wrapperCommentSingle">
+                                        <?php comment_text() ?>
+                                            <div class="reply">
+                                                <?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+                                            </div>
+                                    </div>
+                                    <?php if ( 'div' != $args['style'] ) : ?>
+                    </div>
+                    <?php endif; ?>
+                        <?php }
 
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
@@ -381,16 +376,206 @@ function create_post_type_html5()
     
     if(function_exists('acf_add_options_page')){
         
+    // Histoire couple    
+    register_post_type('histoire', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Notre histoire', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Anecdote', 'bjamour'),
+            'add_new' => __('Ajouter une anecdote', 'bjamour'),
+            'add_new_item' => __('Ajouter une anecdote', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer une anecdote', 'bjamour'),
+            'new_item' => __('Nouvelle étape', 'bjamour'),
+            'view_item' => __('Voir l\'étape', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'page-attributes'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-heart',
+        'menu_position' => 10
+    ));
+        
+    // Déroulement    
+    register_post_type('deroulement', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Déroulement', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Déroulement', 'bjamour'),
+            'add_new' => __('Ajouter une étape', 'bjamour'),
+            'add_new_item' => __('Ajouter une étape', 'bjamour'),
+            'edit' => __('Éditer une étape', 'bjamour'),
+            'edit_item' => __('Éditer une étape', 'bjamour'),
+            'new_item' => __('Nouvelle étape', 'bjamour'),
+            'view_item' => __('Voir l\'étape', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'page-attributes'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-clock',
+        'menu_position' => 10
+    ));
+        
+    // Témoins
+    register_post_type('temoins', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Nos témoins', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Témoin', 'bjamour'),
+            'add_new' => __('Ajouter un témoin', 'bjamour'),
+            'add_new_item' => __('Ajouter un témoin', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un témoin', 'bjamour'),
+            'new_item' => __('Nouveau témoin', 'bjamour'),
+            'view_item' => __('Voir le témoin', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-groups',
+        'menu_position' => 10
+    ));
+        
+    //Wishlist
+    if(get_field('pack_achete', 'option') == "pack3"):
+    
+    register_post_type('wishlist', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Liste cadeaux', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Liste cadeaux', 'bjamour'),
+            'add_new' => __('Ajouter un cadeau', 'bjamour'),
+            'add_new_item' => __('Ajouter un cadeau', 'bjamour'),
+            'edit' => __('Éditer un cadeau', 'bjamour'),
+            'edit_item' => __('Éditer un cadeau', 'bjamour'),
+            'new_item' => __('Nouveau cadeau', 'bjamour'),
+            'view_item' => __('Voir le cadeau', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-cart',
+        'menu_position' => 10
+    ));
+    
+    endif;
+        
+    
+    
+    //Covoiturage
+    if(get_field('pack_achete', 'option') == "pack3"):
+    
+    register_post_type('covoiturage', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Covoiturage', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Covoiturage', 'bjamour'),
+            'add_new' => __('Ajouter un trajet', 'bjamour'),
+            'add_new_item' => __('Ajouter un trajet', 'bjamour'),
+            'edit' => __('Éditer un trajet', 'bjamour'),
+            'edit_item' => __('Éditer le trajet', 'bjamour'),
+            'new_item' => __('Nouveau trajet', 'bjamour'),
+            'view_item' => __('Voir le trajet', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-location-alt',
+        'menu_position' => 10
+    ));
+    
+    endif;
+    
+    
+    // Liste Hôtels    
+    register_post_type('hotels', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Hôtels', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Hôtel', 'bjamour'),
+            'add_new' => __('Ajouter un hôtel', 'bjamour'),
+            'add_new_item' => __('Ajouter un hôtel', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un hôtel', 'bjamour'),
+            'new_item' => __('Nouvel hôtel', 'bjamour'),
+            'view_item' => __('Voir l\'hôtel', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-store',
+        'menu_position' => 10
+    ));
+        
+    // Photos officielles
+    
+    register_post_type('photos_officielles', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Photos officielles', 'bjamour'), // Rename these to suit
+            'singular_name' => __('Photos officielles', 'bjamour'),
+            'add_new' => __('Ajouter un album', 'bjamour'),
+            'add_new_item' => __('Ajouter un album', 'bjamour'),
+            'edit' => __('Éditer', 'bjamour'),
+            'edit_item' => __('Éditer un album', 'bjamour'),
+            'new_item' => __('Nouvel album', 'bjamour'),
+            'view_item' => __('Voir l\'album', 'bjamour')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'page-attributes'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+		'menu_icon' => 'dashicons-format-gallery',
+        'menu_position' => 10
+    ));
+
+        
     //Partie Live pas pour les packs 1
     if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"):
     
     register_post_type('live', // Register Custom Post Type
         array(
         'labels' => array(
-            'name' => __('Live!', 'bjamour'), // Rename these to suit
+            'name' => __('Photos Live !', 'bjamour'), // Rename these to suit
             'singular_name' => __('Live', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un live', 'bjamour'),
+            'add_new' => __('Ajouter une publication', 'bjamour'),
+            'add_new_item' => __('Ajouter une publication', 'bjamour'),
             'edit' => __('Éditer', 'bjamour'),
             'edit_item' => __('Éditer un live', 'bjamour'),
             'new_item' => __('Nouveau live', 'bjamour'),
@@ -406,7 +591,8 @@ function create_post_type_html5()
             'thumbnail'
         ), // Go to Dashboard Custom HTML5 Blank post for supports
         'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-images-alt'
+		'menu_icon' => 'dashicons-format-image',
+        'menu_position' => 10
     ));
     
     register_post_type('photos-invites', // Register Custom Post Type
@@ -431,75 +617,13 @@ function create_post_type_html5()
             'thumbnail'
         ), // Go to Dashboard Custom HTML5 Blank post for supports
         'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-images-alt'
+		'menu_icon' => 'dashicons-format-image',
+        'menu_position' => 10
     ));
     
     endif;
         
-    
-    
-    //Covoiturage
-    if(get_field('pack_achete', 'option') == "pack3"):
-    
-    register_post_type('covoiturage', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Covoiturage', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Covoiturage', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un covoiturage', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer un covoiturage', 'bjamour'),
-            'new_item' => __('Nouveau covoiturage', 'bjamour'),
-            'view_item' => __('Voir le covoiturage', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'excerpt',
-            'thumbnail'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-location'
-    ));
-    
-    endif;
-    
-    //Wishlist
-    if(get_field('pack_achete', 'option') == "pack3"):
-    
-    register_post_type('wishlist', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Liste cadeaux', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Liste cadeaux', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un cadeau', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer un cadeau', 'bjamour'),
-            'new_item' => __('Nouveau cadeau', 'bjamour'),
-            'view_item' => __('Voir le cadeau', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'excerpt',
-            'thumbnail'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-cart'
-    ));
-    
-    endif;
         
-    }
-    
     //Liste invités
     
     register_post_type('invite', // Register Custom Post Type
@@ -521,132 +645,11 @@ function create_post_type_html5()
             'title'
         ), // Go to Dashboard Custom HTML5 Blank post for supports
         'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-groups'
+		'menu_icon' => 'dashicons-forms',
+        'menu_position' => 99
     ));
-    
-    // Témoins
-    
-    register_post_type('temoins', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Témoins', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Témoin', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un témoin', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer un témoin', 'bjamour'),
-            'new_item' => __('Nouveau témoin', 'bjamour'),
-            'view_item' => __('Voir le témoin', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-groups'
-    ));
-    
-    // Liste Hôtels
-    
-    register_post_type('hotels', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Hôtels', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Hôtel', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un hôtel', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer un hôtel', 'bjamour'),
-            'new_item' => __('Nouvel hôtel', 'bjamour'),
-            'view_item' => __('Voir l\'hôtel', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-admin-multisite'
-    ));
-    
-    // Déroulement
-    
-    register_post_type('deroulement', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Déroulement', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Déroulement', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter un déroulé', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer un déroulé', 'bjamour'),
-            'new_item' => __('Nouveau déroulé', 'bjamour'),
-            'view_item' => __('Voir le déroulé', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'page-attributes'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-admin-multisite'
-    ));
-    
-    // Déroulement
-    
-    register_post_type('photos_officielles', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Photos officielles', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Photos officielles', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter une galerie', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer une galerie', 'bjamour'),
-            'new_item' => __('Nouvelle galerie', 'bjamour'),
-            'view_item' => __('Voir la galerie', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'page-attributes'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-images-alt'
-    ));
-    
-    // Histoire couple
-    
-    register_post_type('histoire', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Notre histoire', 'bjamour'), // Rename these to suit
-            'singular_name' => __('Notre histoire', 'bjamour'),
-            'add_new' => __('Ajouter', 'bjamour'),
-            'add_new_item' => __('Ajouter une étape', 'bjamour'),
-            'edit' => __('Éditer', 'bjamour'),
-            'edit_item' => __('Éditer une étape', 'bjamour'),
-            'new_item' => __('Nouvelle étape', 'bjamour'),
-            'view_item' => __('Voir l\'étape', 'bjamour')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'page-attributes'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-		'menu_icon' => 'dashicons-heart'
-    ));
-}
+
+}}
 
 
 /*------------------------------------*\
@@ -688,15 +691,16 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Administration',
 		'menu_slug' 	=> 'admin_bja',
 		'capability'	=> 'edit_themes',
-		'redirect'		=> false
+		'redirect'		=> false,
 	));
 	
 	acf_add_options_page(array(
 		'page_title' 	=> 'Vos options',
-		'menu_title'	=> 'Vos options',
+		'menu_title'	=> 'Vos options générales',
 		'menu_slug' 	=> 'vos-options',
 		'capability'	=> 'edit_posts',
-		'redirect'		=> false
+		'redirect'		=> false,
+        'parent_slug' => 'bjaoptions'
 	));	
 }
 
@@ -752,7 +756,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options page témoins',
-'menu_title' 	=> 'Options témoins',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_temoins',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=temoins',
@@ -767,7 +771,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options page hôtel',
-'menu_title' 	=> 'Options hôtel',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_hotel',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=hotels',
@@ -782,7 +786,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options Live',
-'menu_title' 	=> 'Options Live',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_live',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=live',
@@ -797,7 +801,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options photos invités',
-'menu_title' 	=> 'Options photos invités',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_invites',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=photos-invites',
@@ -812,7 +816,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options histoire du couple',
-'menu_title' 	=> 'Options histoire',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_histoire',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=histoire',
@@ -827,7 +831,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options covoiturage',
-'menu_title' 	=> 'Options covoiturage',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_covoiturage',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=covoiturage',
@@ -842,7 +846,7 @@ if(function_exists('acf_add_options_page'))
 {
 acf_add_options_page(array(
 'page_title' 	=> 'Options wishlist',
-'menu_title' 	=> 'Options wishlist',
+'menu_title' 	=> 'Réglages fonctionnalité',
 'menu_slug' 	=> 'options_wishlist',
 'capability' 	=> 'edit_posts', 
 'parent_slug'	=> 'edit.php?post_type=wishlist',
@@ -858,26 +862,6 @@ function bja_disable_comment_url($fields) {
     return $fields;
 }
 add_filter('comment_form_default_fields','bja_disable_comment_url');
-
-
-
-//Supprimer des parties de l'admin
-
-function custom_menu_page_removing() {
-    //Virer tout ce qui est Actus pour les Packs 1
-    if(function_exists('acf_add_options_page'))
-    {
-    if(get_field('pack_achete', 'option') == "pack1"):
-     remove_menu_page( 'edit.php' );
-     remove_menu_page( 'edit-comments.php' );
-    endif;
-    }
-
-}
-add_action( 'admin_menu', 'custom_menu_page_removing' );
-
-
-
 
 
 // Add covoiturage AJAX
@@ -1169,5 +1153,45 @@ function my_acf_init() {
 }
 
 add_action('acf/init', 'my_acf_init');
+
+
+//Supprimer des parties de l'admin
+
+function custom_menu_page_removing() {
+    //Virer tout ce qui est Actus pour les Packs 1
+    if(function_exists('acf_add_options_page'))
+    {
+    if(get_field('pack_achete', 'option') == "pack1"):
+     remove_menu_page( 'edit.php' );
+     remove_menu_page( 'edit-comments.php' );
+    endif;
+    }
+    
+    $user = wp_get_current_user();
+        if ( in_array( 'editor', (array) $user->roles ) ) {
+        remove_menu_page( 'tools.php' );
+        remove_menu_page( 'index.php' );
+        remove_menu_page( 'upload.php' );
+        remove_menu_page( 'admin.php' );
+    }   
+    
+//    // Add to admin_menu function
+//    add_menu_page('Vos options', 'Vos options', 'edit_posts', 'bjaoptions', 'redirect_to_generales', '', 90);
+//    
+//    add_submenu_page('bjaoptions','Vie privée','Vie privée','edit_posts', 'very_simple_password_for_wordpress', 'very_simple_password_for_wordpress');
+//    
+//    function redirect_to_generales(){
+//        wp_redirect('admin.php?page=vos-options');
+//        exit;
+//    }
+}
+
+add_action( 'admin_menu', 'custom_menu_page_removing' );
+
+
+
+
+
+
 
 ?>
