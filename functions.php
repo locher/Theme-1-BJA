@@ -91,6 +91,12 @@ function html5blank_conditional_scripts()
         wp_register_script('script_gmap', get_template_directory_uri() . '/js/gmap.js', array('jquery'), '1.0.1', true); // Conditional script(s)
         wp_enqueue_script('script_gmap'); // Enqueue it!
     }
+    
+    if(is_page_template('template_formReponse.php')){
+        
+        wp_register_script('tagsinput', get_template_directory_uri() .'/js/lib/jquery.tagsinput.min.js', '3.0.5', true); // Conditional script(s)
+        wp_enqueue_script('tagsinput'); // Enqueue it!
+    }
 }
 
 // Load HTML5 Blank styles

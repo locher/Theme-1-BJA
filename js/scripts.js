@@ -23,11 +23,11 @@
         function verif_accompagnants(){
 
             if($('#plusOne').prop('checked') && $('#participeOk').prop('checked')){
-                $('#nomInvites').parent().slideDown();
+                //$('#nomInvites').parent().slideDown();
             }
 
             else{
-                $('#nomInvites').parent().slideUp();
+                //$('#nomInvites').parent().slideUp();
             }
         }
 
@@ -76,6 +76,12 @@
         $('#addPhotos .hide').toggleClass('hide');
         $('#addPhotos .show').toggleClass('hide');
     });  
+        
+    // Input accompagnants
+        
+    $('#nomInvites').tagsInput({
+        'defaultText': '',
+    });
         
         
     //End function jquery

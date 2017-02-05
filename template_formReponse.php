@@ -25,6 +25,15 @@ if(isset($_POST['plusOne']) && $_POST['plusOne'] != ""){
 
 if(isset($_POST['nomInvites']) && $_POST['nomInvites'] != ""){
     $nomInvites = $_POST['nomInvites'];
+    $parseInvites = explode(',',$nomInvites);
+    
+
+    
+    var_dump($parseInvites);
+    
+    // Parse liste
+    
+    
 }
 
 if(isset($_POST['okMailing']) && $_POST['okMailing'] != ""){
@@ -54,8 +63,27 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
     if($mailing == "true") update_field('ok_email', $mailing, $id);    
     update_field('accompagne', $plusOne, $id);
     update_field('email', $email, $id);
-    update_field('nom_des_accompagnants', $nomInvites, $id);
+    
+    
+    // Noms des accompagnants
+    if(isset($nomInvites)){
+        //nb invités
+        $nbInvites = count($parseInvites);
+        
+        $value = array();
+        
+        for($i = 0; $i < $nbInvites; $i++){
+            array_push($value, array('nom' => $parseInvites[$i]));
+        }
+        
+        update_field('accompagnants', $value, $id);
+    }
+
+    
+
+    
     update_field('message_facultatif', $message, $id);
+    
 
 
     // Envoi d'un email s'il a pas coché la case pour pas avoir les notifs email
