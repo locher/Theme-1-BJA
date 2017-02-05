@@ -10,10 +10,19 @@ if ($_GET['c']):
     if ($invites->have_posts()):
     
     //création du tableau avec les entêtes
-    $list_invites = array(array('Nom','Email','Participera ?', 'Viendra accompagné ?','Noms des accompagnants','Message'));
+    $list_invites = array(array('Nom','Email','Participera ?', 'Nombre de personnes','Noms des accompagnants','Message'));
+    $nbPersonnesTotales = 0;
     
     while ($invites->have_posts()) : $invites->the_post();
 
+    // Noms des accompagnants    
+    $nomsAccompagnants = '';
+    
+    if(have_rows('accompagnants')){
+        while( have_rows('accompagnants') ): the_row();
+        $nomsAccompagnants .= get_sub_field('nom').', ';
+        endwhile;
+    }
 
     //Remplacer les 1 par des Oui ou Non
     $participera = get_field('participera');
@@ -25,9 +34,12 @@ if ($_GET['c']):
     else $accompagne = 'Non';   
 
     //Ajout d'autant ligne qu'il y a dans le while
-    array_push($list_invites, array(get_the_title(), get_field('email'), $participera, $accompagne, get_field('nom_des_accompagnants'), strip_tags(get_field('message_facultatif'))));
+    array_push($list_invites, array(get_the_title(), get_field('email'), $participera, get_field('nombre_de_personnes'), $nomsAccompagnants, strip_tags(get_field('message_facultatif'))));
+    $nbPersonnesTotales += get_field('nombre_de_personnes');
     
     endwhile;
+
+    array_push($list_invites, array('', '', '', 'Nombres de personnes total : '.$nbPersonnesTotales, '', ''));
     
     endif; //query   
     
@@ -75,7 +87,9 @@ Le nom du ficher est composé de la date et de l'heure du jour, pour que vous sa
 
     if ($invites->have_posts()): 
 
-    echo('<table class="widefat striped pages"><thead><tr><th class="manage-column">Nom</th><th class="manage-column">Email</th><th class="manage-column">Participera</th><th class="manage-column">Sera accompagné</th><th class="manage-column">Nom des accompagnants</th><th class="manage-column">Message</th></tr></thead>');
+    echo('<table class="widefat striped pages"><thead><tr><th class="manage-column">Nom</th><th class="manage-column">Email</th><th class="manage-column">Participera</th><th class="manage-column">Nombre de personnes</th><th class="manage-column">Nom des accompagnants</th><th class="manage-column">Message</th></tr></thead>');
+    
+    $nbPersonnesTotales = 0;
 
     while ($invites->have_posts()) : $invites->the_post();
     
@@ -85,16 +99,34 @@ Le nom du ficher est composé de la date et de l'heure du jour, pour que vous sa
     
     $accompagne = get_field('accompagne');
     if($accompagne == 1) $accompagne = '<strong style="color: green">Oui</strong>';
-    else $accompagne = '<span style="color:red;">Non</span>';    
+    else $accompagne = '<span style="color:red;">Non</span>';   
+    
+    $nbPersonnes = get_field('nombre_de_personnes');
+    
+    $nbPersonnesTotales += $nbPersonnes;
+    
+    // Noms des accompagnants
+    
+    $nomsAccompagnants = '';
+    
+    if(have_rows('accompagnants')){
+        while( have_rows('accompagnants') ): the_row();
+        $nomsAccompagnants .= get_sub_field('nom').', ';
+        endwhile;
+    }
 
-    echo('<tr><td>'.get_the_title().'</td><td>'.get_field('email').'</td><td>'.$participera.'</td><td>'.$accompagne.'</td><td>'.get_field('nom_des_accompagnants').'</td><td>'.get_field('message_facultatif').'</td></tr>');
+    echo('<tr><td>'.get_the_title().'</td><td>'.get_field('email').'</td><td>'.$participera.'</td><td>'.$nbPersonnes.'</td><td>'.$nomsAccompagnants.'</td><td>'.get_field('message_facultatif').'</td></tr>');
 
     endwhile; 
+    
+    echo('<tfoot><tr><th class="manage-column"></th><th class="manage-column"></th><th class="manage-column"></th><th class="manage-column">'.$nbPersonnesTotales.'</th><th class="manage-column"></th><th class="manage-column"></th></tr></tfoot>');
 
     echo("</table>");
     
     endif;
     
 ?>
+
+<h2>Nombre total de personnes présentes : <?php echo $nbPersonnesTotales;?></h2>
 
 </div>
