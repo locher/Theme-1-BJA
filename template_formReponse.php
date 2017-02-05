@@ -216,8 +216,8 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
 
             </div>
 
-            <p>
-                <label for="nomInvites">Merci de préciser le ou les noms des accompagnants</label>
+            <p class="accompagnants">
+                <label for="nomInvites">Merci de préciser le ou les noms des accompagnants <span>(en les séparants par des virgules ou en appuyant sur entré)</span></label>
                 <input type="text" name="nomInvites" id="nomInvites" cols="30" rows="5" />
             </p>
 

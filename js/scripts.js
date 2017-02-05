@@ -23,11 +23,11 @@
         function verif_accompagnants(){
 
             if($('#plusOne').prop('checked') && $('#participeOk').prop('checked')){
-                //$('#nomInvites').parent().slideDown();
+                $('.accompagnants').slideDown();
             }
 
             else{
-                //$('#nomInvites').parent().slideUp();
+                $('.accompagnants').slideUp();
             }
         }
 
@@ -81,6 +81,9 @@
         
     $('#nomInvites').tagsInput({
         'defaultText': '',
+        'width' : '100%',
+        'height' : '50px'
+
     });
         
         
