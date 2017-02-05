@@ -7,6 +7,8 @@
 
 <?php
 
+$nbPersonnes = 0;
+
 if(isset($_POST['name_dude']) && $_POST['name_dude'] != ""){
     $name = $_POST['name_dude'];
 }
@@ -26,14 +28,6 @@ if(isset($_POST['plusOne']) && $_POST['plusOne'] != ""){
 if(isset($_POST['nomInvites']) && $_POST['nomInvites'] != ""){
     $nomInvites = $_POST['nomInvites'];
     $parseInvites = explode(',',$nomInvites);
-    
-
-    
-    var_dump($parseInvites);
-    
-    // Parse liste
-    
-    
 }
 
 if(isset($_POST['okMailing']) && $_POST['okMailing'] != ""){
@@ -56,10 +50,13 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         'post_status' => 'publish',
     ); 
     
-    $id = wp_insert_post($postArgs);    
+    $id = wp_insert_post($postArgs);
 
     update_field('email', $email, $id);    
-    if($participe == "true") update_field('participera', $participe, $id);    
+    if($participe == "true"){
+        update_field('participera', $participe, $id);
+        $nbPersonnes += 1;
+    }
     if($mailing == "true") update_field('ok_email', $mailing, $id);    
     update_field('accompagne', $plusOne, $id);
     update_field('email', $email, $id);
@@ -69,6 +66,7 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
     if(isset($nomInvites)){
         //nb invités
         $nbInvites = count($parseInvites);
+        $nbPersonnes += $nbInvites;
         
         $value = array();
         
@@ -78,10 +76,8 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         
         update_field('accompagnants', $value, $id);
     }
-
     
-
-    
+    update_field('nombre_de_personnes', $nbPersonnes, $id);
     update_field('message_facultatif', $message, $id);
     
 
