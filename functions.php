@@ -1223,4 +1223,11 @@ function add_toolbar_items($admin_bar){
     );
 }
 
+// URL logo login
+
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+function custom_loginlogo_url($url) {
+	return 'http://bonjouramour.fr';
+}
+
 ?>

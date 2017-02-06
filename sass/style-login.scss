@@ -1,0 +1,75 @@
+$primaire: #b2558c;
+$secondaire: #fff66f;
+
+body{
+    background-color: $primaire;
+}
+
+.wp-core-ui .button-primary{
+    box-shadow: none;
+    text-shadow: none;
+    
+    transition: all ease .25s;
+    display: inline-block;
+    border-radius: 7px;
+    padding: .5em 30px !important;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.1em;
+    float:none;
+    border: 0;
+    height: auto !important;
+    margin-top: 20px;
+
+    
+    background: linear-gradient(to right, darken($primaire, 7%), lighten($primaire, 2%));
+    box-shadow: 0 3px 0 darken($primaire, 20%);
+    color: #fff;
+    
+    &:hover,
+    &:focus{
+        background: linear-gradient(to right, darken($primaire, 7%), lighten($primaire, 2%));
+        box-shadow: 0 5px 0 darken($primaire, 20%);
+    }
+}
+
+.forgetmenot{
+    float: none !important;
+}
+
+.login h1 a{
+    background-image: none,url(img/logo_bonjourAmour.svg);
+    background-size: 150px;
+    height: 110px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.login #login_error, .login .message {
+    border-left: 4px solid $secondaire;
+}
+
+input[type="text"]:focus, input[type="search"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, input[type="password"]:focus, input[type="checkbox"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+    border-color: $primaire;
+    box-shadow: 0 0 2px rgba($primaire,.8);
+}
+
+.login #backtoblog a:focus, .login #nav a:focus, .login h1 a:focus {
+    color: #fff;
+}
+
+.login #backtoblog a, .login #nav a{
+    color: #fff;
+    
+    &:hover{
+        color: $secondaire;
+    }
+}
+
+a, a:hover, a:focus, a:active{
+    color: $primaire;
+    -webkit-box-shadow: 0 !important;
+    box-shadow: 0 !important;
+}
