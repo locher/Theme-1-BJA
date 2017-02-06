@@ -1196,7 +1196,31 @@ function remove_dashboard_widgets() {
 
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
+//Admin bar
 
+function remove_admin_bar_links() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu('new-content');
+	$wp_admin_bar->remove_menu('wp-logo');
+}
 
+add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
+
+// Add links custom bar
+
+add_action('admin_bar_menu', 'add_toolbar_items', 1000);
+
+function add_toolbar_items($admin_bar){ 
+    $admin_bar->add_menu( array( 
+        'id' => 'bja-guide',
+        'title' => 'Consulter les guides Bonjour Amour',
+        'href' => 'http://bonjouramour.fr/guides',
+        'meta' => array(
+            'title' => __('Voir les guides Bonjour Amour'), 
+            'target' => '_blank',
+        ),
+    )
+    );
+}
 
 ?>
