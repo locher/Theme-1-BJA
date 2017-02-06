@@ -72,6 +72,8 @@
 <?php endif;?>
 <?php endif;?>
 
+<?php include('blocs/rappelWishlist.php');?>
+
 <?php
     //Déroulement map
     include('blocs/deroulement/deroulementMap.php');

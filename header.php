@@ -19,7 +19,7 @@
 		<?php wp_head(); ?>
 
 	</head>
-	<body <?php body_class(); ?>>
+	<body <?php body_class(get_field('pack_achete', 'option')); ?>>
 		
     <div class="svg-wrapper" aria-hidden="true">
         <?php echo file_get_contents(get_template_directory_uri().'/img/svg-prod/sprite/svgs.svg'); ?>
