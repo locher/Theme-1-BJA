@@ -696,11 +696,10 @@ if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
 		'page_title' 	=> 'Vos options',
-		'menu_title'	=> 'Vos options générales',
+		'menu_title'	=> 'Vos options',
 		'menu_slug' 	=> 'vos-options',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false,
-        'parent_slug' => 'bjaoptions'
 	));	
 }
 
@@ -1175,21 +1174,27 @@ function custom_menu_page_removing() {
         remove_menu_page( 'admin.php' );
     }   
     
-//    // Add to admin_menu function
-//    add_menu_page('Vos options', 'Vos options', 'edit_posts', 'bjaoptions', 'redirect_to_generales', '', 90);
-//    
-//    add_submenu_page('bjaoptions','Vie privée','Vie privée','edit_posts', 'very_simple_password_for_wordpress', 'very_simple_password_for_wordpress');
-//    
-//    function redirect_to_generales(){
-//        wp_redirect('admin.php?page=vos-options');
-//        exit;
-//    }
 }
 
 add_action( 'admin_menu', 'custom_menu_page_removing' );
 
+//Remove du dashboard
 
+function remove_dashboard_widgets() {
+	global $wp_meta_boxes;
 
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+//	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+//	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_drafts']);
+//	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+//	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+
+}
+
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
 
 
