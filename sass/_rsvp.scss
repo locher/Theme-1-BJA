@@ -21,6 +21,7 @@
     > div{
         display: flex;
         align-items: center;
+        width: calc(50% - 10px);
         
         @include width-below(600px){
             margin: 10px 0;
@@ -28,6 +29,7 @@
         
         &:first-child{
             text-align:right;
+            justify-content: flex-end;
             order: 1;
             
             @include width-below(600px){
@@ -63,7 +65,7 @@
 }
 
 .coeurForm{
-    
+    width: 20px !important;
     order: 2;
     svg{
         fill: $primaire;
