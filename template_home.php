@@ -67,6 +67,10 @@
        </div>
    </div>   
 <?php endwhile;?>
+   
+<div class="all-actus">
+    <a href="<?php echo site_url('/actualites'); ?>" class="bt btVide">Voir toutes les actualités</a>
+</div>
     
 </section>
 <?php endif;?>
