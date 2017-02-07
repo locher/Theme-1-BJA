@@ -854,6 +854,21 @@ acf_add_options_page(array(
 ));
 }
 
+// Sous page Déroulement
+
+if(function_exists('acf_add_options_page'))
+{
+acf_add_options_page(array(
+'page_title' 	=> 'Options déroulement',
+'menu_title' 	=> 'Réglages fonctionnalité',
+'menu_slug' 	=> 'options_deroulement',
+'capability' 	=> 'edit_posts', 
+'parent_slug'	=> 'edit.php?post_type=deroulement',
+'position'	=> false,
+'redirect'	=> false,
+));
+}
+
 // Comment form
 	
 function bja_disable_comment_url($fields) { 

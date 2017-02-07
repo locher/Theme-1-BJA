@@ -18,8 +18,8 @@ $query_tous = new WP_Query( $args_tous );
 <section class="bgsection">
 
 <div class="wrapper-title">
-    <h2>Déroulement</h2>
-    <p class="subtitle">Toutes les étapes de notre journée</p>
+    <h2><?php the_field('titre_deroulement', 'option', false);?></h2>
+    <p class="subtitle"><?php the_field('sous-titre_deroulement', 'option', false);?></p>
     <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
 </div>
 
