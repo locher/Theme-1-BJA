@@ -1,24 +1,18 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+<!-- header -->
+<header class="header" role="banner"> 
 
-			<!-- article -->
-			<article id="post-404">
+    <?php include('logo-nav.php');?>
 
-				<h1><?php _e( 'Page not found', 'html5blank' ); ?></h1>
-				<h2>
-					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'html5blank' ); ?></a>
-				</h2>
+    <div class="headerContent">
+        <div>     
+            <p class="h1">Erreur 404</p>
+            <p class="date-header">Ne dit-on pas que l'amour dure 404 ans ?</p>
+            <p>(Non.)</p>
+        </div>
+    </div>
 
-			</article>
-			<!-- /article -->
-
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_sidebar(); ?>
-
+</header>
+<!-- /header -->
 <?php get_footer(); ?>
