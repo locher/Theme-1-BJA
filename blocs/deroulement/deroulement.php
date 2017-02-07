@@ -65,6 +65,8 @@ $args_tous = array(
     'post_type'		=> 'deroulement',
     'meta_key'		=> 'categorie',
     'meta_value'	=> '1',
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
 ); 
 
 $query_tous = new WP_Query( $args_tous );
