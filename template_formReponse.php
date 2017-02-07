@@ -57,7 +57,7 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
         update_field('participera', $participe, $id);
         $nbPersonnes += 1;
     }
-    if($mailing == "true") update_field('ok_email', $mailing, $id);    
+    if($mailing == "true"){update_field('ok_email', $mailing, $id);}
     update_field('accompagne', $plusOne, $id);
     update_field('email', $email, $id);
     
@@ -79,6 +79,8 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
     
     update_field('nombre_de_personnes', $nbPersonnes, $id);
     update_field('message_facultatif', $message, $id);
+    
+    
     
 
 
@@ -229,6 +231,17 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
                 <label for="message">Votre message ? <span>(facultatif)</span></label>
                 <textarea name="message_fac" id="message" cols="30" rows="5"></textarea>
             </p>
+            
+            <?php if(get_field('pack_achete', 'option') == "pack2" OR get_field('pack_achete', 'option') == "pack3"):?>
+            
+            <div class="wrapper-checkbox">
+                <p>
+                    <input type="checkbox" id="mailNews" name="okMailing" value="true">
+                    <label for="mailNews">M'envoyer un mail à chaque nouvelle actualité<span class="tick"></span></label>
+                </p>       
+            </div>
+            
+            <?php endif;?>
             
             <input type="hidden" value="true" name="hiddenForm">
 

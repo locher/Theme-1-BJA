@@ -19,10 +19,10 @@
 
     <div class="headerContent">
         <div>     
-            <p class="h1">Save the date !</p>
+            <p class="h1"><?php the_field('texte_page_daccueil', 'option');?></p>
             <p class="date-header">Le <span><?php the_field('date_du_mariage', 'option'); ?></span> à partir de <span><?php echo $heureMariage->format('G\hi'); ?></span></p>
 
-            <p class="text-compteur">On a compté, il reste exactement :</p>
+            <p class="text-compteur"><?php the_field('compteur_home', 'option');?></p>
             
             <div id="clock" class="countdown"></div>
         </div>
