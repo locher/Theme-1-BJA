@@ -44,7 +44,19 @@
             <div class="select-pack">
                 <span class="title_pack">Pack présenté</span>
                 <ul class="list-pack">
-                   <li class="actuel_pack">Pack 1 : Châton mignon <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleche"></use></svg></li>
+                   <li class="actuel_pack">
+                      
+                      <?php 
+                        switch(get_field('pack_achete', 'option')){
+                            case('pack1') : echo('Pack 1 : Châton mignon'); break;
+                            case('pack2') : echo('Pack 2 : Chatounette'); break;
+                            case('pack3') : echo('Pack 3 : Matou d\'la street'); break;
+                        }
+                       
+                       ?>
+                       
+                       
+                    <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleche"></use></svg></li>
                     <li>
                         <ul class="submenu">
                             <li><a href="http://pack1.bjramour.fr">Pack 1 : Châton mignon</a></li>
