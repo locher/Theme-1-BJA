@@ -4,7 +4,7 @@
 		
         'use strict';
         
-     $('.lightbox').swipebox();     
+     $('.lightbox').swipebox();
         
         
     //End function jquery

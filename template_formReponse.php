@@ -80,9 +80,6 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
     update_field('nombre_de_personnes', $nbPersonnes, $id);
     update_field('message_facultatif', $message, $id);
     
-    
-    
-
 
     // Envoi d'un email s'il a pas coché la case pour pas avoir les notifs email
     if(!get_field('email_invite', 'option')){
