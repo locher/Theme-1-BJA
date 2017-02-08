@@ -1,0 +1,137 @@
+$primaire-vente: #b2558c;
+$secondaire-vente: #fff66f;
+$typo-texte-vente: 'Domus';
+
+.bja-bar{
+    position: relative;
+    padding-top: 80px;
+}
+
+
+.toolbar-bja{
+    font-weight: $typo-texte-vente;
+    background-color: $primaire-vente;
+    padding: $padding/2 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    
+    .bt-vente{
+        transition: all ease .25s;
+        display: inline-block;
+        border-radius: 7px;
+        padding: 1em 30px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        line-height: 1.1em;
+        
+        background: linear-gradient(to right, darken($secondaire-vente, 7%), lighten($secondaire-vente, 2%));
+        //box-shadow: 0 3px 0 darken($secondaire-vente, 30%);
+        color: rgba(#000, .5);
+        
+        border: 2px solid transparent;
+
+        &:hover,
+        &:focus{
+            //box-shadow: 0 5px 0 darken($secondaire-vente, 30%);
+        }
+
+        @include width-below(550px){
+            font-size: 1.1rem;
+            padding: 1em 20px;
+        }
+    }
+    
+    .bt-vide{
+        border: 2px solid $secondaire-vente;
+        background: none;
+        color: $secondaire-vente;
+    }
+    
+    .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .select-pack{
+        flex:2;
+        
+    }
+    
+    .title_pack{
+        color: $secondaire-vente;
+        text-transform: uppercase;
+        font-weight: 100;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    .list-pack{
+        display: inline-block;
+        padding-right: 30px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid rgba(#fff, .5);
+        position: relative;
+    }
+    
+    .actuel_pack{
+        color: #fff;
+        
+        svg{
+            position: absolute;
+            height: 12px;
+            width: 12px;
+            right: 3px;
+            bottom: 7px;
+            fill: rgba(#fff, .5)
+        }
+    }
+    
+    .submenu{
+        display: none;
+        position: absolute;
+        background: rgba(#fff, .8);
+        width: 100%;
+        margin-top: 5px;
+        
+        li:nth-child(even){
+            background-color: rgba($primaire-vente, .05);
+        }
+        
+        a{
+            transition: all ease .3s;
+            display: block;
+            padding: .3em 1em;
+            color: $primaire-vente;
+            text-decoration: none;
+            
+            &:hover{
+                background-color: $primaire-vente;
+                color: #fff;
+            }
+        }
+    }
+    
+    .logo-bja{
+        margin-right: 20px;
+    }
+    
+    .list-pack:hover .submenu{
+        display: block;
+    }
+    
+    .actuel_pack:hover{
+        cursor: pointer;
+    }
+}
+
+.bt-contact{
+    
+     @include width-below(800px){
+        display: none !important;
+    }   
+}

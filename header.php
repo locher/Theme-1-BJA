@@ -17,13 +17,53 @@
 		<link href="https://fonts.googleapis.com/css?family=Alegreya:400,400i,700" rel="stylesheet"> 
 
 		<?php wp_head(); ?>
+		
+		<?php
+            if(get_field('toolbar_bja', 'option')){
+                $classToolbar = 'bja-bar';
+            }else{
+                $classToolbar = '';
+            }
+        ?>
 
 	</head>
-	<body <?php body_class(get_field('pack_achete', 'option')); ?>>
+	<body <?php body_class(array(get_field('pack_achete', 'option'), $classToolbar)); ?>>
 		
     <div class="svg-wrapper" aria-hidden="true">
         <?php echo file_get_contents(get_template_directory_uri().'/img/svg-prod/sprite/svgs.svg'); ?>
     </div>
+    
+    <?php if(get_field('toolbar_bja', 'option')): ?>
+    
+    <div class="toolbar-bja">
+       
+       <div class="wrapper">
+           
+            <a href="http://bonjouramour.fr" class="logo-bja"><img src="<?php echo get_template_directory_uri().'/img/logo-small-bja.svg';?>" alt="Bonjour Amour" width="40"></a>
+
+            <div class="select-pack">
+                <span class="title_pack">Pack présenté</span>
+                <ul class="list-pack">
+                   <li class="actuel_pack">Pack 1 : Châton mignon <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleche"></use></svg></li>
+                    <li>
+                        <ul class="submenu">
+                            <li><a href="http://pack1.bjramour.fr">Pack 1 : Châton mignon</a></li>
+                            <li><a href="http://pack2.bjramour.fr">Pack 2 : Chatounette</a></li>
+                            <li><a href="http://pack3.bjramour.fr">Pack 3 : Matou d'la street</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bt-toolabars">
+                <a href="#" class="bt-vente bt-vide bt-contact">Nous contacter</a>
+                <a href="#" class="bt-vente bt-commander">Commander</a>
+            </div>
+        
+        </div>
+    </div>  
+    
+    <?php endif; ?>
 
     <?php
 

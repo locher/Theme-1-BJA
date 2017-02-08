@@ -1217,9 +1217,12 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
 function remove_admin_bar_links() {
 	global $wp_admin_bar;
+        $user = wp_get_current_user();
+        if ( in_array( 'editor', (array) $user->roles ) ) {
 	$wp_admin_bar->remove_menu('new-content');
 	$wp_admin_bar->remove_menu('wp-logo');
 	$wp_admin_bar->remove_menu('my-sites');
+        }
 }
 
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
