@@ -1362,4 +1362,22 @@ function my_post_gallery( $output, $attr) {
     return $output;
 }
 
+//Custom WYSIWYG
+
+function myplugin_tinymce_buttons( $buttons ) {
+	//Remove the format dropdown select and text color selector
+	$remove = array( 'alignleft', 'alignright', 'aligncenter', 'numlist', 'wp_more' );
+
+	return array_diff( $buttons, $remove );
+ }
+add_filter( 'mce_buttons', 'myplugin_tinymce_buttons' );
+
+function myplugin_tinymce_buttons2( $buttons ) {
+	//Remove the format dropdown select and text color selector
+	$remove = array( 'forecolor', 'hr', 'outdent', 'indent' );
+
+	return array_diff( $buttons, $remove );
+ }
+add_filter( 'mce_buttons_2', 'myplugin_tinymce_buttons2' );
+
 ?>
