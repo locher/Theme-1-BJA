@@ -31,6 +31,10 @@
     a{
         display: inline-block;
     }
+    
+    p:not(:last-child){
+        margin-bottom: .5em;
+    }
 
     
     .wrapperText{
