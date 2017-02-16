@@ -53,6 +53,10 @@
 .notMaster{
     background-color: rgba(#000, .05);
     
+    &:not(:last-child){
+        margin-bottom: 20px;
+    }
+    
     .imgTemoin{
         margin-bottom: 10px;
         
@@ -64,5 +68,6 @@
     
     a{
         font-size: 1.5rem;
+        color: $primaire;
     }
 }
