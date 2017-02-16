@@ -39,18 +39,18 @@
        
        <div class="wrapper">
            
-            <a href="http://bonjouramour.fr" class="logo-bja"><img src="<?php echo get_template_directory_uri().'/img/logo-small-bja.svg';?>" alt="Bonjour Amour" width="40"></a>
+            <a href="https://bonjouramour.fr" class="logo-bja"><img src="<?php echo get_template_directory_uri().'/img/logo-small-bja.svg';?>" alt="Bonjour Amour" width="40"></a>
 
             <div class="select-pack">
-                <span class="title_pack">Pack présenté</span>
+                <span class="title_pack">Formule<span class="tool-hide"> présentée</span></span>
                 <ul class="list-pack">
                    <li class="actuel_pack">
                       
                       <?php 
                         switch(get_field('pack_achete', 'option')){
-                            case('pack1') : echo('Pack 1 : Châton mignon'); break;
-                            case('pack2') : echo('Pack 2 : Chatounette'); break;
-                            case('pack3') : echo('Pack 3 : Matou d\'la street'); break;
+                            case('pack1') : echo('<span class="tool-hide">Formule 1 : </span>Vitrine'); break;
+                            case('pack2') : echo('<span class="tool-hide">Formule 2 : </span>Collaboratif'); break;
+                            case('pack3') : echo('<span class="tool-hide">Formule 3 : </span>Interactif'); break;
                         }
                        
                        ?>
@@ -59,17 +59,18 @@
                     <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleche"></use></svg></li>
                     <li>
                         <ul class="submenu">
-                            <li><a href="http://pack1.bjramour.fr">Pack 1 : Châton mignon</a></li>
-                            <li><a href="http://pack2.bjramour.fr">Pack 2 : Chatounette</a></li>
-                            <li><a href="http://pack3.bjramour.fr">Pack 3 : Matou d'la street</a></li>
+                            <li><a href="http://pack1.bjramour.fr"><span class="tool-hide">Formule 1 : </span>Vitrine</a></li>
+                            <li><a href="http://pack2.bjramour.fr"><span class="tool-hide">Formule 2 : </span>Collaboratif</a></li>
+                            <li><a href="http://pack3.bjramour.fr"><span class="tool-hide">Formule 3 : </span>Interactif</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul>                
+                
             </div>
             
             <div class="bt-toolabars">
-                <a href="#" class="bt-vente bt-vide bt-contact">Nous contacter</a>
-                <a href="#" class="bt-vente bt-commander">Commander</a>
+                <a href="https://bonjouramour.fr/contact" class="bt-vente bt-vide bt-contact">Nous contacter</a>
+                <a href="https://bonjouramour.fr/commander" class="bt-vente bt-commander">Commander</a>
             </div>
         
         </div>

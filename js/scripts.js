@@ -77,6 +77,12 @@
         $('#addPhotos .show').toggleClass('hide');
     });  
         
+    //Admin bar
+        
+    $('.list-pack').click(function(){
+       $(this).find('.submenu').show(); 
+    });
+        
         
     //End function jquery
 	});

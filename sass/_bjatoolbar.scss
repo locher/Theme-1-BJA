@@ -1,10 +1,16 @@
-$primaire-vente: #b2558c;
+$primaire-vente: #89507a;
 $secondaire-vente: #fff66f;
-$typo-texte-vente: 'Domus';
+$typo-texte-vente: 'Domus', 'jaf-domus', 'helvetica', sans-serif ;
 
 .bja-bar{
     position: relative;
     padding-top: 80px;
+    
+    @include width-below(400px){
+        .tool-hide{
+            display: none;
+        }
+    }
 }
 
 
@@ -13,7 +19,7 @@ $typo-texte-vente: 'Domus';
     background-color: $primaire-vente;
     padding: $padding/2 0;
     position: fixed;
-    z-index: 1000;
+    z-index: 50;
     width: 100%;
     height: 80px;
     top: 0;
