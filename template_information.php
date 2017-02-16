@@ -20,6 +20,8 @@
     $argsHotel = array(
         // Query des témoins du marié
         'post_type'		=> 'hotels',
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
     );  
 
     $queryHotel = new WP_Query( $argsHotel );

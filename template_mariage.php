@@ -59,6 +59,8 @@
                     'post_type'		=> 'temoins',
                     'meta_key'		=> 'categorie',
                     'meta_value'	=> 'elle',
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
                     'meta_query'	=> array(
                         'relation'		=> 'AND',
                         array(
@@ -100,6 +102,8 @@
                     'post_type'		=> 'temoins',
                     'meta_key'		=> 'categorie',
                     'meta_value'	=> 'elle',
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
                     'meta_query'	=> array(
                         'relation'		=> 'AND',
                         array(
@@ -148,6 +152,8 @@
                     'post_type'		=> 'temoins',
                     'meta_key'		=> 'categorie',
                     'meta_value'	=> 'lui',
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
                     'meta_query'	=> array(
                         'relation'		=> 'AND',
                         array(
@@ -188,6 +194,8 @@
                     'post_type'		=> 'temoins',
                     'meta_key'		=> 'categorie',
                     'meta_value'	=> 'lui',
+                    'orderby' => 'menu_order',
+                    'order' => 'ASC',
                     'meta_query'	=> array(
                         'relation'		=> 'AND',
                         array(

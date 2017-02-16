@@ -5,6 +5,8 @@
     $argsPosts = array(
         'post_type'		=> 'wishlist',
         'posts_per_page' => -1,
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
     ); 
 
     $queryPosts = new WP_Query( $argsPosts );
