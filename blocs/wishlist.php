@@ -1,5 +1,9 @@
 <?php if(get_field('pack_achete', 'option') == "pack3"): ?>
 
+<?php 
+// Si ils utilisent pas une lsite externe
+if(get_field('liste_externe', 'option') == '' or get_field('use_extern_list', 'option') == 0): ?> 
+
 <?php    
 
     $argsPosts = array(
@@ -87,6 +91,28 @@
 
 </section>
 
+<?php endif;?>
+
+<?php else: 
+// si ils utilisent une liste externe
+?>
+
+<section class="wrapperPadding wishlist rappelGift" id="wishlist">
+    
+    <div class="wrapper-title">
+        <h2><?php the_field('titre_wishlist', 'option');?></h2>
+        <p class="subtitle"><?php the_field('sous-titre_wishlist', 'option');?></p>
+       <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
+    </div>
+    
+    <div class="content_extern_list">
+    
+        <?php the_field('texte_liste_externe', 'option');?>    
+        <a href="<?php the_field('liste_externe', 'option');?>" class="bt" target="_blank">Voir la liste</a>
+    
+    </div>
+
+</section>
 
 
 <?php endif;?>
