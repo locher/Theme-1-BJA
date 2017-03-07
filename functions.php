@@ -1383,4 +1383,8 @@ function myplugin_tinymce_buttons2( $buttons ) {
  }
 add_filter( 'mce_buttons_2', 'myplugin_tinymce_buttons2' );
 
+//ACF FIELDS
+
+include('acf-fields.php');
+
 ?>
