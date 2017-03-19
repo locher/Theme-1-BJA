@@ -9,7 +9,7 @@ if($expire == '' or strtotime($expire) > $now or get_field('mode_demo', 'option'
 
 <div class="bgsection wrapperPadding rappelRsvp">
     <div class="wrapper-title">
-        <h2>Vous êtes invité à notre mariage !</h2>
+        <h2><?php the_field('titre_rsvp_home', 'option');?></h2>
         <svg viewBox="0 0 100 100" width="50" height="50"><use xlink:href="#icon-fleur"></use></svg>
     </div>
     
