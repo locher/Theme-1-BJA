@@ -20,11 +20,14 @@ $query_tous = new WP_Query( $args_tous );
            
             <?php $location = get_field('adresse_du_lieu'); ?>
             <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-                <p class="address"><span class="title-map"><?php the_title();?></span> <?php echo $location['address']; ?></p>
+                <p class="address"><span class="title-map"><?php the_title();?></span></p>
+                <?php the_field('date_et_heure');?>
+                <p><?php echo $location['address']; ?></p>
                 
                 <p class="linkMap"><a href="http://maps.google.com/?q=<?php echo $location['address']; ?>" class="bt">M'y rendre</a></p>
             </div>       
        <?php endwhile; ?>
+       
 
     </div>
 
