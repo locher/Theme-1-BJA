@@ -42,9 +42,12 @@ $query_tous = new WP_Query( $args_tous );
                 <h3><?php the_title();?></h3>
 
                 <p class="h4 lieu"><?php the_field('titre_du_lieu');?></p>
-                <span class="date"><?php the_field('date_et_heure');?></span>
-
-                <?php the_field('description');?>
+                    <?php     
+        $dateformat = "l j F \à G\hi";
+        $unixtimestamp_mariage = strtotime(get_field('date_et_heure_mariage'));
+    ?>
+<?php if(get_field('date_et_heure_mariage')):?><p><?php echo date_i18n($dateformat, $unixtimestamp_mariage); ?></p><?php endif;?>
+                <?php the_field('date_et_heure');?>
             </div>
 
         </div>                
