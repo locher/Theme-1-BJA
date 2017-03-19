@@ -33,11 +33,7 @@ $query_histoire = new WP_Query( $args_histoire );
                 <div class="col1">
                     <p class="meta_moment"><?php the_field('date_de_letape'); ?></p>
                 </div>
-                <div class="milieu">
-                    <svg viewBox="0 0 100 100" width="30" height="30" class="icon">
-                      <use xlink:href="#icon-coeur"></use>
-                    </svg>
-                </div>
+
                 <div class="col2">
 
                   <div class="wrapper-col2">
@@ -55,6 +51,11 @@ $query_histoire = new WP_Query( $args_histoire );
 
                   </div>
 
+                </div>
+                                <div class="milieu">
+                    <svg viewBox="0 0 100 100" width="30" height="30" class="icon">
+                      <use xlink:href="#icon-coeur"></use>
+                    </svg>
                 </div>
             </li>
 

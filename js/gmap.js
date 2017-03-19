@@ -26,6 +26,7 @@ function new_map( $el ) {
 	
 	// create map	        	
 	var map = new google.maps.Map( $el[0], args);
+
 	
 	
 	// add a markers reference
@@ -38,8 +39,6 @@ function new_map( $el ) {
     	add_marker( $(this), map );
 		
 	});
-    
-    
 	
 	
 	// center map
@@ -78,6 +77,7 @@ function add_marker( $marker, map ) {
         fillOpacity: 0.6,
         strokeWeight: 0,
       };
+
 
 
 	// create marker
