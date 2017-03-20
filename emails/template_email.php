@@ -29,7 +29,7 @@ table {border-collapse: collapse;}
  .full-width-image img {width: 100%; max-width: 600px; height: auto; }
  .inner {padding: 40px; }
  p {Margin: 0; }
- a {color: #ee6a56; text-decoration: underline; }
+ a {color: #89507a; text-decoration: underline; }
  .h1 {font-size: 21px; font-weight: bold; Margin-bottom: 18px; }
  .h2 {font-size: 18px; font-weight: bold; Margin-bottom: 12px; }
  /* One column layout */
@@ -58,23 +58,6 @@ table {border-collapse: collapse;}
 .three-column .column {max-width: 33% !important; }
  .two-column .column {max-width: 50% !important; }
  }
-/* Left sidebar layout */
- .left-sidebar {text-align: center; font-size: 0; }
- .left-sidebar .column {width: 100%; display: inline-block; vertical-align: middle; }
- .left-sidebar .left {max-width: 100px; }
- .left-sidebar .right {max-width: 500px; }
- .left-sidebar .img {width: 100%; max-width: 80px; height: auto;}
- .left-sidebar .contents {font-size: 14px; text-align: center; }
- .left-sidebar a {color: #85ab70; }
-/* Right sidebar layout */
- .right-sidebar {text-align: center; font-size: 0; }
- .right-sidebar .column {width: 100%; display: inline-block; vertical-align: middle; }
- .right-sidebar .left {max-width: 100px; }
- .right-sidebar .right {max-width: 500px; }
- .right-sidebar .img {width: 100%; max-width: 80px; height: auto; }
- .right-sidebar .contents {font-size: 14px; text-align: center; }
- .right-sidebar a {color: #70bbd9; }
-
 </style>
 </head>
 <body>
@@ -90,26 +73,26 @@ table {border-collapse: collapse;}
     <table class="outer" align="center" style="background-color:#f7f7f7">
 
     <tbody><tr class="psingle">
-    <td class="one-column" style="height:5px; background-color:#b2548b;"> 
+    <td class="one-column" style="height:5px; background-color:#89507a;"> 
     </td>
 </tr><tr class="psingle">
     <td class="one-column">
         <table width="100%">
             <tbody><tr>
                 <td class="inner contents">
-                   <p style="color: #b2548b; font-size:30px;"><strong>Bonjour,</strong></p>
+                   <p style="color: #89507a; font-size:30px;"><strong>Bonjour,</strong></p>
                     '.$message.'
                 </td>
             </tr>
         </tbody></table>
     </td>
 </tr><tr class="psingle">
-    <td class="one-column" style="background-color:#b2548b;">
+    <td class="one-column" style="background-color:#89507a;">
         <table width="100%">
             <tbody><tr>
                 <td class="inner contents">
-                    <p>
-                        Bonjour Amour
+                    <p style="text-align:center;">
+                        <a href="https://bonjouramour.fr"><img src="https://bonjouramour.fr/wp-content/themes/bja_vente/emails/logo.png" alt="Bonjour Amour" width="100"></a>
                     </p>
                 </td>
             </tr>

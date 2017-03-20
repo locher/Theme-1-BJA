@@ -83,11 +83,10 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
 
     // Envoi d'un email s'il a pas coché la case pour pas avoir les notifs email
     if(!get_field('email_invite', 'option')){
+        
+        include('emails/template_email.php');
 
-        $message = '<html><head>
-            <title>Nouvelle réponse de vos invités</title>
-                </head><body>
-            <h2>Nouvelle inscription</h2>
+        $message = '<h2>Nouvelle inscription</h2>
             <ul>
                 <li><b>Nom : </b>'.$name.'</li>
                 <li><b>Email : </b>'.$email.'</li>
@@ -95,11 +94,11 @@ if(isset($_POST['name_dude']) && $_POST['name_dude'] != "" && isset($_POST['part
                 <li><b>Viendra accompagné : </b>'.$plusOne.'</li>
                 <li><b>Viendra avec : </b>'.$nomInvites.'</li>
                 <li><b>A laissé ce message : </b>'.$message.'</li>
-            </ul>
-        </body>
-        </html>';
+            </ul>';
+        
+        $message = bja_email($message);
 
-        $headers = 'From: Bonjour Amour <'.get_option('admin_email').'>';
+        $headers = array('Content-Type: text/html; charset=UTF-8;');
 
         // Envoi de l'email
 
